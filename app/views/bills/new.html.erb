@@ -7,7 +7,7 @@
   <%= f.input :days_worked, input_html: { id: 'days_worked' } %>
   <%= f.input :rate, input_html: { id: 'rate' } %>
   <%= f.input :amount, input_html: { id: 'amount', readonly: true } %>
-  <%= f.input :status, as: :select, collection: ['sent', 'unpaid', 'paid'], include_blank: false %>
+  <%= f.input :status, as: :select, collection: status_options, include_blank: false %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
 

@@ -71,3 +71,4 @@ end
 gem "devise"
 gem 'simple_form'
 gem "sassc-rails"
+gem 'pdfkit'

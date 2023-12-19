@@ -35,6 +35,36 @@ class BillsController < ApplicationController
   end
 
   def destroy
+    @bill = Bill.find(params[:id])
+    @bill.destroy
+    respond_to do |format|
+      format.html { redirect_to bills_path, notice: 'Bill was successfully destroyed.' }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@bill) }
+    end
+  end
+
+  def update_status
+    @bill = Bill.find(params[:id])
+    if @bill.update(status: params[:bill][:status])
+      redirect_to bills_path, notice: 'Status updated successfully.'
+    else
+      # Handle the case where the update fails, e.g., validation errors
+      flash[:alert] = 'Failed to update status.'
+      render :index
+    end
+  end
+
+  def generate_pdf
+    @bill = Bill.find(params[:id])
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: 'bill',
+              template: 'bills/bill_template',
+              layout: 'pdf.html',
+              encoding: 'UTF-8'
+      end
+    end
   end
 
   private
