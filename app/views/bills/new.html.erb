@@ -1,21 +1,39 @@
-<%= simple_form_for(@artwork) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :image, as: :file %>
-
-    <%= f.input :size %>
-    <%= f.input :price %>
-
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<h1> New bill </h1>
+<%= simple_form_for(@bill) do |f| %>
+  <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
+  <%= link_to 'Create New Client', new_client_path, class: 'btn btn-primary' %>
+  <%= f.input :bill_date %>
+  <%= f.input :description %>
+  <%= f.input :days_worked, input_html: { id: 'days_worked' } %>
+  <%= f.input :rate, input_html: { id: 'rate' } %>
+  <%= f.input :amount, input_html: { id: 'amount', readonly: true } %>
+  <%= f.input :status, as: :select, collection: ['sent', 'unpaid', 'paid'], include_blank: false %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+
 <div>
-  <%= link_to "Back to artworks", bills_path %>
+  <%= link_to "Back to all bills", bills_path %>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Update amount when days_worked or rate change
+    ['days_worked', 'rate'].forEach(function (field) {
+      document.getElementById(field).addEventListener('input', updateAmount);
+    });
+
+    // Initial update
+    updateAmount();
+
+    function updateAmount() {
+      var daysWorked = parseFloat(document.getElementById('days_worked').value) || 0;
+      var rate = parseFloat(document.getElementById('rate').value) || 0;
+      var amount = daysWorked * rate;
+
+      // Round to two decimal places
+      amount = Math.round(amount * 100) / 100;
+
+      document.getElementById('amount').value = amount;
+    }
+  });
+</script>

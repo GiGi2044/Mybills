@@ -1,0 +1,13 @@
+<nav class="nav">
+  <div class="nav-title">
+    <a href="/"><%= user_session %></a>
+  </div>
+  <ul class="nav-list">
+    <li class="nav-list-item btn bt-primary">
+      <%= link_to "New bill", new_bill_path %>
+    </li>
+    <li class="nav-list-item dropdown-item">
+      <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
+      </li>
+  </ul>
+</nav>

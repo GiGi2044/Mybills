@@ -1,4 +1,28 @@
-<h1>Bills#index</h1>
-<p>Find me in app/views/bills/index.html.erb</p>
+<h1> My bills </h1>
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Bill Date</th>
+      <th>Description</th>
+      <th>Days Worked</th>
+      <th>Rate</th>
+      <th>Amount</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= bill.client.client_name %></td>
+        <td><%= bill.bill_date %></td>
+        <td><%= bill.description %></td>
+        <td><%= bill.days_worked %></td>
+        <td><%= bill.rate %></td>
+        <td><%= bill.amount %></td>
+        <td><%= bill.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to "New bill", new_bill_path, class: "btn btn-primary p-2", id: "button_style" %>
-<%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
