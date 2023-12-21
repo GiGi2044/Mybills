@@ -4,36 +4,12 @@
   <%= link_to 'Create New Client', new_client_path, class: 'btn btn-primary' %>
   <%= f.input :bill_date %>
   <%= f.input :description %>
-  <%= f.input :days_worked, input_html: { id: 'days_worked' } %>
-  <%= f.input :rate, input_html: { id: 'rate' } %>
-  <%= f.input :amount, input_html: { id: 'amount', readonly: true } %>
-  <%= f.input :status, as: :select, collection: status_options, include_blank: false %>
+  <%= f.input :days_worked %>
+  <%= f.input :rate %>
+  <%= f.input :amount, input_html: { value: @bill.total, readonly: true } %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
 
 <div>
   <%= link_to "Back to all bills", bills_path %>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Update amount when days_worked or rate change
-    ['days_worked', 'rate'].forEach(function (field) {
-      document.getElementById(field).addEventListener('input', updateAmount);
-    });
-
-    // Initial update
-    updateAmount();
-
-    function updateAmount() {
-      var daysWorked = parseFloat(document.getElementById('days_worked').value) || 0;
-      var rate = parseFloat(document.getElementById('rate').value) || 0;
-      var amount = daysWorked * rate;
-
-      // Round to two decimal places
-      amount = Math.round(amount * 100) / 100;
-
-      document.getElementById('amount').value = amount;
-    }
-  });
-</script>

@@ -72,3 +72,5 @@ gem "devise"
 gem 'simple_form'
 gem "sassc-rails"
 gem 'pdfkit'
+gem 'font-awesome-rails'
+gem "pg_search"

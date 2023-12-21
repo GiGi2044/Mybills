@@ -1,6 +1,10 @@
 class BillsController < ApplicationController
   def index
-    @bills = Bill.all
+    if params[:query].present?
+      @bills = Bill.search_by_bill_date_and_status(params[:query])
+    else
+      @bills = Bill.all
+    end
   end
 
   def show
@@ -22,6 +26,7 @@ class BillsController < ApplicationController
         format.html { redirect_to bills_path, notice: 'Bill was successfully created.' }
         format.json { render :show, status: :created, location: @bill }
       else
+        puts @bill.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
@@ -29,18 +34,23 @@ class BillsController < ApplicationController
   end
 
   def edit
+    @bill = Bill.find(params[:id])
+    @clients = current_user.clients
   end
 
   def update
+    @bill = Bill.find(params[:id])
+    @clients = current_user.clients
+
+
+    @bill.update(bill_params)
+    redirect_to bills_path, notice: 'Bill was successfully updated.'
   end
 
   def destroy
     @bill = Bill.find(params[:id])
     @bill.destroy
-    respond_to do |format|
-      format.html { redirect_to bills_path, notice: 'Bill was successfully destroyed.' }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@bill) }
-    end
+    redirect_to bill_path, notice: 'Bill was successfully destroyed.'
   end
 
   def update_status
@@ -48,7 +58,6 @@ class BillsController < ApplicationController
     if @bill.update(status: params[:bill][:status])
       redirect_to bills_path, notice: 'Status updated successfully.'
     else
-      # Handle the case where the update fails, e.g., validation errors
       flash[:alert] = 'Failed to update status.'
       render :index
     end
