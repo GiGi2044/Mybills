@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  get 'home/about'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -16,14 +18,6 @@ Rails.application.routes.draw do
   resources :clients
   resources :users
 
-  devise_scope :user do
-    authenticated :user do
-      root 'bills#index', as: :authenticated_root
-    end
-
-    # Redirect users to login page if not authenticated
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
+  get '/about' => 'home#about'
+  root to: 'home#index'
 end

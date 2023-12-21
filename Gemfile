@@ -71,6 +71,7 @@ end
 gem "devise"
 gem 'simple_form'
 gem "sassc-rails"
-gem 'pdfkit'
 gem 'font-awesome-rails'
 gem "pg_search"
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

@@ -1,4 +1,4 @@
-.nav {
+.navbar {
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
   border-top: 1px solid #e6e6e6;
@@ -9,18 +9,9 @@
   align-items: center;
 }
 
-.nav-title a, .nav-list-item, .nav-list-item a{
-text-decoration: none;
-list-style: none;
-padding: 20px;
-}
-
-.nav-title {
-display: flex;
-align-items: center;
-
-}
-
-.nav-list-item {
-display: inline;
+.a{
+  text-decoration: none;
+  list-style: none;
+  padding: 20px;
+  margin: 0 20px;
 }

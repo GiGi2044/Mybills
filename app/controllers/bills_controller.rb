@@ -8,7 +8,14 @@ class BillsController < ApplicationController
   end
 
   def show
-    @bill = Bill.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name",
+              template: "bills/show.pdf.erb",
+              layout: 'pdf_layout.html.erb' # Optional: Use a separate layout for PDFs
+      end
+    end
   end
 
   def new

@@ -2,13 +2,12 @@
   <div class="nav-title">
     <% if user_signed_in? %>
       <%= current_user.email %>
+      <%= link_to "My bills", bills_path %>
+      <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
     <% else %>
       Guest User
+      <%= link_to "Log in", new_user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_path %>
     <% end %>
   </div>
-  <ul class="nav-list">
-    <li class="nav-list-item dropdown-item">
-      <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
-      </li>
-  </ul>
 </nav>
