@@ -85,6 +85,8 @@ class BillsController < ApplicationController
 
   def pdf
     @bill = Bill.find(params[:id])
+    @client = @bill.client
+
 
     pdf = Prawn::Document.new
     initial_y = pdf.cursor
@@ -93,15 +95,47 @@ class BillsController < ApplicationController
     invoice_header_x = 325
     lineheight_y = 12
     font_size = 9
-    bank_details_x = 400
+
+    business_name = "Your Business Name"
+    business_address = "1234 Some Street Suite 1703, Some City, ST 12345"
+    busines_location = "Some City, ST 12345"
+
+    invoice_number = @bill.id
+    invoice_date = @bill.bill_date
+
+    bank_details1_x = 50
+    bank_details2_x = 280
+    bank_name = "Credit Suisse, Fribourg, Switzerland"
+    bank_iban = "IBAN  CH22 0483 5085 9159 2100 0"
+    bank_bic = "BIC: CRESCHZZ80A"
+    bank_account_number = "ACCT Nr.  859159-21"
+
+    client_name = @client.client_name
+    client_contact_name = "Client Contact Name"
+    client_address = @client.client_address
+    client_city = "Client City, ST 12345"
+
+    customer_id = @client.id
+    customer_terms = "30"
+
+    bill_description = @bill.description
+    bill_days = @bill.days_worked
+    bill_rate = @bill.rate
+    bill_amount = @bill.total
+
+    contact_text = "If you have any questions about this invoice, please contact"
+    contact_text_start_position = 120
+    contact_details = "Graham Cunningham, +41792333772, #{current_user.email}"
+    contact_details_start_position = 110
+
 
     pdf.move_down initialmove_y
     # user details
-    pdf.text_box "Your Business Name", :at => [address_x,  pdf.cursor]
+    pdf.text_box business_name, :at => [address_x,  pdf.cursor]
     pdf.move_down lineheight_y
-    pdf.text_box "1234 Some Street Suite 1703", :at => [address_x,  pdf.cursor]
+    pdf.text_box business_address, :at => [address_x,  pdf.cursor]
     pdf.move_down lineheight_y
-    pdf.text_box "Some City, ST 12345", :at => [address_x,  pdf.cursor]
+    pdf.text_box busines_location, :at => [address_x,  pdf.cursor]
     pdf.move_down lineheight_y
 
     last_measured_y = pdf.cursor
@@ -126,7 +160,7 @@ class BillsController < ApplicationController
 
     invoice_header_data = [
       ["Invoice #", "Date"],
-      ["1", "10/03/2020"],
+      [invoice_number, invoice_date],
     ]
 
     pdf.table(invoice_header_data, :position => invoice_header_x, :width => 215) do
@@ -137,14 +171,13 @@ class BillsController < ApplicationController
     end
 
     pdf.move_down lineheight_y
-    pdf.text_box "Bank: Credit Suisse, Fribourg, Switzerland", at: [address_x, pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "IBAN: CH22 0483 5085 9159 2100 0", at: [address_x, pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "BIC: CRESCHZZ80A", at: [address_x, pdf.cursor]
-    pdf.move_down lineheight_y
-    pdf.text_box "Account No: 859159-21", at: [address_x, pdf.cursor]
-    pdf.move_down 65
+    pdf.text_box "Bank", at: [address_x, pdf.cursor]
+    pdf.text_box bank_name, at: [bank_details1_x, pdf.cursor]
+    pdf.text_box bank_iban, at: [bank_details2_x, pdf.cursor]
+    pdf.move_down 20
+    pdf.text_box bank_bic, at: [bank_details1_x, pdf.cursor]
+    pdf.text_box bank_account_number, at: [bank_details2_x, pdf.cursor]
+    pdf.move_down 45
     last_measured_y = pdf.cursor
 
     invoice_header_data = [
@@ -160,19 +193,19 @@ class BillsController < ApplicationController
 
     description_style = { size: 10 }
     pdf.move_down 5
-    pdf.text_box "Client Business Name", at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_name, at: [address_x, pdf.cursor], **description_style
     pdf.move_down lineheight_y
-    pdf.text_box "Client Contact Name", at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_contact_name, at: [address_x, pdf.cursor], **description_style
     pdf.move_down lineheight_y
-    pdf.text_box "4321 Some Street Suite 1000", at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_address, at: [address_x, pdf.cursor], **description_style
     pdf.move_down lineheight_y
-    pdf.text_box "Some City, ST 12345", at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_city, at: [address_x, pdf.cursor], **description_style
 
     pdf.move_cursor_to last_measured_y
 
     invoice_header_data = [
       ["Customer ID", "TERMS"],
-      ["1", "30"],
+      [customer_id, customer_terms],
     ]
 
       pdf.table(invoice_header_data, :position => invoice_header_x, :width => 215) do
@@ -186,7 +219,7 @@ class BillsController < ApplicationController
 
     invoice_services_data = [
       ["Description", "Days", "Daily rate", "Amount"],
-      ["Service Description", "320.00", "10", "$3,200.00"]
+      [bill_description, bill_days, bill_rate, bill_amount]
     ]
 
     # Add 10 empty rows
@@ -216,10 +249,10 @@ class BillsController < ApplicationController
     pdf.text_box "Thank you for your business!", at: [address_x, pdf.cursor]
     pdf.move_up 10
     invoice_services_totals_data = [
-      ["Subtotal", "$3,200.00"],
+      ["Subtotal", bill_amount],
       ["Tax rate", "0.000%"],
       ["Tax", "-"],
-      ["Total", "CHF 3,200.00"]
+      ["Total", bill_amount]
     ]
 
     pdf.table(invoice_services_totals_data, :position => invoice_header_x, :width => 215) do
@@ -230,9 +263,11 @@ class BillsController < ApplicationController
       style(row(3), font_style: :bold)
     end
 
-    pdf.move_down 15
+    pdf.move_down 35
 
-
+    pdf.text_box contact_text, at: [contact_text_start_position, pdf.cursor]
+    pdf.move_down lineheight_y
+    pdf.text_box contact_details, at: [contact_details_start_position, pdf.cursor]
 
     send_data(pdf.render,
       filename: "bill.pdf",
