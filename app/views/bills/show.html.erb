@@ -1,2 +1,14 @@
 <h1>Bills#show</h1>
 <p>Find me in app/views/bills/show.html.erb</p>
+<%= @bill.client.client_name %>
+<br>
+<%= @bill.bill_date.strftime("%d-%m-%y") %>
+<br>
+<%= @bill.description %>
+<br>
+<%= @bill.days_worked %>
+<br>
+<%= @bill.rate %>
+<br>
+<%= @bill.total %>
+<%= link_to "View pdf", bill_pdf_path(@bill) %>

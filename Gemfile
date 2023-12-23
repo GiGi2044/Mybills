@@ -73,5 +73,5 @@ gem 'simple_form'
 gem "sassc-rails"
 gem 'font-awesome-rails'
 gem "pg_search"
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'prawn'
+gem 'prawn-table'

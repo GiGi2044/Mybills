@@ -34,7 +34,10 @@
             <% end %>
           </td>
           <td>
-            <%= link_to 'Show PDF', bill_path(bill, format: :pdf), class: 'btn btn-secondary btn-sm' %>
+            <%= link_to 'Show PDF', bill_path(bill), class: 'btn btn-secondary btn-sm' %>
+            <%= link_to 'Download PDF', download_path, class: 'btn btn-secondary btn-sm' %>
+            <%= link_to 'Preview PDF', preview_path, class: 'btn btn-secondary btn-sm' %>
+            <%= link_to "View pdf", bill_pdf_path(bill) %>
           </td>
           </tr>
     </tbody>
