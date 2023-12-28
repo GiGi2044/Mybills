@@ -1,2 +1,14 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1> Edit account </h1>
+<%= simple_form_for(current_user) do |f| %>
+  <%= f.input :fullname %>
+  <%= f.input :business_name %>
+  <%= f.input :city %>
+  <%= f.input :street %>
+  <%= f.input :bank_name %>
+  <%= f.input :account_number %>
+  <%= f.input :iban %>
+  <%= f.input :bic %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
+<details></details>
