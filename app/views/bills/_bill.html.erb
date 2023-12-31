@@ -34,10 +34,8 @@
             <% end %>
           </td>
           <td>
-            <%= link_to 'Show PDF', bill_path(bill), class: 'btn btn-secondary btn-sm' %>
-            <%= link_to 'Download PDF', download_path, class: 'btn btn-secondary btn-sm' %>
-            <%= link_to 'Preview PDF', preview_path, class: 'btn btn-secondary btn-sm' %>
             <%= link_to "View pdf", bill_pdf_path(bill) %>
+            <%= button_to 'Send Email', send_email_bill_path(bill), method: :post, class: 'btn btn-success btn-sm' %>
           </td>
           </tr>
     </tbody>

@@ -5,12 +5,6 @@ class Bill < ApplicationRecord
   belongs_to :client
   validates :client_id, presence: true
 
-  after_create :send_email_to_client
-
-  def send_email_to_client
-    ClientMailer.bill_created_email(self, current_user).deliver_now
-  end
-
   def total
     days_worked.to_f * rate.to_f
   end
