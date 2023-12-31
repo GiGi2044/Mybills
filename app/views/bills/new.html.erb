@@ -1,7 +1,20 @@
 <h1> New bill </h1>
 <%= simple_form_for(@bill) do |f| %>
   <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
-  <%= link_to 'Create New Client', new_client_path, class: 'btn btn-primary' %>
+  <%= link_to 'Create New Client', '#',
+    data: { action: "click->toggle#toggle", toggle_target: "form" },
+    class: 'btn btn-primary' %>
+  <div data-toggle-target="toggleable" class="hidden">
+  <%= simple_form_for(@client || Client.new, html: { class: 'new_client', id: 'new_client' }) do |f| %>
+  <%= f.input :client_name %>
+  <%= f.input :contact_name %>
+  <%= f.input :city %>
+  <%= f.input :client_address %>
+  <%= f.input :client_email %>
+  <%= f.input :client_phone %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
   <%= f.input :bill_date %>
   <%= f.input :description %>
   <%= f.input :days_worked %>
