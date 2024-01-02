@@ -75,7 +75,10 @@ class BillsController < ApplicationController
   def send_email
     @bill = Bill.find(params[:id])
     UserMailer.send_bill_email(@bill, current_user).deliver_now
-    redirect_to bills_path, notice: 'Email sent successfully'
+    respond_to do |format|
+      format.html { redirect_to bills_path, notice: 'Email sent successfully' }
+      format.js
+    end
   end
 
   def pdf

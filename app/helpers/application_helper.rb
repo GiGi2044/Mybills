@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def status_options
-    ['sent', 'unpaid', 'paid']
+    ['unsent', 'sent', 'paid']
   end
 
   def humanized_status(status)

@@ -35,7 +35,7 @@
           </td>
           <td>
             <%= link_to "View pdf", bill_pdf_path(bill) %>
-            <%= button_to 'Send Email', send_email_bill_path(bill), method: :post, class: 'btn btn-success btn-sm' %>
+            <%= button_to 'Send Email', send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success btn-sm' %>
           </td>
           </tr>
     </tbody>
