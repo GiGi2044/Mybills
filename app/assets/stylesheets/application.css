@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ .body {
+  font-family: "Open Sans", sans-serif;
+  margin: 200px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+	max-width: 90vw;
+	margin: 20px;
+}
+
+#button_style{
+  width: 10%;
+  padding: 10px 20px;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
