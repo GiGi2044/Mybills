@@ -70,7 +70,7 @@ end
 
 gem "devise"
 gem 'simple_form'
-gem "sassc-rails"
+
 gem 'font-awesome-rails'
 gem "pg_search"
 gem 'prawn'
