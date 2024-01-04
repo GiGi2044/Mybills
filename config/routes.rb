@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
   get '/about' => 'home#about'
   root to: 'home#index'
-  get 'home/index'
-  get 'home/about'
 
   get 'bill/pdf/:id', to: 'bills#pdf', as: 'bill_pdf'
   get 'download', to: 'bills#download'

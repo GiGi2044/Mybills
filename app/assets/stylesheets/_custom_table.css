@@ -1,4 +1,22 @@
 .custom-table {
-  width: 90%;
-  margin: 0 auto; /* This centers the table horizontally */
+  table-layout: fixed; /* Fixed table layout for consistent column sizing */
+  width: 100%; /* Optional: Ensure table occupies the container's full width */
+}
+
+.custom-table th, .custom-table td {
+  padding: 8px; /* Consistent padding for all cells */
+  text-align: left; /* Align text to the left; modify as needed */
+  vertical-align: top; /* Align content to the top of the cell */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+}
+
+.custom-table th {
+  background-color: #f2f2f2; /* Optional: Background color for header */
+}
+
+/* Optional: Define specific widths for each column if needed */
+.custom-table colgroup col {
+  width: 15%; /* Example width; adjust as needed */
 }

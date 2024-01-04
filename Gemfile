@@ -75,3 +75,5 @@ gem 'font-awesome-rails'
 gem "pg_search"
 gem 'prawn'
 gem 'prawn-table'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
