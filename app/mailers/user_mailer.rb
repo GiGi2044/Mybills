@@ -5,6 +5,7 @@ class UserMailer < ApplicationMailer
     attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf.render }
     mail(from: user.email, to: bill.client.client_email, subject: 'Your Bill')
   end
+
   private
 
   def generate_pdf(bill, user)
