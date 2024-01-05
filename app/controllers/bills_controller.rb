@@ -130,8 +130,8 @@ class BillsController < ApplicationController
 
     contact_text = "If you have any questions about this invoice, please contact"
     contact_text_start_position = 120
-    contact_details = "#{user.fullname}, +41792333772, #{user.email}"
-    contact_details_start_position = 110
+    contact_details = "#{user.fullname}, #{user.phone_number}, #{user.email}"
+    contact_details_start_position = 120
 
 
     pdf.move_down initialmove_y
@@ -178,10 +178,10 @@ class BillsController < ApplicationController
     pdf.move_down lineheight_y
     pdf.text_box "Bank", at: [address_x, pdf.cursor]
     pdf.text_box bank_name, at: [bank_details1_x, pdf.cursor]
-    pdf.text_box bank_iban, at: [bank_details2_x, pdf.cursor]
+    pdf.text_box "IBAN #{bank_iban}", at: [bank_details2_x, pdf.cursor]
     pdf.move_down 20
-    pdf.text_box bank_bic, at: [bank_details1_x, pdf.cursor]
-    pdf.text_box bank_account_number, at: [bank_details2_x, pdf.cursor]
+    pdf.text_box "BIC :  #{bank_bic}", at: [bank_details1_x, pdf.cursor]
+    pdf.text_box "ACCT Nr. #{bank_account_number}", at: [bank_details2_x, pdf.cursor]
     pdf.move_down 45
     last_measured_y = pdf.cursor
 

@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="nav-title">
     <% if user_signed_in? %>
-        <%= link_to bills_path(), class: "logo-link" do %>
+        <%= link_to root_path(), class: "logo-link" do %>
           <%= image_tag "logo.png", size: "40x40", class: "rounded-circle logo" %>
         <% end %>
       <span class="b">MyBills</span>

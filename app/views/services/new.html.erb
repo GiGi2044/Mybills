@@ -1,0 +1,8 @@
+<h1> New Service </h1>
+<%= simple_form_for(@service) do |f| %>
+  <%= f.input :description %>
+  <%= f.input :rate %>
+  <%= f.input :days_worked%>
+  <%= f.hidden_field :bill_id, value: @bill_id %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

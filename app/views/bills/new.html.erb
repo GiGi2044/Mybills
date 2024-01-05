@@ -3,9 +3,7 @@
   <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
   <%= link_to "New Client", new_client_path, class: "btn btn-primary p-2", id: "button_style" %>
   <%= f.input :bill_date %>
-  <%= f.input :description %>
-  <%= f.input :days_worked %>
-  <%= f.input :rate %>
+  <%= link_to "New Service", new_service_path, class: "btn btn-primary p-2", id: "button_style" %>
   <%= f.input :amount, input_html: { value: @bill.total, readonly: true } %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
