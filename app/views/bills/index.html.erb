@@ -1,8 +1,6 @@
 <div class="container">
   <h1> My bills </h1>
   <%= link_to "New Bill", new_bill_path, class: "btn btn-primary p-2", id: "button_style" %>
-  <details>
-    <summary>Bills</summary>
     <%= form_tag(bills_path, method: :get, class: "mb-3 mt-3") do %>
       <div class="input-group">
         <%= text_field_tag(:query, params[:query], class: "form-control", placeholder: "Search by client name") %>
@@ -12,7 +10,6 @@
   <% @bills.each do |bill| %>
     <%= render partial: 'bill', locals: { bill: bill } %>
   <% end %>
-  </details>
   <details>
     <summary>Clients</summary>
     <% @bills.each do |bill| %>

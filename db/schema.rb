@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_05_142542) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_07_145044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_142542) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bill_services", force: :cascade do |t|
+    t.bigint "bill_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "rate"
+    t.float "days_worked"
+    t.index ["bill_id"], name: "index_bill_services_on_bill_id"
+    t.index ["service_id"], name: "index_bill_services_on_service_id"
+  end
+
   create_table "bills", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "client_id", null: false
@@ -71,13 +82,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_142542) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.bigint "bill_id", null: false
     t.text "description"
     t.float "rate"
     t.float "days_worked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bill_id"], name: "index_services_on_bill_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,8 +115,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_142542) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bill_services", "bills"
+  add_foreign_key "bill_services", "services"
   add_foreign_key "bills", "clients"
   add_foreign_key "bills", "users"
   add_foreign_key "clients", "users"
-  add_foreign_key "services", "bills"
+  add_foreign_key "services", "users"
 end

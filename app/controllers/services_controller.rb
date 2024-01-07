@@ -10,23 +10,20 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
-    @bill_id = params[:bill_id]
   end
 
   def create
-    @service = Service.new(service_params)
-
+    @service = current_user.services.build(service_params)
     if @service.save
-      # Redirect to the bill form with a notice
-      redirect_to new_bill_path(bill_id: @bill_id), notice: 'Service was successfully created.'
+      redirect_to new_bill_path(:service_id, @service.id), notice: 'Service was succesfully created.'
     else
-      render :new
+      render 'bills/add_services'
     end
   end
 
   private
 
   def service_params
-    params.require(:service).permit(:description, :rate, :days_worked, :bill_id)
+    params.require(:service).permit(:description, :rate, :days_worked,)
   end
 end

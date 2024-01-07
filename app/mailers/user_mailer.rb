@@ -1,9 +1,10 @@
 class UserMailer < ApplicationMailer
-  def send_bill_email(bill, user)
-    pdf = generate_pdf(bill, user)
+  def send_bill_email(bill, user, pdf_document)
+    # Attach the PDF document
+    attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf_document.render }
 
-    attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf.render }
-    mail(from: user.email, to: bill.client.client_email, subject: 'Your Bill')
+    # Set up email details
+    mail(from: "gian@cunninghams.ch", to: bill.client.client_email, subject: 'Your Bill')
   end
 
   private

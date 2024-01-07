@@ -15,6 +15,7 @@ class BillsController < ApplicationController
   def new
     @bill = Bill.new
     @clients = current_user.clients
+    @services = Service.all
   end
 
   def create
@@ -74,7 +75,10 @@ class BillsController < ApplicationController
 
   def send_email
     @bill = Bill.find(params[:id])
-    UserMailer.send_bill_email(@bill, current_user).deliver_now
+    @bill.update(status: 'sent') if @bill.status == 'unsent'
+    pdf_document = generate_pdf(@bill, current_user)
+    UserMailer.send_bill_email(@bill, current_user, pdf_document).deliver_now
+
     respond_to do |format|
       format.html { redirect_to bills_path, notice: 'Email sent successfully' }
       format.js
@@ -109,7 +113,8 @@ class BillsController < ApplicationController
     invoice_date = bill.bill_date
 
     bank_details1_x = 50
-    bank_details2_x = 280
+    bank_details2_x_title = 280
+    bank_details2_x = 340
     bank_name = user.bank_name
     bank_iban = user.iban
     bank_bic = user.bic
@@ -178,10 +183,12 @@ class BillsController < ApplicationController
     pdf.move_down lineheight_y
     pdf.text_box "Bank", at: [address_x, pdf.cursor]
     pdf.text_box bank_name, at: [bank_details1_x, pdf.cursor]
-    pdf.text_box "IBAN #{bank_iban}", at: [bank_details2_x, pdf.cursor]
+    pdf.text_box "IBAN", at: [bank_details2_x_title, pdf.cursor]
+    pdf.text_box bank_iban, at: [bank_details2_x, pdf.cursor]
     pdf.move_down 20
     pdf.text_box "BIC :  #{bank_bic}", at: [bank_details1_x, pdf.cursor]
-    pdf.text_box "ACCT Nr. #{bank_account_number}", at: [bank_details2_x, pdf.cursor]
+    pdf.text_box "ACCT Nr.", at: [bank_details2_x_title, pdf.cursor]
+    pdf.text_box bank_account_number, at: [bank_details2_x, pdf.cursor]
     pdf.move_down 45
     last_measured_y = pdf.cursor
 

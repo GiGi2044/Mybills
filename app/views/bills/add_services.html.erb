@@ -1,0 +1,14 @@
+<h1>Add Services to Bill</h1>
+
+<%= form_with(model: [@bill, @service], local: true) do |form| %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+
+  <%= form.label :rate %>
+  <%= form.number_field :rate %>
+
+  <%= form.label :days_worked %>
+  <%= form.number_field :days_worked %>
+
+  <%= form.submit "Add Service" %>
+<% end %>
