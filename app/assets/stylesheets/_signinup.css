@@ -1,0 +1,15 @@
+.sign_title {
+  color: #000;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-container {
+  width: 50%;       /* Set width to 50% of the parent element */
+  margin: 0 auto;   /* Center the form */
+  border: 1px solid #ccc; /* Add a border around the form */
+  padding: 20px;    /* Add some padding inside the box */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  margin-top: 20px;
+}
