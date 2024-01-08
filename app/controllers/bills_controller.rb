@@ -1,9 +1,9 @@
 class BillsController < ApplicationController
   def index
     if params[:query].present?
-      @bills = Bill.search_by_bill_date_and_status(params[:query])
+      @bills = current_user.bills.search_by_bill_date_and_status(params[:query])
     else
-      @bills = Bill.all
+      @bills = current_user.bills
     end
     @client = Client.new
   end
