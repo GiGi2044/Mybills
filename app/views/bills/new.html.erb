@@ -7,12 +7,12 @@
   <%= f.input :description %>
   <%= f.input :days_worked %>
   <%= f.input :rate %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
   <%# <h2>Services</h2>
   <%= f.collection_select( :service_ids, @services, :id, :description, { prompt: 'Select existing service' })%>
   <%# <%= link_to "New Service", new_service_path, class: "btn btn-primary p-2", id: "button_style" %>
-  <%= f.input :amount, input_html: { value: @bill.total, readonly: true } %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
 
 <div>
   <%= link_to "Back to all bills", bills_path %>
