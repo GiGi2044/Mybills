@@ -113,8 +113,9 @@ class BillsController < ApplicationController
     invoice_date = bill.bill_date
 
     bank_details1_x = 50
-    bank_details2_x_title = 280
-    bank_details2_x = 340
+    bank_details2_x_title = 255
+    bank_details2_x = 315
+    bank_details3_x = 85
     bank_name = user.bank_name
     bank_iban = user.iban
     bank_bic = user.bic
@@ -134,15 +135,21 @@ class BillsController < ApplicationController
     bill_amount = bill.total
 
     contact_text = "If you have any questions about this invoice, please contact"
-    contact_text_start_position = 120
     contact_details = "#{user.fullname}, #{user.phone_number}, #{user.email}"
-    contact_details_start_position = 120
+
+    pdf_width = pdf.bounds.width
+
+    contact_text_width = pdf.width_of(contact_text)
+    contact_details_width = pdf.width_of(contact_details)
+
+    x_position = (pdf_width - contact_text_width) / 2
+    x1_position = (pdf_width - contact_details_width) / 2
 
 
     pdf.move_down initialmove_y
     # user details
-    pdf.text_box business_name, :at => [address_x,  pdf.cursor]
-    pdf.move_down lineheight_y
+    pdf.text_box business_name, :at => [address_x,  pdf.cursor], size: 20, style: :bold, color: :"1C6DD0"
+    pdf.move_down 27
     pdf.text_box business_address, :at => [address_x,  pdf.cursor]
     pdf.move_down lineheight_y
     pdf.text_box business_location, :at => [address_x,  pdf.cursor]
@@ -150,7 +157,7 @@ class BillsController < ApplicationController
 
     last_measured_y = pdf.cursor
 
-    pdf.move_up 40
+    pdf.move_up 55
 
     invoice_header_data = [
       ["INVOICE"],
@@ -186,7 +193,8 @@ class BillsController < ApplicationController
     pdf.text_box "IBAN", at: [bank_details2_x_title, pdf.cursor]
     pdf.text_box bank_iban, at: [bank_details2_x, pdf.cursor]
     pdf.move_down 20
-    pdf.text_box "BIC :  #{bank_bic}", at: [bank_details1_x, pdf.cursor]
+    pdf.text_box "BIC : ", at: [bank_details1_x, pdf.cursor]
+    pdf.text_box bank_bic, at: [bank_details3_x, pdf.cursor]
     pdf.text_box "ACCT Nr.", at: [bank_details2_x_title, pdf.cursor]
     pdf.text_box bank_account_number, at: [bank_details2_x, pdf.cursor]
     pdf.move_down 45
@@ -203,15 +211,15 @@ class BillsController < ApplicationController
       style(row(0..1).columns(0..1), :align => :left)
     end
 
-    description_style = { size: 10 }
+    client_details_style = { size: 10 }
     pdf.move_down 5
-    pdf.text_box client_name, at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_name, at: [address_x, pdf.cursor], **client_details_style
     pdf.move_down lineheight_y
-    pdf.text_box client_contact_name, at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_contact_name, at: [address_x, pdf.cursor], **client_details_style
     pdf.move_down lineheight_y
-    pdf.text_box client_address, at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_address, at: [address_x, pdf.cursor], **client_details_style
     pdf.move_down lineheight_y
-    pdf.text_box client_city, at: [address_x, pdf.cursor], **description_style
+    pdf.text_box client_city, at: [address_x, pdf.cursor], **client_details_style
 
     pdf.move_cursor_to last_measured_y
 
@@ -227,7 +235,7 @@ class BillsController < ApplicationController
       style(row(0..1).columns(0..1), :align => :center) # Center the second row horizontally
     end
 
-    pdf.move_down 85
+    pdf.move_down 75
 
     invoice_services_data = [
       ["Description", "Days", "Daily rate", "Amount"],
@@ -259,7 +267,7 @@ class BillsController < ApplicationController
 
     pdf.move_down 10
     pdf.text_box "Thank you for your business!", at: [address_x, pdf.cursor]
-    pdf.move_up 10
+    pdf.move_up 9
     invoice_services_totals_data = [
       ["Subtotal", bill_amount],
       ["Tax rate", "0.000%"],
@@ -277,9 +285,9 @@ class BillsController < ApplicationController
 
     pdf.move_down 35
 
-    pdf.text_box contact_text, at: [contact_text_start_position, pdf.cursor]
+    pdf.text_box contact_text, at: [x_position, pdf.cursor]
     pdf.move_down lineheight_y
-    pdf.text_box contact_details, at: [contact_details_start_position, pdf.cursor]
+    pdf.text_box contact_details, at: [x1_position, pdf.cursor]
     end
   end
 
