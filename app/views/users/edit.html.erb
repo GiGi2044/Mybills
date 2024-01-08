@@ -1,7 +1,6 @@
 <h1> Account info </h1>
 <%= simple_form_for(current_user) do |f| %>
   <%= f.input :fullname, label: 'Full name (First and Last name)' %>
-  <%= f.input :email %>
   <%= f.input :business_name %>
   <%= f.input :phone_number %>
   <%= f.input :city, label: 'City / Zip code / Country' %>

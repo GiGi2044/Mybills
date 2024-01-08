@@ -1,22 +1,28 @@
 <nav class="navbar">
-  <div class="nav-title">
-    <% if user_signed_in? %>
-        <%= link_to root_path(), class: "logo-link" do %>
-          <%= image_tag "logo.png", size: "40x40", class: "rounded-circle logo" %>
-        <% end %>
-      <span class="b">MyBills</span>
-      <span class="a"><%= current_user.email %></span>
-      <a href="<%= bills_path %>" class="a">My bills</a>
-      <a href="<%= edit_user_path(current_user) %>" class="a">Edit Profile</a>
-      <%= link_to "log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }%>
-    <% else %>
-      <%= link_to bills_path(), class: "logo-link" do %>
-          <%= image_tag "logo.png", size: "40x40", class: "rounded-circle logo" %>
-        <% end %>
-      <span class="b">MyBills</span>
-      <span class="a">Guest User</span>
-      <a href="<%= new_user_session_path %>" class="a">Sign in</a>
-      <a href="<%= new_user_registration_path %>" class="a">Sign Up</a>
-    <% end %>
+  <div class="nav-container">
+    <div class="nav-title">
+      <%= link_to root_path(), class: "logo-link" do %>
+            <%= image_tag "logo.png", size: "40x40", class: "rounded-circle logo" %>
+            <span class="b">MyBills</span>
+          <% end %>
+    </div>
+      <% if user_signed_in? %>
+        <div class="nav_links">
+          <a href="<%= bills_path %>" class="a">My bills</a>
+          <div class="dropdown">
+            <span class="dropdown-button a"><%= current_user.email %></span>
+            <div class="dropdown-content">
+              <a href="<%= edit_user_path(current_user) %>" class="a">Edit Profile</a>
+              <%= link_to "log out", destroy_user_session_path, class: "a", method: :delete, data: { turbo_method: :delete } %>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+        <div class="nav_links">
+          <a href="<%= new_user_session_path %>" class="a">Sign in</a>
+          <a href="<%= new_user_registration_path %>" class="a btn btn-primary">Sign Up For Free</a>
+        </div>
+      <% end %>
   </div>
 </nav>

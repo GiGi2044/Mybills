@@ -1,11 +1,13 @@
 <h1> New client </h1>
-<%= simple_form_for(@client || Client.new, html: { class: 'new_client', id: 'new_client' }) do |f| %>
-  <%= f.input :client_name %>
-  <%= f.input :contact_name %>
-  <%= f.input :city %>
-  <%= f.input :client_address %>
-  <%= f.input :client_email %>
-  <%= f.input :client_phone %>
+  <div class="custom-form">
+    <%= simple_form_for(@client || Client.new, html: { class: 'new_client', id: 'new_client' }) do |f| %>
+      <%= f.input :client_name %>
+      <%= f.input :contact_name %>
+      <%= f.input :city %>
+      <%= f.input :client_address %>
+      <%= f.input :client_email %>
+      <%= f.input :client_phone %>
 
-  <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+  </div>
