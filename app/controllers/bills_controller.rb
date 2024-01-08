@@ -135,13 +135,14 @@ class BillsController < ApplicationController
     bill_rate = bill.rate
     bill_amount = bill.total
 
+
     contact_text = "If you have any questions about this invoice, please contact"
     contact_details = "#{user.fullname}, #{user.phone_number}, #{user.email}"
 
     pdf_width = pdf.bounds.width
 
     contact_text_width = pdf.width_of(contact_text)
-    contact_details_width = pdf.width_of(contact_details)
+    contact_details_width = pdf.width_of(contact_details, style: :bold)
 
     x_position = (pdf_width - contact_text_width) / 2
     x1_position = (pdf_width - contact_details_width) / 2
