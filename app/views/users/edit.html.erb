@@ -1,14 +1,14 @@
 <h1> Account info </h1>
 <%= simple_form_for(current_user) do |f| %>
-  <%= f.input :fullname %>
+  <%= f.input :fullname, label: 'Full name (First and Last name)' %>
   <%= f.input :email %>
   <%= f.input :business_name %>
   <%= f.input :phone_number %>
-  <%= f.input :city %>
+  <%= f.input :city, label: 'City / Zip code / Country' %>
   <%= f.input :street %>
-  <%= f.input :bank_name %>
+  <%= f.input :bank_name, label: 'Bank' %>
   <%= f.input :account_number %>
-  <%= f.input :iban %>
-  <%= f.input :bic %>
+  <%= f.input :iban, label: 'IBAN' %>
+  <%= f.input :bic, label: 'BIC' %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
