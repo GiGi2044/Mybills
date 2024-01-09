@@ -11,8 +11,8 @@ class Bill < ApplicationRecord
   validates :client_id, presence: true
   validates :bill_date, presence: true
 
-  def total
-    days_worked.to_f * rate.to_f
+  def grand_total
+    services.sum(&:total_amount)
   end
 
   include PgSearch::Model

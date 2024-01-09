@@ -15,7 +15,7 @@ class BillsController < ApplicationController
   def new
     @bill = Bill.new
     @clients = current_user.clients
-    @services = Service.all
+    @services = current_user.services
   end
 
   def create
@@ -38,12 +38,13 @@ class BillsController < ApplicationController
   def edit
     @bill = Bill.find(params[:id])
     @clients = current_user.clients
+    @services = current_user.services
   end
 
   def update
     @bill = Bill.find(params[:id])
     @clients = current_user.clients
-
+    @services = current_user.services
 
     @bill.update(bill_params)
     redirect_to bills_path, notice: 'Bill was successfully updated.'
@@ -133,7 +134,7 @@ class BillsController < ApplicationController
     bill_description = bill.description
     bill_days = bill.days_worked
     bill_rate = bill.rate
-    bill_amount = bill.total
+    bill_amount = bill.grand_total
 
 
     contact_text = "If you have any questions about this invoice, please contact"
@@ -299,6 +300,6 @@ class BillsController < ApplicationController
 
 
   def bill_params
-    params.require(:bill).permit(:user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status)
+    params.require(:bill).permit(:user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [])
   end
 end
