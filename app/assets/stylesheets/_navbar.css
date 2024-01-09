@@ -50,6 +50,10 @@
   margin: 0px;
   text-decoration: none;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
 .dropdown-button {
   cursor: pointer;

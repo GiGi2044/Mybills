@@ -2,11 +2,11 @@
   <div class="nav-container">
     <div class="nav-title">
       <%= link_to root_path(), class: "logo-link" do %>
-            <%= image_tag "logo.png", size: "40x40", class: "rounded-circle logo" %>
-            <span class="b">MyBills</span>
+            <%= image_tag "logo.png", size: "50x50", class: "rounded-circle logo" %>
           <% end %>
     </div>
       <% if user_signed_in? %>
+
         <div class="nav_links">
           <a href="<%= bills_path %>" class="a">My bills</a>
           <div class="dropdown">
