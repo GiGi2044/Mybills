@@ -1,10 +1,12 @@
 <h1>Edit Client</h1>
-<%= simple_form_for(@client) do |f| %>
-  <%= f.input :bill_date %>
-  <%= f.input :description %>
-  <%= f.input :days_worked %>
-  <%= f.input :rate %>
-  <%= f.input :amount, input_html: { value: @bill.total, readonly: true } %>
-  <%= f.input :status, as: :select, collection: status_options, include_blank: false %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<div class="custom-form">
+  <%= simple_form_for(@client) do |f| %>
+    <%= f.input :bill_date %>
+    <%= f.input :description %>
+    <%= f.input :days_worked %>
+    <%= f.input :rate %>
+    <%= f.input :amount, input_html: { value: @bill.total, readonly: true } %>
+    <%= f.input :status, as: :select, collection: status_options, include_blank: false %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
