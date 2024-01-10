@@ -15,7 +15,7 @@ class BillsController < ApplicationController
   def new
     @bill = Bill.new
     @clients = current_user.clients
-    @services = Service.all
+    @services = current_user.services
   end
 
   def create
@@ -38,12 +38,13 @@ class BillsController < ApplicationController
   def edit
     @bill = Bill.find(params[:id])
     @clients = current_user.clients
+    @services = current_user.services
   end
 
   def update
     @bill = Bill.find(params[:id])
     @clients = current_user.clients
-
+    @services = current_user.services
 
     @bill.update(bill_params)
     redirect_to bills_path, notice: 'Bill was successfully updated.'
@@ -75,9 +76,11 @@ class BillsController < ApplicationController
 
   def send_email
     @bill = Bill.find(params[:id])
+    @client = @bill.client
+
     @bill.update(status: 'sent') if @bill.status == 'unsent'
     pdf_document = generate_pdf(@bill, current_user)
-    UserMailer.send_bill_email(@bill, current_user, pdf_document).deliver_now
+    UserMailer.send_bill_email(@bill, @client, current_user, pdf_document).deliver_now
 
     respond_to do |format|
       format.html { redirect_to bills_path, notice: 'Email sent successfully' }
@@ -133,8 +136,7 @@ class BillsController < ApplicationController
     bill_description = bill.description
     bill_days = bill.days_worked
     bill_rate = bill.rate
-    bill_amount = bill.total
-
+    bill_amount = bill.grand_total
 
     contact_text = "If you have any questions about this invoice, please contact"
     contact_details = "#{user.fullname}, #{user.phone_number}, #{user.email}"
@@ -242,13 +244,27 @@ class BillsController < ApplicationController
 
     pdf.move_down 70
 
-    invoice_services_data = [
-      ["Description", "Days", "Daily rate", "Amount"],
-      [bill_description, bill_days, bill_rate, bill_amount]
-    ]
+    invoice_services_data = []
 
-    # Add 10 empty rows
-    12.times { invoice_services_data << ["", "", "", ""] }
+    bill.services.each do |service|
+      service_description = service.description
+      service_days = service.days_worked
+      service_rate = service.rate
+      service_amount = service.total_amount  # Assuming you have a method in Service model
+
+      # Construct array for each service
+      invoice_services_data << [service_description, service_days, service_rate, service_amount]
+    end
+
+    # Header for the table
+    invoice_services_header = [["Description", "Days", "Daily rate", "Amount"]]
+
+    # Combine header and service data
+    invoice_services_data = invoice_services_header + invoice_services_data
+
+    # Ensure total 13 rows
+    empty_rows_needed = 13 - invoice_services_data.length
+    empty_rows_needed.times { invoice_services_data << ["", "", "", ""] }
 
     pdf.table(invoice_services_data, :width => pdf.bounds.width) do
       style(row(1..-1).columns(0..-1), :padding => [4, 5, 4, 5], :borders => [:bottom], :border_color => 'dddddd')
@@ -265,7 +281,7 @@ class BillsController < ApplicationController
       single_row_height = row(1).height
 
       # Apply the same height to all rows (including empty ones)
-      (1..12).each do |i|
+      (1..13).each do |i|
         style(row(i), :height => single_row_height)
       end
     end
@@ -299,6 +315,6 @@ class BillsController < ApplicationController
 
 
   def bill_params
-    params.require(:bill).permit(:user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status)
+    params.require(:bill).permit(:user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [])
   end
 end

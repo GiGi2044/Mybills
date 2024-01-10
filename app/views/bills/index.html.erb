@@ -15,8 +15,11 @@
     <% @bills.each do |bill| %>
       <%= render partial: 'client', locals: { bill: bill } %>
     <% end %>
-    <div style="display: flex; justify-content: center;">
-      <%= link_to "New Client", new_client_path, class: "btn btn-primary p-2", id: "button_style" %>
-    </div>
-  </details>
+  <%# </details> %>
+  <%# <details>
+    <summary>Services</summary>
+    <% @services.each do |bill| %>
+      <%# <%= render partial: 'service', locals: { bill: bill } %>
+    <%# <% end %>
+  <%# </details>  %>
 </div>

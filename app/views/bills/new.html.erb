@@ -3,19 +3,17 @@
   <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
       <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
-      <%= link_to "New Client", new_client_path, class: "btn btn-primary p-2", id: "button_style" %>
+      <%= link_to "New Client", new_client_path, class: "btn btn-primary p-1", id: "button_style" %>
       <%= f.input :bill_date %>
-      <h2> Services </h2>
+      <h2> Bill Info </h2>
       <%= f.input :description %>
-      <%= f.input :days_worked %>
-      <%= f.input :rate %>
-      <%= f.button :submit, class: 'btn btn-primary' %>
+      <h2> Services </h2>
+      <%= f.collection_select( :service_ids, @services, :id, :description, { prompt: 'Select existing service' }, { multiple: true, size: 5 })%>
+      <%= link_to "New Service", new_service_path, class: "btn btn-primary p-1", id: "button_style" %>
+      <br>
+      <%= f.button :submit, class: 'btn btn-primary p-3' %>
     <% end %>
   </div>
-
-      <%# <h2>Services</h2>
-      <%= f.collection_select( :service_ids, @services, :id, :description, { prompt: 'Select existing service' })%>
-      <%# <%= link_to "New Service", new_service_path, class: "btn btn-primary p-2", id: "button_style" %>
 
   <div>
     <%= link_to "Back to all bills", bills_path %>

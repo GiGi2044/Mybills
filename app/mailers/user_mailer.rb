@@ -1,5 +1,8 @@
 class UserMailer < ApplicationMailer
-  def send_bill_email(bill, user, pdf_document)
+  def send_bill_email(bill, client, user, pdf_document)
+    @bill = bill
+    @client = client
+    @user = user
     # Attach the PDF document
     attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf_document.render }
 

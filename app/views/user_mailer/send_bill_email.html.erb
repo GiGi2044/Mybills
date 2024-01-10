@@ -4,8 +4,8 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <h1>Invoice from </h1>
-  <p>Dear </p>
+  <h1>Invoice from <%= @user.fullname %></h1>
+  <p>Dear <%= @client.client_name %></p>
   <p>Please find attached the invoice for our recent transaction.</p>
   <p>Thank you for your business!</p>
 </body>
