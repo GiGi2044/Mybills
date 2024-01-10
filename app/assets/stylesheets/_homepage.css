@@ -2,6 +2,50 @@
   color: #000;
   font-size: 2em;
   font-weight: bold;
-  text-align: center;
   margin-top: 20px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.header_homepage {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  background-color: #659DBD;
+}
+
+.header_info_homepage {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+
+#signup_button{
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  color: #659DBD;
+  background-color: #fff;
+  border: #fff;
+}
+
+.home_card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.home_card
+{
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  background-color: #FBEEC1;
+  height: 400px;
 }

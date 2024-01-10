@@ -1,28 +1,35 @@
-<h1 class="home_title">Welcome to JustInvoice ! </h1>
-<div class="home_container">
-  <div class="home_card">
-    <div class="home_card_title">
-      <h2>Manage your bills</h2>
+  <% if user_signed_in? %>
+      <h1 class="home_title">Welcome <%= current_user.fullname %> ! </h1>
+      <a href="<%= bills_path %>">Go to your bills</a>
+  <% else %>
+    <div class="header_homepage">
+      <div class="Header_info_homepage">
+        <h1 class="home_title">Welcome to JustInvoice ! </h1>
+        <a href="<%= new_user_registration_path %>" class="a btn  btn-primary" id="signup_button">Sign Up For Free</a>
+      </div>
     </div>
-    <div class="home_card_content">
-      <p>Manage your bills and keep track of your expenses</p>
+    <div class="home_card">
+      <div class="home_card_title">
+        <h2>Manage your bills</h2>
+      </div>
+      <div class="home_card_content">
+        <p>Manage your bills and keep track of your expenses</p>
+      </div>
     </div>
-  </div>
-  <div class="home_card">
-    <div class="home_card_title">
-      <h2>Save time</h2>
+    <div class="home_card">
+      <div class="home_card_title">
+        <h2>Save time</h2>
+      </div>
+      <div class="home_card_content">
+        <p>JustInvoice is a simple and easy to use app</p>
+      </div>
     </div>
-    <div class="home_card_content">
-      <p>JustInvoice is a simple and easy to use app</p>
+    <div class="home_card">
+      <div class="home_card_title">
+        <h2>Save money</h2>
+      </div>
+      <div class="home_card_content">
+        <p>JustInvoice is free to use</p>
+      </div>
     </div>
-  </div>
-  <div class="home_card">
-    <div class="home_card_title">
-      <h2>Save money</h2>
-    </div>
-    <div class="home_card_content">
-      <p>JustInvoice is free to use</p>
-    </div>
-  </div>
-</div>
-<a href="<%= new_user_registration_path %>">Sign up for free Now !</a>
+  <% end %>

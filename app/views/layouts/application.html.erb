@@ -25,7 +25,9 @@
       <% unless (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
         <%= render "shared/navbar" %>
       <% end %>
+      <% unless (controller_name == 'home' && action_name == 'index') || (controller_name == 'home' && action_name == 'about') %>
       <div class="container">
+      <% end %>
         <%= yield %>
       </div>
   </body>
