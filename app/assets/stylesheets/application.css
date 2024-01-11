@@ -40,3 +40,9 @@
 .hidden {
   display: none;
 }
+
+
+.btn-primary {
+  background-color: #374785;
+  color: #fff;
+}

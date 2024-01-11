@@ -1,51 +1,110 @@
-.home_title {
-  color: #000;
-  font-size: 2em;
-  font-weight: bold;
-  margin-top: 20px;
-  color: #fff;
-  margin-bottom: 30px;
-}
-
 .header_homepage {
-  background-color: #fff;
-  border: 1px solid #ccc;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 600px;
   background-color: #659DBD;
+  border: none;
+  padding: 0;
 }
 
-.header_info_homepage {
-  background-color: #fff;
-  border: 1px solid #ccc;
+.Header_info_homepage {
+  text-align: center;
+  padding: 20px;
 }
 
-
-#signup_button{
-  font-size: 1.5em;
+.home_title {
+  color: #fff;
+  font-size: 3em;
   font-weight: bold;
-  margin: 0px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
+  margin: 0;
+  padding: 20px 0;
+}
+
+#signup_button {
+  font-size: 1em;
+  font-weight: bold;
   color: #659DBD;
   background-color: #fff;
-  border: #fff;
+  border: 1px solid #659DBD;
+  padding: 20px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.home_card {
-  background-color: #fff;
-  border: 1px solid #ccc;
+#signup_button:hover {
+  background-color: #374785;
+  color: #fff;
+}
+
+.header_text {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.home_time {
   padding: 10px;
-}
-
-.home_card
-{
   display: flex;
   flex-direction: column;
-  color: #000;
-  background-color: #FBEEC1;
+  background-color: #e4e5f5;
+  color: #374785;
   height: 400px;
+}
+
+.home_manage {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e4e5f5;
+  color: #374785;
+  height: 400px;
+}
+
+.home_money {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #374785;
+  background-color: #e4e5f5;
+  height: 400px;
+}
+
+.pricing_container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.pricing_card {
+  background-color: #fff;
+  border: 1px solid #659DBD;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.pricing_card:hover {
+  transform: scale(1.05);
+}
+
+.pricing_card_title h3 {
+  margin: 0;
+  color: #333;
+  text-align: center;
+}
+
+.pricing_card_content, .pricing_card_price {
+  text-align: center;
+  margin-top: 10px;
 }
