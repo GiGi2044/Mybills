@@ -72,7 +72,7 @@
   flex-direction: column;
   color: #374785;
   background-color: #e4e5f5;
-  height: 400px;
+  height: 450px;
 }
 
 .pricing_container {
@@ -102,9 +102,21 @@
   margin: 0;
   color: #333;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .pricing_card_content, .pricing_card_price {
   text-align: center;
-  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.pricing_card_button {
+  color: #fff;
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
 }
