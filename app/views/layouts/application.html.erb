@@ -30,6 +30,8 @@
       <% end %>
         <%= yield %>
       </div>
+      <% if (controller_name == 'home' && action_name == 'index') || (controller_name == 'home' && action_name == 'about') %>
       <%= render "shared/footer" %>
+      <% end %>
   </body>
 </html>
