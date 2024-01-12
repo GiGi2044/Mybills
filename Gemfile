@@ -82,3 +82,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-google-oauth2'
 
 gem 'money-rails'
+
+gem 'stripe'
