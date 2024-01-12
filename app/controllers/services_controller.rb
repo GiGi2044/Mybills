@@ -21,6 +21,23 @@ class ServicesController < ApplicationController
     end
   end
 
+  def edit
+    @service = Service.find(params[:id])
+  end
+
+  def update
+    @services = current_user.services
+    @service = Service.find(params[:id])
+    @service.update(service_params)
+    redirect_to services_path, notice: 'Service was successfully updated.'
+  end
+
+  def destroy
+    @service = Service.find(params[:id])
+    @service.destroy
+    redirect_to services_path, notice: 'Service was successfully deleted.'
+  end
+
   private
 
   def service_params

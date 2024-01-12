@@ -51,7 +51,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  background-color: #e4e5f5;
+
   color: #374785;
   height: 400px;
 }
@@ -60,7 +60,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  background-color: #e4e5f5;
+
   color: #374785;
   height: 400px;
 }
@@ -71,7 +71,7 @@
   align-items: center;
   flex-direction: column;
   color: #374785;
-  background-color: #e4e5f5;
+
   height: 450px;
 }
 

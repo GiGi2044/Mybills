@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
 
   def index
     @clients = current_user.clients
+    @bills = current_user.bills
   end
 
   def show
@@ -26,6 +27,11 @@ class ClientsController < ApplicationController
   end
 
   def update
+    @bill = Bill.find(params[:id])
+    @clients = current_user.clients
+
+    @bill.client.update(client_params)
+    redirect_to clients_path, notice: 'Client was successfully updated.'
   end
 
   def destroy

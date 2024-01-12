@@ -1,0 +1,28 @@
+<table class="table custom-table">
+  <thead>
+    <tr>
+      <th scope="col">Actions</th>
+      <th scope="col">Client ID</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Contact Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>
+          <%= link_to fa_icon("times"), client_path(bill.client), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+          class: 'btn btn-danger btn-sm' %>
+          <%= link_to fa_icon("pencil-alt"), edit_client_path(bill.client), class: 'btn btn-primary btn-sm' %>
+        </td>
+        <td><%= bill.client.id %></td>
+        <td><%= bill.client.client_name %></td>
+        <td><%= bill.client.contact_name  %></td>
+        <td><%= bill.client.city %></td>
+        <td><%= bill.client.client_address %></td>
+        <td><%= bill.client.client_email %></td>
+        </tr>
+  </tbody>
+</table>

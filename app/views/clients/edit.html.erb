@@ -1,6 +1,9 @@
 <h1>Edit Client</h1>
 <%= simple_form_for(@client) do |f| %>
   <%= f.input :client_name %>
+  <%= f.input :contact_name%>
   <%= f.input :client_email %>
+  <%= f.input :client_address %>
+  <%= f.input :city%>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

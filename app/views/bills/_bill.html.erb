@@ -1,40 +1,36 @@
-<div class="container">
-  <table class="table custom-table">
-    <thead>
+<table class="table custom-table">
+  <thead>
+    <tr>
+      <th scope="col">Actions</th>
+      <th scope="col">Client</th>
+      <th scope="col">Bill Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Status</th>
+      <th scope="col">PDF</th>
+    </tr>
+  </thead>
+  <tbody>
       <tr>
-        <th scope="col">Actions</th>
-        <th scope="col">Client</th>
-        <th scope="col">Bill Date</th>
-        <th scope="col">Description</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Status</th>
-        <th scope="col">PDF</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-            <%= link_to fa_icon("times"), bill_path(bill), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-            class: 'btn btn-danger btn-sm' %>
-
-            <%= link_to fa_icon("pencil-alt"), edit_bill_path(bill), class: 'btn btn-primary btn-sm' %>
-          </td>
-          <td><%= bill.client.client_name %></td>
-          <td><%= bill.bill_date.strftime("%d-%m-%y") %></td>
-          <td><%= bill.description %></td>
-          <td><%= bill.grand_total %></td>
-          <td>
-            <%= form_with(model: bill, url: update_status_bill_path(bill), method: :patch, local: true, class: 'status-form') do |form| %>
-              <%= form.select :status, status_options, {}, class: 'form-control status-dropdown', data: { turbolinks: false } %>
-              <%= form.submit 'Update', class: 'btn btn-primary btn-sm' %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "View bill", bill_path(bill) %>
-            <%= link_to "View pdf", bill_pdf_path(bill) %>
-            <%= button_to 'Send Email', send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success btn-sm' %>
-          </td>
-          </tr>
-    </tbody>
-  </table>
-</div>
+        <td>
+          <%= link_to fa_icon("times"), bill_path(bill), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+          class: 'btn btn-danger btn-sm' %>
+          <%= link_to fa_icon("pencil-alt"), edit_bill_path(bill), class: 'btn btn-primary btn-sm' %>
+        </td>
+        <td><%= bill.client.client_name %></td>
+        <td><%= bill.bill_date.strftime("%d-%m-%y") %></td>
+        <td><%= bill.description %></td>
+        <td><%= bill.grand_total %></td>
+        <td>
+          <%= form_with(model: bill, url: update_status_bill_path(bill), method: :patch, local: true, class: 'status-form') do |form| %>
+            <%= form.select :status, status_options, {}, class: 'form-control status-dropdown', data: { turbolinks: false } %>
+            <%= form.submit 'Update', class: 'btn btn-primary btn-sm' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "View pdf", bill_pdf_path(bill) %>
+          <%= button_to 'Send Email', send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success btn-sm' %>
+        </td>
+        </tr>
+  </tbody>
+</table>

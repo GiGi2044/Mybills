@@ -7,10 +7,13 @@
     </div>
       <% if user_signed_in? %>
         <div class="nav_links">
-          <a href="<%= bills_path %>" class="a">My bills</a>
+
           <div class="dropdown">
             <span class="dropdown-button a"><%= current_user.email %></span>
             <div class="dropdown-content">
+              <a href="<%= bills_path %>" class="a">Bills List</a>
+              <a href="<%= clients_path %>" class="a">Clients List</a>
+              <a href="<%= services_path %>" class="a">Services List</a>
               <a href="<%= edit_user_path(current_user) %>" class="a">Edit Profile</a>
               <%= link_to "log out", destroy_user_session_path, class: "a", method: :delete, data: { turbo_method: :delete } %>
             </div>

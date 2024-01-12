@@ -1,2 +1,8 @@
-<h1>Services#index</h1>
-<p>Find me in app/views/services/index.html.erb</p>
+<div class="container">
+  <h1 class="page_titles"> My Services </h1>
+  <% @services.each do |service| %>
+    <%= render partial: 'service', locals: { service: service } %>
+  <% end %>
+
+  <%= link_to "New Service", new_service_path, class: "btn btn-primary p-2", id: "button_style" %>
+</div>
