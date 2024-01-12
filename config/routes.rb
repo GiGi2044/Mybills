@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :users
   resources :services, only: [:new, :create, :index, :show]
+  resources :plans, only: [:index, :show]
 
 
   get 'bill/pdf/:id', to: 'bills#pdf', as: 'bill_pdf'
