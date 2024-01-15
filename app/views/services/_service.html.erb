@@ -1,29 +1,27 @@
-<div class="container">
-  <table class="table custom-table">
-    <thead>
+<table class="table custom-table">
+  <thead>
+    <tr>
+      <th scope="col">Actions</th>
+      <th scope="col">Service ID</th>
+      <th scope="col">Description</th>
+      <th scope="col">Days Worked</th>
+      <th scope="col">Rate</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
       <tr>
-        <th scope="col">Actions</th>
-        <th scope="col">Service ID</th>
-        <th scope="col">Description</th>
-        <th scope="col">Days Worked</th>
-        <th scope="col">Rate</th>
-        <th scope="col">Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-            <%= link_to fa_icon("times"), service_path(service), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-            class: 'btn btn-danger btn-sm' %>
-            <%= link_to fa_icon("pencil-alt"),"#", class: 'btn btn-primary btn-sm' %>
-            <%# <%= link_to fa_icon("pencil-alt"), edit_service_path(service), class: 'btn btn-primary btn-sm' %>
-          </td>
-          <td><%= service.id %></td>
-          <td><%= service.description %></td>
-          <td><%= service.days_worked  %></td>
-          <td><%= service.rate %></td>
-          <td><%= service.total_amount %></td>
-          </tr>
-    </tbody>
-  </table>
-</div>
+        <td>
+          <%= link_to fa_icon("times"), service_path(service), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+          class: 'btn btn-danger btn-sm' %>
+          <%= link_to fa_icon("pencil-alt"),"#", class: 'btn btn-primary btn-sm' %>
+          <%# <%= link_to fa_icon("pencil-alt"), edit_service_path(service), class: 'btn btn-primary btn-sm' %>
+        </td>
+        <td><%= service.id %></td>
+        <td><%= service.description %></td>
+        <td><%= service.days_worked  %></td>
+        <td><%= service.rate %></td>
+        <td><%= service.total_amount %></td>
+        </tr>
+  </tbody>
+</table>

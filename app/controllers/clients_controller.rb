@@ -1,7 +1,11 @@
 class ClientsController < ApplicationController
 
   def index
+    if params[:query].present?
+      @clients = Client.search_by_client_name(params[:query])
+    else
     @clients = current_user.clients
+    end
     @bills = current_user.bills
   end
 

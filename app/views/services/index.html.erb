@@ -1,5 +1,11 @@
 <div class="container">
   <h1 class="page_titles"> My Services </h1>
+  <%= form_tag(services_path, method: :get, class: "mb-3 mt-3") do %>
+      <div class="input-group">
+        <%= text_field_tag(:query, params[:query], class: "form-control", placeholder: "Search by description") %>
+        <button type="submit" class="btn btn-secondary">Search</button>
+      </div>
+    <% end %>
   <% @services.each do |service| %>
     <%= render partial: 'service', locals: { service: service } %>
   <% end %>
