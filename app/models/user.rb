@@ -9,11 +9,9 @@ class User < ApplicationRecord
 
   private
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token(length=20)
-    end
+  def self.from_google(u)
+  create_with(uid: u[:uid], provider: 'google',
+              password: Devise.friendly_token[0, 20]).find_or_create_by!(email: u[:email])
   end
 
 end
