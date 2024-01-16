@@ -1,0 +1,25 @@
+<div class="page_container">
+  <div class="card_container">
+    <h2>Let's start by filling out your profile</h2>
+    <p>Fill out your profile to start creating and sending invoices. Any progress you make will be saved, so you can always finish later.</p>
+    <h3><%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %></h3>
+    <p><%= link_to "skip this step", bills_path %></p>
+    <hr class="divider" />
+    <div class="info_section">
+      <div class="info_item">
+        <i class="info_icon"></i>
+        <div class="info_text">
+          <h3>What information will I need?</h3>
+          <p>You'll be asked to provide standard business details, such as contact information and industry type.</p>
+        </div>
+      </div>
+      <div class="info_item">
+        <i class="info_icon"></i>
+        <div class="info_text">
+          <h3>How long does it take?</h3>
+          <p>Complete your business profile in 5-10 minutes, so you can take your first payment straight away.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

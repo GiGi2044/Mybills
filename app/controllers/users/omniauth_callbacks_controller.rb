@@ -26,12 +26,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def first_time_sign_in_path
     # Define the path for first-time sign in
-    your_first_time_sign_in_path
+    welcome_path
   end
 
   def subsequent_sign_in_path
     # Define the path for subsequent sign ins
-    your_subsequent_sign_in_path
+    bills_path
   end
 
    def from_google_params

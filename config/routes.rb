@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/about' => 'home#about'
   get 'show' => 'home#show'
+  get 'welcome' => 'home#welcome'
   root to: 'home#index'
 
   resources :bills do
