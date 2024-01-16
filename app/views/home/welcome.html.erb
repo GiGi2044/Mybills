@@ -1,23 +1,27 @@
 <div class="page_container">
   <div class="card_container">
-    <h2>Let's start by filling out your profile</h2>
-    <p>Fill out your profile to start creating and sending invoices. Any progress you make will be saved, so you can always finish later.</p>
-    <h3><%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %></h3>
-    <p><%= link_to "skip this step", bills_path %></p>
+    <h2 class="card_title">Let's start by filling out your profile</h2>
+    <p class="card_description">Fill out your profile to start creating and sending invoices. Any progress you make will be saved, so you can always finish later.</p>
+    <div class="action_buttons">
+      <h3 class="edit_profile_button">
+        <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+      </h3>
+      <p class="skip_step_link">
+        <%= link_to "skip this step", bills_path %>
+      </p>
+    </div>
     <hr class="divider" />
     <div class="info_section">
       <div class="info_item">
-        <i class="info_icon"></i>
         <div class="info_text">
-          <h3>What information will I need?</h3>
-          <p>You'll be asked to provide standard business details, such as contact information and industry type.</p>
+          <h3><i class="fa-solid fa-book"></i> What information will you need?</h3>
+          <p>You'll be asked to provide standard business details, such as contact information and bank details</p>
         </div>
       </div>
       <div class="info_item">
-        <i class="info_icon"></i>
         <div class="info_text">
-          <h3>How long does it take?</h3>
-          <p>Complete your business profile in 5-10 minutes, so you can take your first payment straight away.</p>
+          <h3><i class="fa-solid fa-clock"></i> How long does it take?</h3>
+          <p>Complete your business profile in 2-3 minutes, so you can make your first invoice straight away.</p>
         </div>
       </div>
     </div>
