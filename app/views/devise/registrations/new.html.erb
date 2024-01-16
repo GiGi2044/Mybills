@@ -24,7 +24,7 @@
   <p class="text-center">Already have an account? Go to <%= link_to "Sign in", new_session_path(resource_name) %></p>
 
   <div class="oauth-container">
-    <p class="text-center", style="color:grey">Or continue with:</p>
+    <p class="text-center", style="color:grey">Or :</p>
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>
         <div class="oauth-button">
