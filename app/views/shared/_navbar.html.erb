@@ -1,14 +1,14 @@
 <nav class="navbar">
   <div class="nav-container">
-    <div class="nav-title">
-      <%= link_to root_path(), class: "logo-link" do %>
+      <% if user_signed_in? %>
+        <div class="nav-title">
+          <%= link_to root_path(), class: "logo-link" do %>
             <%= image_tag "logo.png", size: "100x70" %>
           <% end %>
-    </div>
-      <% if user_signed_in? %>
           <a href="<%= bills_path %>" class="a">Bills List</a>
           <a href="<%= clients_path %>" class="a">Clients List</a>
           <a href="<%= services_path %>" class="a">Services List</a>
+        </div>
         <div class="nav_links">
           <div class="dropdown">
             <span class="dropdown-button a"><%= current_user.email %></span>
@@ -20,6 +20,11 @@
         </div>
 
       <% else %>
+        <div class="nav-title">
+          <%= link_to root_path(), class: "logo-link" do %>
+            <%= image_tag "logo.png", size: "100x70" %>
+          <% end %>
+        </div>
         <div class="nav_links">
           <a href="<%= new_user_session_path %>" class="a">Sign in</a>
           <a href="<%= new_user_registration_path %>" class="b btn btn-primary">Sign Up For Free</a>

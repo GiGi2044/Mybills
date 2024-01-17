@@ -3,9 +3,9 @@
     <div class="container">
       <section class="signed_in logged_header_homepage">
         <% if current_user.sign_in_count <= 1 %>
-          <h1 class="home_logged_title">Welcome <%= current_user.fullname %>!</h1>
+          <h1 class="home_logged_title">Welcome <%= current_user.fullname %> !</h1>
         <% else %>
-          <h1 class="home_logged_title">Welcome back <%= current_user.fullname %>!</h1>
+          <h1 class="home_logged_title">Welcome back <%= current_user.fullname %> !</h1>
         <% end %>
         <a href="<%= bills_path %>">Go straight to your bills</a>
       </section>
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <!-- <section class="home_money">
+    <section class="home_money">
       <div class="home_money_title">
         <h2>Choose your Needs</h2>
       </div>
@@ -86,6 +86,6 @@
           </div>
         <% end %>
       </div>
-    </section> -->
+    </section>
   <% end %>
 </div>
