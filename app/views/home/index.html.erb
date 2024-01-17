@@ -1,7 +1,38 @@
 <div class="homepage_container">
   <% if user_signed_in? %>
-    <h1 class="home_title">Welcome <%= current_user.fullname %> ! </h1>
-    <a href="<%= bills_path %>">Go to your bills</a>
+    <div class="container">
+      <section class="signed_in logged_header_homepage">
+        <% if current_user.sign_in_count <= 1 %>
+          <h1 class="home_logged_title">Welcome <%= current_user.fullname %>!</h1>
+        <% else %>
+          <h1 class="home_logged_title">Welcome back <%= current_user.fullname %>!</h1>
+        <% end %>
+        <a href="<%= bills_path %>">Go straight to your bills</a>
+      </section>
+
+      <section class="signed_in logged_explanation_homepage">
+        <div class="logged_explanation_homepage_title">
+          <h2>Get started with justinvoice</h2>
+        </div>
+        <div class="logged_explanation_homepage_content">
+          <p>Fill out all your personal info</p>
+          <p>Create your bill</p>
+          <p>Send it to your client</p>
+        </div>
+      </section>
+
+      <section class="signed_in logged_overview_homepage">
+        <div class="logged_overview_homepage_title">
+          <h2>Overview</h2>
+        </div>
+        <div class="logged_overview_homepage_content">
+          <p>number of bills</p>
+          <p>unsent bills</p>
+          <p>sent bills</p>
+          <p>paid bills</p>
+        </div>
+      </section>
+    </div>
   <% else %>
 
     <section class="header_homepage">

@@ -1,13 +1,13 @@
 <div class="page_container">
   <div class="card_container">
     <h2 class="card_title">Let's start by filling out your profile</h2>
-    <p class="card_description">Fill out your profile to start creating and sending invoices. Any progress you make will be saved, so you can always finish later.</p>
+    <p class="card_description">Fill out your profile to start creating and sending invoices straight away. Any progress you make will be saved, so you can always finish later.</p>
     <div class="action_buttons">
       <h3 class="edit_profile_button">
-        <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+        <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary large-button" %>
       </h3>
       <p class="skip_step_link">
-        <%= link_to "skip this step", bills_path %>
+        <%= link_to "skip for now", root_path %>
       </p>
     </div>
     <hr class="divider" />
@@ -21,7 +21,7 @@
       <div class="info_item">
         <div class="info_text">
           <h3><i class="fa-solid fa-clock"></i> How long does it take?</h3>
-          <p>Complete your business profile in 2-3 minutes, so you can make your first invoice straight away.</p>
+          <p>Complete your profile in 2-3 minutes, so you can make your first invoice.</p>
         </div>
       </div>
     </div>
