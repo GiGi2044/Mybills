@@ -329,8 +329,9 @@ DEPENDENCIES
   jbuilder
   matrix (~> 0.4.2)
   money-rails
+  omniauth
   omniauth-google-oauth2
-  omniauth-rails_csrf_protection
+  omniauth-rails_csrf_protection (~> 1.0)
   pg (~> 1.1)
   pg_search
   prawn

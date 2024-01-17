@@ -21,6 +21,18 @@
         <%= f.button :submit, "Sign up", class: 'btn btn-primary full-width' %>
       </div>
   <% end %>
-  Already Have an account? Go to
-  <%= render "devise/shared/links" %>
+  <p class="text-center">Already have an account? Go to <%= link_to "Sign in", new_session_path(resource_name) %></p>
+
+  <div class="oauth-container">
+    <p class="text-center", style="color:grey">Or :</p>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <div class="oauth-button">
+          <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "oauth-button-style" do %>
+            <%= image_tag 'web_light_sq_ctn@1x.png', alt: "Sign in with #{OmniAuth::Utils.camelize(provider)}" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

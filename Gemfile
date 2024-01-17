@@ -79,8 +79,9 @@ gem 'prawn-table'
 gem "matrix", "~> 0.4.2"
 gem 'dotenv-rails', groups: [:development, :test]
 
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem "omniauth-rails_csrf_protection"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem 'money-rails'
 
