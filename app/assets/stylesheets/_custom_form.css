@@ -7,6 +7,31 @@
   margin-top: 40px;
 }
 
+.form_title {
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.padded-top {
+  padding-top: 30px;
+}
+
+.form-subtitle {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.invisible-spacer {
+  height: 33.59px; /* Adjust this to match the height of the h3 element */
+  visibility: hidden;
+  margin-bottom: 10px;
+}
+
+
 .card_container{
   display: flex;
   flex-direction: column;

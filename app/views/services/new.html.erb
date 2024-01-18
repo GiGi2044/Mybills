@@ -1,8 +1,14 @@
-<h1>Add Service to Bill</h1>
+<h1 class="form_title">New Service</h1>
 
 <%= simple_form_for(@service) do |f| %>
   <%= f.input :description %>
-  <%= f.input :rate %>
-  <%= f.input :days_worked %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :days_worked %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :rate %>
+    </div>
+  </div>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
