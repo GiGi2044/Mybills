@@ -21,8 +21,8 @@
   color: #374785;
   text-decoration: none;
   list-style: none;
-  padding: 20px;
-  margin: 0 20px;
+  padding: 15px;
+  margin: 0 10px;
   text-decoration: none;
   font-size: larger;  /* Adjusts the size of the text */
   font-weight: bold;  /* Makes the text bold */
@@ -64,10 +64,14 @@
   text-decoration: none;
   list-style: none;
   padding-left: 20px;
-  padding-right: 5px;
+  padding-right: 30px;
   margin-bottom: 10px;
   margin: 0px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #7c9db2;
+
 }
 .dropdown {
   position: relative;
