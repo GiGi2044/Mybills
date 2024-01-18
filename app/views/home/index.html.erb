@@ -26,10 +26,24 @@
           <h2>Overview</h2>
         </div>
         <div class="logged_overview_homepage_content">
-          <p>number of bills</p>
-          <p>unsent bills</p>
-          <p>sent bills</p>
-          <p>paid bills</p>
+          <div class="row justify-content-center mt-5">
+            <div class="col-3 text-center">
+              <p>number of bills</p>
+              <%= @bills_count %>
+            </div>
+            <div class="col-3 text-center">
+              <p>unsent bills</p>
+              <%= @unsent_bills_count %>
+            </div>
+            <div class="col-3 text-center">
+              <p>sent bills</p>
+              <%= @sent_bills_count %>
+            </div>
+            <div class="col-3 text-center">
+              <p>paid bills</p>
+              <%= @paid_bills_count %>
+            </div>
+          </div>
         </div>
       </section>
     </div>
