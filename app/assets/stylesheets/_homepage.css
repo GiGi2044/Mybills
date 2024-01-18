@@ -126,3 +126,11 @@
   justify-content: center;
   margin-top: 5%;
 }
+
+/* logged in homepage */
+
+.bill-info {
+    border: 1px solid #ccc; /* Adjust color and width as needed */
+    padding: 20px 0px;
+    margin: 20px 20px;
+}

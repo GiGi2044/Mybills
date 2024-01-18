@@ -25,6 +25,7 @@
 .container {
 	max-width: 90vw;
 	margin: 20px;
+  min-height: 100vh;
 }
 
 #button_style{

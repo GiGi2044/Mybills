@@ -16,6 +16,7 @@
         </div>
         <div class="logged_explanation_homepage_content">
           <p>Fill out all your personal info</p>
+          <%= image_tag "acoount_info.png", size: "600x600"%>
           <p>Create your bill</p>
           <p>Send it to your client</p>
         </div>
@@ -27,19 +28,19 @@
         </div>
         <div class="logged_overview_homepage_content">
           <div class="row justify-content-center mt-5">
-            <div class="col-3 text-center">
+            <div class="col-2 text-center bill-info">
               <p>number of bills</p>
               <%= @bills_count %>
             </div>
-            <div class="col-3 text-center">
+            <div class="col-2 text-center bill-info">
               <p>unsent bills</p>
               <%= @unsent_bills_count %>
             </div>
-            <div class="col-3 text-center">
+            <div class="col-2 text-center bill-info">
               <p>sent bills</p>
               <%= @sent_bills_count %>
             </div>
-            <div class="col-3 text-center">
+            <div class="col-2 text-center bill-info">
               <p>paid bills</p>
               <%= @paid_bills_count %>
             </div>
