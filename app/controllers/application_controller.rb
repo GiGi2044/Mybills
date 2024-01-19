@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  def default_url_options
+  { host: ENV["justinvoice.it"] || "localhost:3000" }
+  end
+
   private
   def after_sign_in_path_for(resource)
     # Check if it's the user's first sign in
