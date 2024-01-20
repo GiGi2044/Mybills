@@ -1,16 +1,32 @@
 <div class="container">
   <h1> New bill </h1>
+        <div class="buttons-container" data-controller="toggle">
+      <div class="button-group">
+        <button data-action="click->toggle#toggleClientForm" class="btn btn-outline-primary">New Client</button>
+        <div data-toggle-target="clientForm" class="d-none">
+          <%= render "clients/client_form", client: @client %>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button data-action="click->toggle#toggleServiceForm" class="btn btn-outline-primary">New Service</button>
+        <div data-toggle-target="serviceForm" class="d-none">
+          <%= render "services/service_form", service: @service %>
+        </div>
+      </div>
+    </div>
   <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
       <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
-      <%= link_to "New Client", new_client_path, class: "btn btn-primary p-1", id: "button_style" %>
       <%= f.input :bill_date %>
       <h2> Bill Info </h2>
       <%= f.input :description %>
       <h2> Services </h2>
-      <%= f.collection_select( :service_ids, @services, :id, :description, { prompt: 'Select existing service' }, { multiple: true, size: 5 })%>
-      <%= link_to "New Service", new_service_path, class: "btn btn-primary p-1", id: "button_style" %>
-      <br>
+      <% if @services.present? %>
+        <%= f.collection_select(:service_ids, @services, :id, :description, { prompt: 'Hold Shift to select multiple' }, { multiple: true, size: 5 }) %>
+      <% else %>
+        <p>No services available.</p>
+      <% end %>
       <%= f.button :submit, class: 'btn btn-primary p-3' %>
     <% end %>
   </div>

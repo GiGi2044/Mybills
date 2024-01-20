@@ -5,7 +5,7 @@ class Bill < ApplicationRecord
 
   belongs_to :client
 
-  has_many :bill_services
+  has_many :bill_services, dependent: :destroy
   has_many :services, through: :bill_services
 
   validates :client_id, presence: true

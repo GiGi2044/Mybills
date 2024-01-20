@@ -1,13 +1,12 @@
 <div class="container">
   <h1 class="page_titles"> My Clients </h1>
-  <%= form_tag(clients_path, method: :get, class: "mb-3 mt-3") do %>
-      <div class="input-group">
-        <%= text_field_tag(:query, params[:query], class: "form-control", placeholder: "Search by client name") %>
-        <button type="submit" class="btn btn-secondary">Search</button>
-      </div>
-    <% end %>
-  <% @bills.each do |bill| %>
-    <%= render partial: 'client', locals: { bill: bill } %>
+  <%= form_tag(clients_path, method: :get, class: "mb-3 mt-3", data: { controller: "debounce-search" }) do %>
+    <div class="input-group">
+      <%= text_field_tag(:query, params[:query], data: { action: "input->debounce-search#search" }, class: "form-control", placeholder: "Search by client name") %>
+    </div>
+  <% end %>
+  <% @clients.each do |client| %>
+    <%= render partial: 'client', locals: { client: client } %>
   <% end %>
   <%= link_to "New Client", new_client_path, class: "btn btn-primary p-2", id: "button_style" %>
 </div>

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.update(user_params)
-    redirect_to bills_path, notice: 'User was succesfully updated'
+    redirect_to root_path, notice: 'User was succesfully updated'
   end
 
   def destroy

@@ -1,0 +1,14 @@
+<div class="custom-form">
+  <%= simple_form_for(@service || Service.new, html: { class: 'new_service', id: 'new_service' }) do |f| %>
+    <%= f.input :description %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :days_worked %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :rate %>
+      </div>
+    </div>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>

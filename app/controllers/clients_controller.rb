@@ -2,9 +2,9 @@ class ClientsController < ApplicationController
 
   def index
     if params[:query].present?
-      @clients = Client.search_by_client_name(params[:query])
+      @clients = Client.active.search_by_client_name(params[:query])
     else
-    @clients = current_user.clients
+    @clients = current_user.clients.where(deleted_at: nil)
     end
     @bills = current_user.bills
   end
@@ -39,6 +39,9 @@ class ClientsController < ApplicationController
   end
 
   def destroy
+    @client = Client.find(params[:id])
+    @client.update(deleted_at: Time.current) # Soft delete
+    redirect_to clients_path, notice: 'Client was successfully destroyed.'
   end
 
   private

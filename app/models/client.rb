@@ -12,4 +12,10 @@ pg_search_scope :search_by_client_name,
   using: {
     tsearch: { prefix: true }
   }
+
+  # Scope for active services
+  scope :active, -> { where(deleted_at: nil) }
+  # Scope for deleted services
+  scope :deleted, -> { where.not(deleted_at: nil) }
+
 end

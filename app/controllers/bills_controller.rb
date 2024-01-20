@@ -5,7 +5,7 @@ class BillsController < ApplicationController
     else
       @bills = current_user.bills
     end
-    @client = Client.new
+
   end
 
   def show
@@ -14,8 +14,10 @@ class BillsController < ApplicationController
 
   def new
     @bill = Bill.new
-    @clients = current_user.clients
-    @services = current_user.services
+    @client = Client.new
+    @services = Service.new
+    @clients = current_user.clients.active
+    @services = current_user.services.active
   end
 
   def create

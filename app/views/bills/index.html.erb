@@ -1,11 +1,10 @@
 <div class="container">
   <h1 class="page_titles"> My bills </h1>
-    <%= form_tag(bills_path, method: :get, class: "mb-3 mt-3") do %>
-      <div class="input-group">
-        <%= text_field_tag(:query, params[:query], class: "form-control", placeholder: "Search by client name") %>
-        <button type="submit" class="btn btn-secondary">Search</button>
-      </div>
-    <% end %>
+  <%= form_tag(bills_path, method: :get, class: "mb-3 mt-3", data: { controller: "debounce-search" }) do %>
+    <div class="input-group">
+      <%= text_field_tag(:query, params[:query], data: { action: "input->debounce-search#search" }, class: "form-control", placeholder: "Search by client name") %>
+    </div>
+  <% end %>
   <% @bills.each do |bill| %>
     <%= render partial: 'bill', locals: { bill: bill } %>
   <% end %>

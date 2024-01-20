@@ -48,13 +48,14 @@
   font-size: 2em;
   font-weight: bold;
   margin: 0;
-  padding: 25px 0;
+  padding: 10px 0;
 }
 
 .card_description {
   font-size: 1.2em;
   margin: 0;
   padding: 20px 0;
+  color: #666;
 }
 
 .action_buttons {
@@ -76,6 +77,11 @@
 
 .skip_step_link {
   margin: 0;
+}
+
+#skip_step_link {
+  color: #659DBD;
+  text-decoration: none;
 }
 
 .divider {
@@ -103,7 +109,7 @@
 .info_text h3 {
   margin: 0 0 10px 0;
   font-size: 24px;
-  color: #333;
+
   min-height: 3em;
 }
 

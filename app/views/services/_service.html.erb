@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th scope="col">Actions</th>
-      <th scope="col">Service ID</th>
       <th scope="col">Description</th>
       <th scope="col">Days Worked</th>
       <th scope="col">Rate</th>
@@ -17,7 +16,6 @@
           <%= link_to fa_icon("pencil-alt"),"#", class: 'btn btn-primary btn-sm' %>
           <%# <%= link_to fa_icon("pencil-alt"), edit_service_path(service), class: 'btn btn-primary btn-sm' %>
         </td>
-        <td><%= service.id %></td>
         <td><%= service.description %></td>
         <td><%= service.days_worked  %></td>
         <td><%= service.rate %></td>

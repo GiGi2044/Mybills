@@ -2,9 +2,9 @@ class ServicesController < ApplicationController
 
   def index
     if params[:query].present?
-      @services = Service.search_by_service_name(params[:query])
+      @services = Service.active.search_by_description(params[:query])
     else
-      @services = current_user.services
+      @services = current_user.services.where(deleted_at: nil)
     end
   end
 
@@ -38,7 +38,7 @@ class ServicesController < ApplicationController
 
   def destroy
     @service = Service.find(params[:id])
-    @service.destroy
+    @service.update(deleted_at: Time.current) # Soft delete
     redirect_to services_path, notice: 'Service was successfully deleted.'
   end
 

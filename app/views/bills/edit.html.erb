@@ -1,11 +1,24 @@
 <h1> Edit Bill </h1>
+ <div class="buttons-container" data-controller="toggle">
+      <div class="button-group">
+        <button data-action="click->toggle#toggleClientForm" class="btn btn-outline-primary">New Client</button>
+        <div data-toggle-target="clientForm" class="d-none">
+          <%= render "clients/client_form", client: @client %>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button data-action="click->toggle#toggleServiceForm" class="btn btn-outline-primary">New Service</button>
+        <div data-toggle-target="serviceForm" class="d-none">
+          <%= render "services/service_form", service: @service %>
+        </div>
+      </div>
+    </div>
 <%= simple_form_for(@bill) do |f| %>
   <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
-  <%= link_to 'Create New Client', new_client_path, class: 'btn btn-primary' %>
   <%= f.input :bill_date %>
   <%= f.input :description %>
   <%= f.collection_select( :service_ids, @services, :id, :description, { prompt: 'Select existing service' }, { multiple: true, size: 5 })%>
-  <%= link_to "New Service", new_service_path, class: "btn btn-primary p-1", id: "button_style" %>
   <%= f.input :amount, input_html: { value: @bill.grand_total, readonly: true } %>
   <%= f.input :status, as: :select, collection: status_options, include_blank: false %>
   <%= f.button :submit, class: 'btn btn-primary' %>

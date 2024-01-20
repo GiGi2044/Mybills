@@ -7,7 +7,7 @@
         <% else %>
           <h1 class="home_logged_title">Welcome back <%= current_user.fullname %> !</h1>
         <% end %>
-        <a href="<%= bills_path %>">Go straight to your bills</a>
+        <a href="<%= new_bill_path %>">Go Make your first invoice</a>
       </section>
 
       <section class="signed_in logged_explanation_homepage">
@@ -29,19 +29,19 @@
         <div class="logged_overview_homepage_content">
           <div class="row justify-content-center mt-5">
             <div class="col-2 text-center bill-info">
-              <p>number of bills</p>
+              <h4>Number of bills</h4>
               <%= @bills_count %>
             </div>
             <div class="col-2 text-center bill-info">
-              <p>unsent bills</p>
+              <h4>Unsent bills</h4>
               <%= @unsent_bills_count %>
             </div>
             <div class="col-2 text-center bill-info">
-              <p>sent bills</p>
+              <h4>Sent bills</h4>
               <%= @sent_bills_count %>
             </div>
             <div class="col-2 text-center bill-info">
-              <p>paid bills</p>
+              <h4>Paid bills</h4>
               <%= @paid_bills_count %>
             </div>
           </div>

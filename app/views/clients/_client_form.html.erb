@@ -1,0 +1,18 @@
+  <div class="custom-form">
+    <%= simple_form_for(@client || Client.new, html: { class: 'new_client', id: 'new_client' }) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :client_name %>
+          <%= f.input :contact_name %>
+          <%= f.input :client_address %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :client_email %>
+          <%= f.input :client_phone %>
+          <%= f.input :city %>
+        </div>
+      </div>
+
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
