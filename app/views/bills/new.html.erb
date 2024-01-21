@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> New bill </h1>
+  <h1 class="form_title"> New Invoice </h1>
         <div class="buttons-container" data-controller="toggle">
       <div class="button-group">
         <button data-action="click->toggle#toggleClientForm" class="btn btn-outline-primary">New Client</button>
@@ -17,13 +17,16 @@
     </div>
   <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
+      <h2 class="bill_form_subtitles"> Client </h2>
       <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
-      <%= f.input :bill_date %>
-      <h2> Bill Info </h2>
+      <h2 class="bill_form_subtitles"> Invoice Info </h2>
+      <%= f.input :bill_date, label: 'Invoice date' %>
       <%= f.input :description %>
-      <h2> Services </h2>
+      <h2 class="bill_form_subtitles"> Service(s) </h2>
       <% if @services.present? %>
-        <%= f.collection_select(:service_ids, @services, :id, :description, { prompt: 'Hold Shift to select multiple' }, { multiple: true, size: 5 }) %>
+        <%= f.input :service_ids, label: 'Hold Shift to select multiple', as: :select,
+        collection: @services, value_method: :id, label_method: :description,
+        input_html: { multiple: true, size: 5, class: 'custom-select-width' } %>
       <% else %>
         <p>No services available.</p>
       <% end %>
@@ -31,7 +34,7 @@
     <% end %>
   </div>
 
-  <div>
+  <div style="margin-top: 10px">
     <%= link_to "Back to all bills", bills_path %>
   </div>
 </div>

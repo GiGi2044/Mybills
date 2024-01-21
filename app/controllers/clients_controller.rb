@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 
   def index
     if params[:query].present?
-      @clients = Client.active.search_by_client_name(params[:query])
+      @clients = current_user.clients.active.search_by_client_name(params[:query])
     else
     @clients = current_user.clients.where(deleted_at: nil)
     end
@@ -19,8 +19,14 @@ class ClientsController < ApplicationController
 
   def create
     @client = current_user.clients.build(client_params)
+
     if @client.save
-      redirect_to new_bill_path(client_id: @client.id), notice: 'Client was successfully created.'
+      # Check where the request came from
+      if request.referer.include?(new_bill_path)
+        redirect_back(fallback_location: new_bill_path, notice: 'Client was successfully created.')
+      else
+        redirect_to clients_path, notice: 'Client was successfully created.'
+      end
     else
       render :new
     end
@@ -31,10 +37,10 @@ class ClientsController < ApplicationController
   end
 
   def update
-    @bill = Bill.find(params[:id])
+    @client = Client.find(params[:id])
     @clients = current_user.clients
 
-    @bill.client.update(client_params)
+    @client.update(client_params)
     redirect_to clients_path, notice: 'Client was successfully updated.'
   end
 

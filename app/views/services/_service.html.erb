@@ -13,7 +13,7 @@
         <td>
           <%= link_to fa_icon("times"), service_path(service), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
           class: 'btn btn-danger btn-sm' %>
-          <%= link_to fa_icon("pencil-alt"),"#", class: 'btn btn-primary btn-sm' %>
+          <%= link_to fa_icon("pencil-alt"),edit_service_path(service), class: 'btn btn-primary btn-sm' %>
           <%# <%= link_to fa_icon("pencil-alt"), edit_service_path(service), class: 'btn btn-primary btn-sm' %>
         </td>
         <td><%= service.description %></td>

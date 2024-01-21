@@ -39,8 +39,8 @@ class BillsController < ApplicationController
 
   def edit
     @bill = Bill.find(params[:id])
-    @clients = current_user.clients
-    @services = current_user.services
+    @clients = current_user.clients.active
+    @services = current_user.services.active
   end
 
   def update

@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :clients
-  resources :users
-  resources :services, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :clients, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:edit, :update]
+  resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :plans, only: [:index, :show]
 
 

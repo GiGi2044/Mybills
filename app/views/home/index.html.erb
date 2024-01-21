@@ -2,17 +2,18 @@
   <% if user_signed_in? %>
     <div class="container">
       <section class="signed_in logged_header_homepage">
-        <% if current_user.sign_in_count <= 1 %>
-          <h1 class="home_logged_title">Welcome <%= current_user.fullname %> !</h1>
-        <% else %>
-          <h1 class="home_logged_title">Welcome back <%= current_user.fullname %> !</h1>
-        <% end %>
-        <a href="<%= new_bill_path %>">Go Make your first invoice</a>
+        <div class="title-and-link">
+          <% if current_user.sign_in_count <= 1 %>
+            <h1 class="home_logged_title">Welcome <%= current_user.fullname %> !</h1>
+          <% else %>
+            <h1 class="home_logged_title">Welcome back <%= current_user.fullname %> !</h1>
+          <% end %>
+          <a href="<%= new_bill_path %>" class="invoice-link">Go Make your first invoice</a>
+        </div>
       </section>
-
-      <section class="signed_in logged_explanation_homepage">
+           <section class="signed_in logged_explanation_homepage">
         <div class="logged_explanation_homepage_title">
-          <h2>Get started with justinvoice</h2>
+          <h3>Get started with justinvoice</h3>
         </div>
         <div class="logged_explanation_homepage_content">
           <p>Fill out all your personal info</p>
@@ -24,7 +25,7 @@
 
       <section class="signed_in logged_overview_homepage">
         <div class="logged_overview_homepage_title">
-          <h2>Overview</h2>
+          <h3>Overview</h3>
         </div>
         <div class="logged_overview_homepage_content">
           <div class="row justify-content-center mt-5">
@@ -48,6 +49,8 @@
         </div>
       </section>
     </div>
+    </div>
+
   <% else %>
 
     <section class="header_homepage">
