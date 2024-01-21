@@ -110,3 +110,7 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+#nav_button{
+  width: 140px;
+}

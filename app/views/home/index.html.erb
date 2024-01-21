@@ -5,10 +5,11 @@
         <div class="title-and-link">
           <% if current_user.sign_in_count <= 1 %>
             <h1 class="home_logged_title">Welcome <%= current_user.fullname %> !</h1>
+            <a href="<%= new_bill_path %>" class="invoice-link">Go Make your first invoice</a>
           <% else %>
             <h1 class="home_logged_title">Welcome back <%= current_user.fullname %> !</h1>
+            <a href="<%= new_bill_path %>" class="invoice-link">Go Make some invoices</a>
           <% end %>
-          <a href="<%= new_bill_path %>" class="invoice-link">Go Make your first invoice</a>
         </div>
       </section>
            <section class="signed_in logged_explanation_homepage">
