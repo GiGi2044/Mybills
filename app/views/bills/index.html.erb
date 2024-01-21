@@ -8,5 +8,5 @@
   <% @bills.each do |bill| %>
     <%= render partial: 'bill', locals: { bill: bill } %>
   <% end %>
-  <%= link_to "New Bill", new_bill_path, class: "btn btn-primary p-2", id: "button_style" %>
+  <%= link_to "New Invoice", new_bill_path, class: "btn btn-primary p-2", id: "button_style" %>
 </div>
