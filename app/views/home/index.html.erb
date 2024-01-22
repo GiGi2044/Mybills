@@ -50,7 +50,7 @@
         </div>
       </section>
     </div>
-    </div>
+
 
   <% else %>
 
@@ -62,29 +62,33 @@
         </p>
         <a href="<%= new_user_registration_path %>" class="a btn  btn-primary" id="signup_button">Sign Up For Free</a>
       </div>
-      <div class="header_image">
-        <%# <%= image_tag("invoice.png", class: "header_image") %>
-      </div>
     </section>
 
     <section class="home_manage">
-      <div class="home_manage_title">
-        <h2>Manage your bills</h2>
-      </div>
-      <div class="home_manage_content">
-        <p>Manage your bills and keep track of your expenses</p>
+      <div class="home_manage_text">
+        <div class="home_manage_title">
+          <h2>Manage your bills</h2>
+        </div>
+        <div class="home_manage_content">
+          <p>Manage your invoices and keep track of your expenses</p>
+       </div>
       </div>
       <div class="home_manage_image">
-        <%# <%= image_tag("manage.png", class: "home_manage_image") %>
+        <%= image_tag("homepage_checklist.png", size: "600x380") %>
       </div>
     </section>
 
     <section class="home_time">
-      <div class="home_time_title">
-        <h2>Save time</h2>
+      <div class="home_time_image">
+        <%= image_tag("homepage_clock.png", size: "600x380") %>
       </div>
-      <div class="home_time_content">
-        <p>JustInvoice is a simple and easy to use app</p>
+      <div class="home_time_text">
+        <div class="home_time_title">
+          <h2>Save time</h2>
+        </div>
+        <div class="home_time_content">
+          <p>JustInvoice is a simple and easy to use app</p>
+        </div>
       </div>
     </section>
 

@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  min-height: 600px;
+  height: fit-content;
   background-color: #659DBD;
   border: none;
   padding: 0;
@@ -47,23 +48,30 @@
   padding: 20px 0;
 }
 
-.home_time {
-  padding: 10px;
+.home_manage, .home_time{
+  margin: 0 auto;
+  padding: 0 1rem;
   display: flex;
-  flex-direction: column;
-
+  align-items: center;
   color: #374785;
-  height: 400px;
+  height: fit-content;
 }
 
-.home_manage {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-
-  color: #374785;
-  height: 400px;
+.home_manage_text, .home_time_text {
+  text-align: center;
+  padding: 20px;
+  flex: 1;
 }
+
+.home_manage_image, .home_time_image{
+  display: flex;
+
+  flex: 1;
+  padding: 20px;
+}
+
+
+
 
 .home_money {
   padding: 10px;
@@ -127,6 +135,7 @@
   margin-top: 5%;
 }
 
+
 /* logged in homepage */
 
 .bill-info {
@@ -144,8 +153,4 @@
 
 .home_logged_title {
   margin-bottom: 0; /* Remove margin if any to align properly with the link */
-}
-
-.invoice-link {
-  /* Additional styling for the link if needed */
 }
