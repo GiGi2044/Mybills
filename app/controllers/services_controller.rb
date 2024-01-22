@@ -36,10 +36,22 @@ class ServicesController < ApplicationController
   end
 
   def update
-    @service = Service.find(params[:id])
-    @services = current_user.services
-    @service.update(service_params)
+    original_service = Service.find(params[:id])
+
+    # Clone the original service and apply updates
+    new_service = original_service.dup
+    new_service.assign_attributes(service_params)
+    new_service.deleted_at = nil # Assuming you have a deleted_at column for soft delete
+
+    Service.transaction do
+      new_service.save!
+      original_service.update!(deleted_at: Time.current) # Soft delete the original
+    end
+
     redirect_to services_path, notice: 'Service was successfully updated.'
+  rescue ActiveRecord::RecordInvalid => e
+    @services = current_user.services
+    render :edit
   end
 
   def destroy

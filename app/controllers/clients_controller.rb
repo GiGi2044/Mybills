@@ -37,11 +37,24 @@ class ClientsController < ApplicationController
   end
 
   def update
-    @client = Client.find(params[:id])
-    @clients = current_user.clients
+    original_client = Client.find(params[:id])
 
-    @client.update(client_params)
-    redirect_to clients_path, notice: 'Client was successfully updated.'
+    # Clone the original client and apply updates
+    new_client = original_client.dup
+    new_client.assign_attributes(client_params)
+    new_client.deleted_at = nil # Reset soft delete flag for the new record
+
+    Client.transaction do
+      new_client.save!
+      original_client.update!(deleted_at: Time.current) # Soft delete the original
+    end
+    if request.referer.include?(new_bill_path)
+      redirect_back(fallback_location: new_bill_path, notice: 'Client was successfully updated.')
+    else
+      redirect_to clients_path, notice: 'Client was successfully updated.'
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    render :edit
   end
 
   def destroy
@@ -53,6 +66,6 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:client_name, :client_address, :client_email, :client_phone, :city, :contact_name)
+    params.require(:client).permit(:client_name, :client_address, :client_email, :client_phone, :client_city, :contact_name)
   end
 end

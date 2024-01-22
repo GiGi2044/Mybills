@@ -4,7 +4,7 @@ class Client < ApplicationRecord
   validates :client_name, presence: true
   validates :client_address, presence: true
   validates :client_email, presence: true
-  validates :city, presence: true
+  validates :client_city, presence: true
 
   include PgSearch::Model
 pg_search_scope :search_by_client_name,

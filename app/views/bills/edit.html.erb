@@ -1,19 +1,4 @@
 <div class="container">
-  <h1 class="form_title"> Edit Invoice </h1>
-  <div class="buttons-container" data-controller="toggle">
-    <div class="button-group">
-      <button data-action="click->toggle#toggleClientForm" class="btn btn-outline-primary">New Client</button>
-      <div data-toggle-target="clientForm" class="d-none">
-        <%= render "clients/client_form", client: @client %>
-      </div>
-    </div>
-    <div class="button-group">
-      <button data-action="click->toggle#toggleServiceForm" class="btn btn-outline-primary">New Service</button>
-      <div data-toggle-target="serviceForm" class="d-none">
-        <%= render "services/service_form", service: @service %>
-      </div>
-    </div>
-  </div>
   <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
       <h2 class="bill_form_subtitles"> Client </h2>
@@ -34,6 +19,14 @@
   </div>
 
   <div style="margin-top: 10px">
-    <%= link_to "Back to all bills", bills_path %>
+    <%= link_to "Back to all bills", bills_path, id: "back-to-bills-link" %>
+
+    <script>
+      document.getElementById('back-to-bills-link').addEventListener('click', function(event) {
+      if (!confirm('Are you sure you want to discard all changes?')) {
+        event.preventDefault();
+      }
+      });
+    </script>
   </div>
 </div>

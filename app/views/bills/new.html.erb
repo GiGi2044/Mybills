@@ -35,6 +35,14 @@
   </div>
 
   <div style="margin-top: 10px">
-    <%= link_to "Back to all bills", bills_path %>
+    <%= link_to "Back to all bills", bills_path, id: "back-to-bills-link" %>
+
+    <script>
+      document.getElementById('back-to-bills-link').addEventListener('click', function(event) {
+      if (!confirm('Are you sure you want to discard all changes?')) {
+        event.preventDefault();
+      }
+      });
+    </script>
   </div>
 </div>

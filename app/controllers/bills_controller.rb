@@ -130,7 +130,7 @@ class BillsController < ApplicationController
     client_name = client.client_name
     client_contact_name = client.contact_name
     client_address = client.client_address
-    client_city = client.city
+    client_city = client.client_city
 
     customer_id = client.id
     customer_terms = "30"
@@ -317,6 +317,6 @@ class BillsController < ApplicationController
 
 
   def bill_params
-    params.require(:bill).permit(:user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [])
+    params.require(:bill).permit(:client_name, :client_address, :client_city, :contact_name, :user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [])
   end
 end
