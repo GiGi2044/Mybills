@@ -63,6 +63,9 @@
   .home_manage_image img, .home_time_image img {
     max-width: 500px; /* Slightly smaller on medium screens */
   }
+  .form-container {
+    width: 50%; /* Ideal for medium screens */
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -78,6 +81,9 @@
   .home_manage_image img, .home_time_image img {
     max-width: 400px; /* Even smaller on small tablets */
   }
+  .form-container {
+    width: 60%; /* Narrower for tablets and small desktops */
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -92,6 +98,13 @@
   }
   .home_manage_image img, .home_time_image img {
     max-width: 350px; /* Adjust for landscape phones */
+  }
+  .form-container {
+    width: 80%; /* Still relatively wide for small tablets */
+  }
+
+  .sign_title {
+    font-size: 1.75em; /* Slightly bigger than on mobile */
   }
 }
 
@@ -123,5 +136,11 @@
   }
   .home_manage_image img, .home_time_image img {
     max-width: 300px; /* Suitable for mobile phones */
+  }
+  .form-container {
+    width: 80%; /* Still relatively wide for small tablets */
+  }
+  .sign_title {
+    font-size: 1.5em; /* Slightly bigger than on mobile */
   }
 }
