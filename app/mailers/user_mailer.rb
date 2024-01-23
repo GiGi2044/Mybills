@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf_document.render }
 
     # Set up email details
-    mail(from: "gian@cunninghams.ch", to: bill.client.client_email, subject: 'Your Bill')
+    mail(from: "invoice@justinvoice.it", reply_to: user, to: bill.client.client_email, subject: 'Your Bill')
   end
 
   private
