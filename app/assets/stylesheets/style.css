@@ -50,6 +50,13 @@
   .nav-container {
       margin: 0 80px;
   }
+  .logo-link img {
+    width: 100px; /* Original size for large screens */
+  }
+  .a, .b {
+    margin: 0 20px; /* Larger margin for very wide screens */
+    padding: 20px 30px; /* Larger padding */
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -65,6 +72,16 @@
   }
   .form-container {
     width: 50%; /* Ideal for medium screens */
+  }
+  .logo-link img {
+    width: 100px; /* Suitable for medium screens */
+  }
+  .btn-primary {
+    width: 20%; /* Adjusted for large screens */
+  }
+  .a, .b {
+    margin: 0 15px; /* Adjust margins for wider screens */
+    font-size: larger; /* Adjust font size as needed */
   }
 }
 
@@ -83,6 +100,16 @@
   }
   .form-container {
     width: 60%; /* Narrower for tablets and small desktops */
+  }
+  .logo-link img {
+    width: 100px; /* Larger for tablets and small desktops */
+  }
+  .btn-primary {
+    width: 30%; /* Adjusted for large screens */
+  }
+  .a, .b {
+    padding: 15px 25px; /* Further increase padding */
+    font-size: larger; /* Increase font size if needed */
   }
 }
 
@@ -106,6 +133,37 @@
   .sign_title {
     font-size: 1.75em; /* Slightly bigger than on mobile */
   }
+  .nav-title {
+    text-align: left;
+    padding: 10px 20px;
+  }
+
+  .logo-link img {
+    width: 90px; /* Slightly larger for small tablets */
+  }
+
+  .nav_links {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+
+  .nav_links .a, .nav_links .b {
+    margin-bottom: 0;
+    width: auto; /* Auto width for horizontal layout */
+    text-align: left;
+  }
+  .btn-primary {
+    width: 40%; /* Adjusted for large screens */
+  }
+  .a, .b {
+    display: inline-block; /* Align links horizontally for larger screens */
+    width: auto; /* Revert to auto width */
+    margin: 0 10px; /* Horizontal margin for inline elements */
+    padding: 15px 20px; /* Slightly larger padding */
+    font-size: larger; /* Increase font size */
+  }
+
 }
 
 @media only screen and (max-width: 575px) {
@@ -142,5 +200,37 @@
   }
   .sign_title {
     font-size: 1.5em; /* Slightly bigger than on mobile */
+  }
+  .nav-title {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .logo-link img {
+    width: 80px; /* Smaller size for mobile */
+    height: auto;
+  }
+
+  .nav_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav_links .a, .nav_links .b {
+    margin-bottom: 10px;
+    width: 100%; /* Full width for easier touch access */
+    text-align: center;
+  }
+  .btn-primary {
+    width: 50%; /* Adjusted for large screens */
+  }
+  .a, .b {
+    display: block; /* Stack the links for smaller screens */
+    width: 100%; /* Full width for easier touch access */
+    margin: 10px 0; /* Adjust margin for vertical layout */
+    padding: 15px;
+    text-align: center; /* Center the text */
+    font-size: medium; /* Adjust font size for mobile readability */
   }
 }
