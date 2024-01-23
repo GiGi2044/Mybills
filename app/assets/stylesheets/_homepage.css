@@ -72,7 +72,7 @@
 
 .home_manage_image img, .home_time_image img {
   width: 100%;
-  max-width: 600px; /* Set a max-width for larger screens */
+  max-width: 500px; /* Set a max-width for larger screens */
   height: auto;
 }
 

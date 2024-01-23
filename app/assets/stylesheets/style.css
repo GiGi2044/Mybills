@@ -169,6 +169,11 @@
 @media only screen and (max-width: 575px) {
   .home_title {
       font-size: 1.5em;
+      padding: 10px 0px;
+  }
+  .header_text {
+      font-size: 1.5em;
+      padding: 10px 0px;
   }
   .nav-container {
       margin: 0 20px;
@@ -225,5 +230,8 @@
     padding: 5px;
     text-align: center; /* Center the text */
     font-size: medium; /* Adjust font size for mobile readability */
+  }
+  #signup_button {
+    padding: 10px 15px;
   }
 }
