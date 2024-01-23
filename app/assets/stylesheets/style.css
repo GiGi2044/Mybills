@@ -172,16 +172,10 @@
   }
   .nav-container {
       margin: 0 20px;
-      flex-direction: column;
-  }
-  .navbar {
-      flex-direction: column;
+      display: flex;
   }
   .header_homepage {
       min-height: 300px;
-  }
-  .home_manage, .home_time {
-      flex-direction: column;
   }
   .pricing_card {
       width: 100%;
@@ -207,19 +201,18 @@
   }
 
   .logo-link img {
-    width: 80px; /* Smaller size for mobile */
+    width: 70px; /* Smaller size for mobile */
     height: auto;
   }
 
   .nav_links {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
 
   .nav_links .a, .nav_links .b {
     margin-bottom: 10px;
-    width: 100%; /* Full width for easier touch access */
+    width: 70%; /* Full width for easier touch access */
     text-align: center;
   }
   .btn-primary {
@@ -227,9 +220,9 @@
   }
   .a, .b {
     display: block; /* Stack the links for smaller screens */
-    width: 100%; /* Full width for easier touch access */
+    width: 70%; /* Full width for easier touch access */
     margin: 10px 0; /* Adjust margin for vertical layout */
-    padding: 15px;
+    padding: 5px;
     text-align: center; /* Center the text */
     font-size: medium; /* Adjust font size for mobile readability */
   }
