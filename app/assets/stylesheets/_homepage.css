@@ -70,7 +70,11 @@
   padding: 20px;
 }
 
-
+.home_manage_image img, .home_time_image img {
+  width: 100%;
+  max-width: 600px; /* Set a max-width for larger screens */
+  height: auto;
+}
 
 
 .home_money {

@@ -60,6 +60,9 @@
   .nav-container {
       margin: 0 60px;
   }
+  .home_manage_image img, .home_time_image img {
+    max-width: 500px; /* Slightly smaller on medium screens */
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -72,6 +75,9 @@
   .pricing_card {
       width: 100%;
   }
+  .home_manage_image img, .home_time_image img {
+    max-width: 400px; /* Even smaller on small tablets */
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -83,6 +89,9 @@
   }
   .header_homepage {
       min-height: 400px;
+  }
+  .home_manage_image img, .home_time_image img {
+    max-width: 350px; /* Adjust for landscape phones */
   }
 }
 
@@ -111,5 +120,8 @@
   }
   #nav_button {
       width: 100%;
+  }
+  .home_manage_image img, .home_time_image img {
+    max-width: 300px; /* Suitable for mobile phones */
   }
 }
