@@ -54,50 +54,52 @@
 
   <% else %>
 
-    <section class="header_homepage">
-  <div class="Header_info_homepage">
-    <h1 class="home_title">Welcome to JustInvoice</h1>
-    <p class="header_text">
-      JustInvoice is a simple and easy-to-use app to manage your bills
-    </p>
-    <a href="<%= new_user_registration_path %>" class="btn btn-primary" id="signup_button">Sign Up For Free</a>
-  </div>
-</section>
+  <section class="header_homepage">
+    <div class="Header_info_homepage">
+      <h1 class="home_title">Welcome to JustInvoice</h1>
+      <p class="header_text">
+        JustInvoice is a simple and easy-to-use app to manage your bills
+      </p>
+      <a href="<%= new_user_registration_path %>" class="btn btn-primary" id="signup_button">Sign Up For Free</a>
+    </div>
+  </section>
 
-<section class="home_manage">
-  <div class="home_manage_text">
-    <h2>Manage your bills</h2>
-    <p>Effortlessly handle your invoices and keep track of your expenses</p>
-  </div>
-  <div class="home_manage_image">
-    <%= image_tag("homepage_checklist.png") %>
-  </div>
-</section>
-
-<section class="home_time">
-  <div class="home_time_image">
-    <%= image_tag("homepage_clock.png") %>
-  </div>
-  <div class="home_time_text">
-    <h2>Save time</h2>
-    <p>JustInvoice is a straightforward solution to save you time</p>
-  </div>
-</section>
-
-    <!-- Uncomment the following section if you decide to re-enable it -->
-<!--
-<section class="home_money">
-  <div class="pricing_container">
-    <% @plans.each do |plan| %>
-      <div class="pricing_card">
-        <h3><%= plan.title %></h3>
-        <p><%= plan.content %></p>
-        <p><%= humanized_money_with_symbol(plan.price) %> USD per month</p>
-        <a href="<%= new_user_registration_path %>" class="btn btn-primary">Get Started</a>
+  <section class="home_content">
+    <section class="home_manage">
+      <div class="home_manage_text">
+        <h2>Manage your bills</h2>
+        <p>Effortlessly handle your invoices and keep track of your expenses</p>
       </div>
+      <div class="home_manage_image">
+        <%= image_tag("homepage_checklist.png") %>
+      </div>
+    </section>
+
+    <section class="home_time">
+      <div class="home_time_image">
+        <%= image_tag("homepage_clock.png") %>
+      </div>
+      <div class="home_time_text">
+        <h2>Save time</h2>
+        <p>JustInvoice is a straightforward solution to save you time</p>
+      </div>
+    </section>
+
+        <!-- Uncomment the following section if you decide to re-enable it -->
+    <!--
+    <section class="home_money">
+      <div class="pricing_container">
+        <% @plans.each do |plan| %>
+          <div class="pricing_card">
+            <h3><%= plan.title %></h3>
+            <p><%= plan.content %></p>
+            <p><%= humanized_money_with_symbol(plan.price) %> USD per month</p>
+            <a href="<%= new_user_registration_path %>" class="btn btn-primary">Get Started</a>
+          </div>
+        <% end %>
+      </div>
+    </section>
+    -->
+  </section>
     <% end %>
-  </div>
-</section>
--->
-  <% end %>
 </div>

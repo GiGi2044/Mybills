@@ -83,6 +83,12 @@
     margin: 0 15px; /* Adjust margins for wider screens */
     font-size: larger; /* Adjust font size as needed */
   }
+  .home_manage_text h2, .home_time_text h2 {
+    font-size: 1.9em;
+  }
+  .home_manage_text p, .home_time_text p {
+    font-size: 1.4em;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -110,6 +116,13 @@
   .a, .b {
     padding: 15px 25px; /* Further increase padding */
     font-size: larger; /* Increase font size if needed */
+  }
+  .home_manage_text h2, .home_time_text h2 {
+    font-size: 1.8em;
+  }
+
+  .home_manage_text p, .home_time_text p {
+    font-size: 1.4em;
   }
 }
 
@@ -163,7 +176,13 @@
     padding: 15px 20px; /* Slightly larger padding */
     font-size: larger; /* Increase font size */
   }
+  .home_manage_text h2, .home_time_text h2 {
+    font-size: 1.7em;
+  }
 
+  .home_manage_text p, .home_time_text p {
+    font-size: 1.2em;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -233,5 +252,12 @@
   }
   #signup_button {
     padding: 10px 15px;
+  }
+  .home_manage_text h2, .home_time_text h2 {
+    font-size: 1.5em;
+  }
+
+  .home_manage_text p, .home_time_text p {
+    font-size: 1em;
   }
 }

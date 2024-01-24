@@ -48,6 +48,15 @@
   padding: 20px 0;
 }
 
+.home_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
 .home_manage, .home_time{
   margin: 0 auto;
   padding: 0 1rem;
@@ -63,17 +72,26 @@
   flex: 1;
 }
 
+.home_manage_text h2, .home_time_text h2 {
+  font-size: 2em;
+}
+
+.home_manage_text p, .home_time_text p {
+  font-size: 1.5em;
+}
+
 .home_manage_image, .home_time_image{
   display: flex;
 
   flex: 1;
-  padding: 20px;
+
 }
 
 .home_manage_image img, .home_time_image img {
   width: 100%;
   max-width: 500px; /* Set a max-width for larger screens */
   height: auto;
+  border-radius: 10px;
 }
 
 
@@ -143,7 +161,7 @@
 /* logged in homepage */
 
 .bill-info {
-    border: 1px solid #ccc; /* Adjust color and width as needed */
+    border: 1px solid #ccc;
     padding: 20px 0px;
     margin: 20px 20px;
 }
