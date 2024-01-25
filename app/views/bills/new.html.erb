@@ -1,24 +1,11 @@
 <div class="container">
   <h1 class="form_title"> New Invoice </h1>
-        <div class="buttons-container" data-controller="toggle">
-      <div class="button-group">
-        <button data-action="click->toggle#toggleClientForm" class="btn btn-outline-primary">New Client</button>
-        <div data-toggle-target="clientForm" class="d-none">
-          <%= render "clients/client_form", client: @client %>
-        </div>
-      </div>
-
-      <div class="button-group">
-        <button data-action="click->toggle#toggleServiceForm" class="btn btn-outline-primary">New Service</button>
-        <div data-toggle-target="serviceForm" class="d-none">
-          <%= render "services/service_form", service: @service %>
-        </div>
-      </div>
-    </div>
   <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
       <h2 class="bill_form_subtitles"> Client </h2>
       <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
+      <br>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-outline-primary mt-3">New Client</button>
       <h2 class="bill_form_subtitles"> Invoice Info </h2>
       <%= f.input :bill_date, label: 'Invoice date' %>
       <%= f.input :description %>
@@ -30,7 +17,9 @@
       <% else %>
         <p>No services available.</p>
       <% end %>
-      <%= f.button :submit, class: 'btn btn-primary p-3' %>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#serviceModal" class="btn btn-outline-primary">New Service</button>
+      <br>
+      <%= f.button :submit, class: 'btn btn-primary p-3 mt-3' %>
     <% end %>
   </div>
 
@@ -44,5 +33,35 @@
       }
       });
     </script>
+  </div>
+</div>
+
+<!-- Client Modal -->
+<div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="clientModalLabel">New Client</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render "clients/client_form", client: @client %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service Modal -->
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="serviceModalLabel">New Service</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render "services/service_form", service: @service %>
+      </div>
+    </div>
   </div>
 </div>

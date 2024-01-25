@@ -57,6 +57,9 @@
     margin: 0 20px; /* Larger margin for very wide screens */
     padding: 20px 30px; /* Larger padding */
   }
+  .home_logged_title {
+    font-size: 2.5em;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -189,6 +192,9 @@
   .home_title {
       font-size: 1.5em;
       padding: 10px 0px;
+  }
+  .home_logged_title {
+    font-size: 1.5em;
   }
   .header_text {
       font-size: 1.5em;

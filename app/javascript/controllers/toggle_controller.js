@@ -5,6 +5,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["clientForm", "serviceForm"];
 
+  connect() {
+    console.log("ToggleController connected");
+  }
+
+
   toggleClientForm(e) {
     e.preventDefault();
     this.clientFormTarget.classList.toggle("d-none");

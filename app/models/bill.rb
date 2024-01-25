@@ -11,6 +11,9 @@ class Bill < ApplicationRecord
   validates :client_id, presence: true
   validates :bill_date, presence: true
 
+  validates :user_bill_number, presence: true, uniqueness: { scope: :user_id }
+  validates :customer_bill_number, presence: true, uniqueness: { scope: :client_id }
+
   def grand_total
     services.sum(&:total_amount)
   end

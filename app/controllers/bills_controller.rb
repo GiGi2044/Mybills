@@ -21,8 +21,8 @@ class BillsController < ApplicationController
   end
 
   def create
-    @clients = current_user.clients
-    @services = current_user.services
+    @clients = current_user.clients.active
+    @services = current_user.services.active
     @bill = current_user.bills.new(bill_params)
 
     @bill.user_fullname = current_user.fullname
@@ -35,6 +35,12 @@ class BillsController < ApplicationController
     @bill.user_bic = current_user.bic
     @bill.user_account_number = current_user.account_number
     @bill.user_phone_number = current_user.phone_number
+
+    last_bill_number = current_user.bills.maximum(:user_bill_number) || 0
+    @bill.user_bill_number = last_bill_number + 1
+
+    last_customer_bill_number = current_user.bills.where(client_id: bill_params[:client_id]).maximum(:customer_bill_number) || 0
+    @bill.customer_bill_number = last_customer_bill_number + 1
 
     respond_to do |format|
       if @bill.save
@@ -56,8 +62,8 @@ class BillsController < ApplicationController
 
   def update
     @bill = Bill.find(params[:id])
-    @clients = current_user.clients
-    @services = current_user.services
+    @clients = current_user.clients.active
+    @services = current_user.services.active
 
     @bill.update(bill_params)
     redirect_to bills_path, notice: 'Bill was successfully updated.'
@@ -126,7 +132,7 @@ class BillsController < ApplicationController
     business_location = bill.user_city
     business_phone = bill.user_phone_number
 
-    invoice_number = bill.id
+    invoice_number = bill.customer_bill_number
     invoice_date = bill.bill_date
 
     bank_details1_x = 50
