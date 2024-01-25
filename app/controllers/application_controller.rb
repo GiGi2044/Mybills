@@ -19,4 +19,16 @@ class ApplicationController < ActionController::Base
   def current_user_email
     current_user || "default@example.com"
   end
+
+  def verify_signed_out_user
+    if all_signed_out?
+      auto_sign_out
+    else
+      super
+    end
+  end
+
+  def all_signed_out?
+    !user_signed_in?
+  end
 end

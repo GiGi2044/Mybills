@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_22_130332) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_25_082413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_130332) do
     t.text "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_version_id"
+    t.string "user_email"
+    t.string "user_fullname"
+    t.string "user_business_name"
+    t.string "user_street"
+    t.string "user_city"
+    t.string "user_bank_name"
+    t.string "user_iban"
+    t.string "user_bic"
+    t.string "user_account_number"
+    t.string "user_phone_number"
     t.index ["client_id"], name: "index_bills_on_client_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
@@ -128,6 +139,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_130332) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

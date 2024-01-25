@@ -21,9 +21,20 @@ class BillsController < ApplicationController
   end
 
   def create
-    @bill = Bill.new(bill_params)
-    @bill.user = current_user
     @clients = current_user.clients
+    @services = current_user.services
+    @bill = current_user.bills.new(bill_params)
+
+    @bill.user_fullname = current_user.fullname
+    @bill.user_email = current_user.email
+    @bill.user_business_name = current_user.business_name
+    @bill.user_street = current_user.street
+    @bill.user_city = current_user.city
+    @bill.user_bank_name = current_user.bank_name
+    @bill.user_iban = current_user.iban
+    @bill.user_bic = current_user.bic
+    @bill.user_account_number = current_user.account_number
+    @bill.user_phone_number = current_user.phone_number
 
     respond_to do |format|
       if @bill.save
@@ -110,10 +121,10 @@ class BillsController < ApplicationController
     lineheight_y = 18
     font_size = 9
 
-    business_name = user.business_name
-    business_address = user.street
-    business_location = user.city
-    business_phone = user.phone_number
+    business_name = bill.user_business_name
+    business_address = bill.user_street
+    business_location = bill.user_city
+    business_phone = bill.user_phone_number
 
     invoice_number = bill.id
     invoice_date = bill.bill_date
@@ -122,10 +133,10 @@ class BillsController < ApplicationController
     bank_details2_x_title = 255
     bank_details2_x = 315
     bank_details3_x = 85
-    bank_name = user.bank_name
-    bank_iban = user.iban
-    bank_bic = user.bic
-    bank_account_number = user.account_number
+    bank_name = bill.user_bank_name
+    bank_iban = bill.user_iban
+    bank_bic = bill.user_bic
+    bank_account_number = bill.user_account_number
 
     client_name = client.client_name
     client_contact_name = client.contact_name
@@ -141,7 +152,7 @@ class BillsController < ApplicationController
     bill_amount = bill.grand_total
 
     contact_text = "If you have any questions about this invoice, please contact"
-    contact_details = "#{user.fullname}, #{user.phone_number}, #{user.email}"
+    contact_details = "#{bill.user_fullname}, #{bill.user_phone_number}, #{bill.user_email}"
 
     pdf_width = pdf.bounds.width
 

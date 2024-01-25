@@ -19,8 +19,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    @user.update(user_params)
-    redirect_to root_path, notice: 'User was succesfully updated'
+    if @user.update(user_params)
+      redirect_to root_path, notice: 'User was successfully updated'
+    else
+      render :edit
+    end
   end
 
   def destroy
