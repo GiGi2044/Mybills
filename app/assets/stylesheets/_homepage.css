@@ -5,7 +5,7 @@
   align-items: center;
   min-height: 600px;
   height: fit-content;
-  background-color: #659DBD;
+  background-color: #374785;
   border: none;
   padding: 0;
 }
@@ -26,9 +26,9 @@
 #signup_button {
   font-size: 1em;
   font-weight: bold;
-  color: #659DBD;
+  color: #374785;
   background-color: #fff;
-  border: 1px solid #659DBD;
+  border: 1px solid #374785;
   padding: 20px 30px;
   border-radius: 20px;
   text-decoration: none;
@@ -36,7 +36,8 @@
 }
 
 #signup_button:hover {
-  background-color: #374785;
+  background-color: #659DBD;
+  border: 1px solid #659DBD;
   color: #fff;
 }
 

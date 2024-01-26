@@ -36,6 +36,14 @@ class BillsController < ApplicationController
     @bill.user_account_number = current_user.account_number
     @bill.user_phone_number = current_user.phone_number
 
+    selected_client = Client.find(bill_params[:client_id])
+    @bill.client_name = selected_client.client_name
+    @bill.client_address = selected_client.client_address
+    @bill.client_city = selected_client.client_city
+    @bill.contact_name = selected_client.contact_name
+    @bill.client_phone = selected_client.client_phone
+    @bill.client_email = selected_client.client_email
+
     last_bill_number = current_user.bills.maximum(:user_bill_number) || 0
     @bill.user_bill_number = last_bill_number + 1
 
@@ -56,14 +64,17 @@ class BillsController < ApplicationController
 
   def edit
     @bill = Bill.find(params[:id])
+    @services = Service.new
     @clients = current_user.clients.active
     @services = current_user.services.active
+
   end
 
   def update
     @bill = Bill.find(params[:id])
     @clients = current_user.clients.active
     @services = current_user.services.active
+
 
     @bill.update(bill_params)
     redirect_to bills_path, notice: 'Bill was successfully updated.'
@@ -144,10 +155,10 @@ class BillsController < ApplicationController
     bank_bic = bill.user_bic
     bank_account_number = bill.user_account_number
 
-    client_name = client.client_name
-    client_contact_name = client.contact_name
-    client_address = client.client_address
-    client_city = client.client_city
+    client_name = bill.client_name
+    client_contact_name = bill.contact_name
+    client_address = bill.client_address
+    client_city = bill.client_city
 
     customer_id = client.id
     customer_terms = "30"
@@ -334,6 +345,10 @@ class BillsController < ApplicationController
 
 
   def bill_params
-    params.require(:bill).permit(:client_name, :client_address, :client_city, :contact_name, :user_id, :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [])
+    params.require(:bill).permit(:user_email, :user_fullname, :user_street, :user_bank_name, :user_iban,
+    :user_phone_number, :user_city, :user_business_name, :user_account_number,
+    :user_bic, :client_name, :client_address, :client_city, :contact_name, :user_id,
+    :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [],
+    )
   end
 end

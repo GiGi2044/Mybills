@@ -37,3 +37,9 @@
   background-color: #374785;
   color: #fff;
 }
+
+.btn-primary:hover {
+  background-color: #659DBD;
+  border: 1px solid #659DBD;
+  color: #fff;
+}

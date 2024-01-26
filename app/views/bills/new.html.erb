@@ -6,9 +6,6 @@
       <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
       <br>
       <button type="button" data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-outline-primary mt-3">New Client</button>
-      <h2 class="bill_form_subtitles"> Invoice Info </h2>
-      <%= f.input :bill_date, label: 'Invoice date' %>
-      <%= f.input :description %>
       <h2 class="bill_form_subtitles"> Service(s) </h2>
       <% if @services.present? %>
         <%= f.input :service_ids, label: 'Hold Shift to select multiple', as: :select,
@@ -18,6 +15,9 @@
         <p>No services available.</p>
       <% end %>
       <button type="button" data-bs-toggle="modal" data-bs-target="#serviceModal" class="btn btn-outline-primary">New Service</button>
+      <h2 class="bill_form_subtitles"> Invoice Info </h2>
+      <%= f.input :bill_date, label: 'Invoice date' %>
+      <%= f.input :description %>
       <br>
       <%= f.button :submit, class: 'btn btn-primary p-3 mt-3' %>
     <% end %>
