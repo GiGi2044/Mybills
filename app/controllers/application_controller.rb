@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :store_user_location!, if: :storable_location?
 
   def default_url_options
   { host: ENV["justinvoice.it"] || "localhost:3000" }
@@ -36,6 +37,15 @@ class ApplicationController < ActionController::Base
     return super if current_user
 
     flash[:alert] = "Your session has timed out. Please log in again."
-    redirect_to root_path
+    redirect_to new_user_session_path
+  end
+
+  def store_user_location!
+    # :user is the scope we are authenticating
+    store_location_for(:user, request.fullpath)
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end
 end

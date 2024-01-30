@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     if params[:query].present?
       @clients = current_user.clients.active.search_by_client_name(params[:query])

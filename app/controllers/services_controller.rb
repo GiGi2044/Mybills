@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     if params[:query].present?
       @services = current_user.services.active.search_by_description(params[:query])

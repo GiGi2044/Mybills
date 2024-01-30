@@ -1,4 +1,5 @@
 class BillsController < ApplicationController
+  before_action :authenticate_user!
   def index
     if params[:query].present?
       @bills = current_user.bills.search_by_bill_date_and_status(params[:query])
