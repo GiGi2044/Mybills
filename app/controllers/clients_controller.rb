@@ -54,6 +54,7 @@ class ClientsController < ApplicationController
       redirect_to clients_path, notice: 'Client was successfully updated.'
     end
   rescue ActiveRecord::RecordInvalid => e
+    @services = current_user.services
     render :edit
   end
 

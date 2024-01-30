@@ -20,7 +20,7 @@
 }
 
 #button_style{
-  width: 10%;
+  width: fit-content;
   padding: 10px 20px;
   text-align: center;
   justify-content: center;
@@ -47,16 +47,6 @@
   .home_title {
       font-size: 3.5em;
   }
-  .nav-container {
-      margin: 0 80px;
-  }
-  .logo-link img {
-    width: 100px; /* Original size for large screens */
-  }
-  .a, .b {
-    margin: 0 20px; /* Larger margin for very wide screens */
-    padding: 20px 30px; /* Larger padding */
-  }
   .home_logged_title {
     font-size: 2.5em;
   }
@@ -67,24 +57,11 @@
   .home_title {
       font-size: 3em;
   }
-  .nav-container {
-      margin: 0 60px;
-  }
   .home_manage_image img, .home_time_image img {
     max-width: 500px; /* Slightly smaller on medium screens */
   }
-  .form-container {
-    width: 50%; /* Ideal for medium screens */
-  }
-  .logo-link img {
-    width: 100px; /* Suitable for medium screens */
-  }
   .btn-primary {
     width: 20%; /* Adjusted for large screens */
-  }
-  .a, .b {
-    margin: 0 15px; /* Adjust margins for wider screens */
-    font-size: larger; /* Adjust font size as needed */
   }
   .home_manage_text h2, .home_time_text h2 {
     font-size: 1.9em;
@@ -98,27 +75,14 @@
   .home_title {
       font-size: 2.5em;
   }
-  .nav-container {
-      margin: 0 40px;
-  }
   .pricing_card {
       width: 100%;
   }
   .home_manage_image img, .home_time_image img {
     max-width: 400px; /* Even smaller on small tablets */
   }
-  .form-container {
-    width: 60%; /* Narrower for tablets and small desktops */
-  }
-  .logo-link img {
-    width: 100px; /* Larger for tablets and small desktops */
-  }
   .btn-primary {
     width: 30%; /* Adjusted for large screens */
-  }
-  .a, .b {
-    padding: 15px 25px; /* Further increase padding */
-    font-size: larger; /* Increase font size if needed */
   }
   .home_manage_text h2, .home_time_text h2 {
     font-size: 1.8em;
@@ -133,51 +97,14 @@
   .home_title {
       font-size: 2em;
   }
-  .nav-container {
-      margin: 0 30px;
-  }
   .header_homepage {
       min-height: 400px;
   }
   .home_manage_image img, .home_time_image img {
     max-width: 350px; /* Adjust for landscape phones */
   }
-  .form-container {
-    width: 80%; /* Still relatively wide for small tablets */
-  }
-
-  .sign_title {
-    font-size: 1.75em; /* Slightly bigger than on mobile */
-  }
-  .nav-title {
-    text-align: left;
-    padding: 10px 20px;
-  }
-
-  .logo-link img {
-    width: 90px; /* Slightly larger for small tablets */
-  }
-
-  .nav_links {
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-top: 0;
-  }
-
-  .nav_links .a, .nav_links .b {
-    margin-bottom: 0;
-    width: auto; /* Auto width for horizontal layout */
-    text-align: left;
-  }
   .btn-primary {
     width: 40%; /* Adjusted for large screens */
-  }
-  .a, .b {
-    display: inline-block; /* Align links horizontally for larger screens */
-    width: auto; /* Revert to auto width */
-    margin: 0 10px; /* Horizontal margin for inline elements */
-    padding: 15px 20px; /* Slightly larger padding */
-    font-size: larger; /* Increase font size */
   }
   .home_manage_text h2, .home_time_text h2 {
     font-size: 1.7em;
@@ -200,64 +127,17 @@
       font-size: 1.5em;
       padding: 10px 0px;
   }
-  .nav-container {
-      margin: 0 20px;
-      display: flex;
-  }
   .header_homepage {
       min-height: 300px;
   }
   .pricing_card {
       width: 100%;
   }
-  .dropdown-content {
-      right: -160px; /* Adjust as needed */
-  }
-  #nav_button {
-      width: 100%;
-  }
   .home_manage_image img, .home_time_image img {
     max-width: 300px; /* Suitable for mobile phones */
   }
-  .form-container {
-    width: 80%; /* Still relatively wide for small tablets */
-  }
-  .sign_title {
-    font-size: 1.5em; /* Slightly bigger than on mobile */
-  }
-  .nav-title {
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  .logo-link img {
-    width: 70px; /* Smaller size for mobile */
-    height: auto;
-  }
-
-  .nav_links {
-    display: flex;
-    align-items: center;
-  }
-
-  .nav_links .a, .nav_links .b {
-    margin-bottom: 10px;
-    width: 70%; /* Full width for easier touch access */
-    text-align: center;
-  }
   .btn-primary {
     width: 50%; /* Adjusted for large screens */
-  }
-  .a, .b {
-    display: block; /* Stack the links for smaller screens */
-    width: 70%; /* Full width for easier touch access */
-    margin: 10px 0; /* Adjust margin for vertical layout */
-    padding: 5px;
-    text-align: center; /* Center the text */
-    font-size: medium; /* Adjust font size for mobile readability */
-  }
-  #signup_button {
-    padding: 10px 15px;
   }
   .home_manage_text h2, .home_time_text h2 {
     font-size: 1.5em;

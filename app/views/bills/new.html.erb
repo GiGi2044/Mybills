@@ -1,11 +1,47 @@
-<div class="container">
   <h1 class="form_title"> New Invoice </h1>
-  <div class="custom-form">
+  <div class="toggle-controller" data-controller="toggle">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary"> New Client </button>
+    <div class="hidden_form d-none" data-toggle-target="toggleClientForm">
+      <%= simple_form_for(@client || Client.new) do |f| %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :client_name %>
+            <%= f.input :contact_name %>
+            <%= f.input :client_address, label: 'steet' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :client_email %>
+            <%= f.input :client_phone %>
+            <%= f.input :client_city, label: 'Address', placeholder: 'City, Zip code, Country'  %>
+          </div>
+        </div>
+        <%= f.button  :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+      <button data-action="click->toggle#fire2" class="btn btn-outline-primary"> New Service </button>
+      <div class="hidden_form d-none" data-toggle-target="toggleServiceForm">
+        <%= simple_form_for(@service || Service.new, remote: true, html: { class: 'new_service', id: 'new_service' }) do |f| %>
+          <%= f.hidden_field :bill_id, value: params[:bill_id] %>
+          <%= f.input :description %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :days_worked %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :rate %>
+            </div>
+          </div>
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
       <h2 class="bill_form_subtitles"> Client </h2>
-      <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
+        <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }, data: {insert_in_list_target: 'items'}) %>
       <br>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#clientModal" class="btn btn-outline-primary mt-3">New Client</button>
       <h2 class="bill_form_subtitles"> Service(s) </h2>
       <% if @services.present? %>
         <%= f.input :service_ids, label: 'Hold Shift to select multiple', as: :select,
@@ -14,18 +50,17 @@
       <% else %>
         <p>No services available.</p>
       <% end %>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#serviceModal" class="btn btn-outline-primary">New Service</button>
       <h2 class="bill_form_subtitles"> Invoice Info </h2>
       <%= f.input :bill_date, label: 'Invoice date' %>
       <%= f.input :description %>
       <br>
-      <%= f.button :submit, class: 'btn btn-primary p-3 mt-3' %>
+      <%= f.button :submit, class: 'btn btn-primary p-3' %>
     <% end %>
   </div>
 
-  <div style="margin-top: 10px">
+  <div style="margin: 10px 0px">
     <%= link_to "Back to all bills", bills_path, id: "back-to-bills-link" %>
-
+  </div>
     <script>
       document.getElementById('back-to-bills-link').addEventListener('click', function(event) {
       if (!confirm('Are you sure you want to discard all changes?')) {
@@ -34,7 +69,6 @@
       });
     </script>
   </div>
-</div>
 
 <!-- Client Modal -->
 <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">

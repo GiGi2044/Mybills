@@ -1,0 +1,341 @@
+.title-and-link {
+display: flex;
+align-items: end; /* Align items vertically */
+gap: 20px;
+margin-bottom: 30px;/* Adjust gap as needed */
+}
+
+.home_logged_title {
+margin-bottom: 0;
+color: #374785;/* Remove margin if any to align properly with the link */
+}
+
+.logged_homepage_subtitle {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0px 20px 0px;
+  color: #374785;
+}
+
+
+.content_container{
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+.logged_explanation_homepage_content
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.personal_info {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 360px;
+  width: 876px;
+  gap: 2rem;
+  padding: 20px;
+  border: 2px solid #374785;
+  border-radius: 1rem;
+  margin: 20px 0px 40px 0px;
+  box-shadow: 0px 0.5rem 1rem 0px;
+
+}
+
+.personal_info_text p{
+  font-size: 1.2em;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  width: 12rem;
+  color: #374785;
+}
+
+.personal_info_text h3{
+  font-size: 1.7em;
+  color: #374785;
+}
+
+.account_info_image img, .create_bill_image img{
+  width: 100%;
+  max-width: 600px; /* Set a max-width for larger screens */
+  height: auto;
+  border-radius: 10px;
+}
+.send_bill_image img{
+  width: 100%;
+  max-width: 600px; /* Set a max-width for larger screens */
+  height: auto;
+  border-radius: 10px;
+}
+
+#info_button_right {
+  /* Example custom styling; adjust as needed */
+  display: inline-block;
+  margin-top: 10px;
+  width: fit-content;
+  padding: 10px 20px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.bill-info {
+  border: 1px solid #ccc;
+  padding: 20px 0px;
+  margin: 20px 20px;
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .title-and-link {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0px;
+    margin-bottom: 20px;/* Adjust gap as needed */
+    }
+
+    .logged_homepage_subtitle {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0px 10px 0px;
+      color: #374785;
+    }
+    .logged_homepage_subtitle h3{
+      font-size: 1.2rem;
+    }
+
+    .personal_info {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: start;
+      flex-wrap: wrap;
+      height: 240px;
+      width: 600px;
+      padding: 20px;
+      border: 2px solid #374785;
+      border-radius: 1rem;
+      margin: 10px 0px 20px 0px;
+      box-shadow: 0px 0.5rem 1rem 0px;
+    }
+    .personal_info_text{
+      width: 40%;
+    }
+
+    .personal_info_text h3{
+      font-size: 1.4rem;
+    }
+    .personal_info_text p{
+      font-size: 0.8rem;
+    }
+
+    .account_info_image img, .create_bill_image img{
+      width: 100%;
+      max-width: 320px; /* Set a max-width for larger screens */
+      height: auto;
+      border-radius: 10px;
+    }
+    .send_bill_image img{
+      width: 100%;
+      max-width: 320px; /* Set a max-width for larger screens */
+      height: auto;
+      border-radius: 10px;
+    }
+
+    #info_button_right {
+      /* Example custom styling; adjust as needed */
+      display: inline-block;
+      width: fit-content;
+      margin-top: 5px;
+      padding: 5px 5px;
+      font-size: 0.6rem;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .title-and-link {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0px;
+    margin-bottom: 20px;/* Adjust gap as needed */
+    }
+
+    .logged_homepage_subtitle {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0px 10px 0px;
+      color: #374785;
+    }
+    .logged_homepage_subtitle h3{
+      font-size: 1.2rem;
+    }
+
+    .personal_info {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: start;
+      flex-wrap: wrap;
+      height: 240px;
+      width: 600px;
+      padding: 20px;
+      border: 2px solid #374785;
+      border-radius: 1rem;
+      margin: 10px 0px 20px 0px;
+      box-shadow: 0px 0.5rem 1rem 0px;
+    }
+    .personal_info_text{
+      width: 40%;
+    }
+
+    .personal_info_text h3{
+      font-size: 1.4rem;
+    }
+    .personal_info_text p{
+      font-size: 0.8rem;
+    }
+
+    .account_info_image img, .create_bill_image img{
+      width: 100%;
+      max-width: 320px; /* Set a max-width for larger screens */
+      height: auto;
+      border-radius: 10px;
+    }
+    .send_bill_image img{
+      width: 100%;
+      max-width: 320px; /* Set a max-width for larger screens */
+      height: auto;
+      border-radius: 10px;
+    }
+
+    #info_button_right {
+      /* Example custom styling; adjust as needed */
+      display: inline-block;
+      width: fit-content;
+      margin-top: 5px;
+      padding: 5px 5px;
+      font-size: 0.6rem;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+
+}
+
+@media only screen and (max-width: 575px) {
+  .title-and-link {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0px;
+    margin-bottom: 20px;/* Adjust gap as needed */
+    }
+
+    .logged_homepage_subtitle {
+      display: flex;
+      justify-content: start;
+      margin: 10px 0px 10px 0px;
+      color: #374785;
+    }
+    .logged_homepage_subtitle h3{
+      font-size: 1.2rem;
+    }
+
+    .personal_info {
+      flex-wrap: wrap;
+      height: 120px;
+      width: 276px;
+      padding: 10px;
+      border: 2px solid #374785;
+      border-radius: 1rem;
+      margin: 10px 0px 20px 0px;
+      box-shadow: 0px 0.5rem 1rem 0px;
+    }
+    .personal_info_text{
+      width: 60%;
+    }
+
+    .personal_info_text h3{
+      font-size: 1.2rem;
+    }
+    .personal_info_text p{
+      font-size: 0.6rem;
+    }
+
+    .account_info_image img, .create_bill_image img{
+      display: none;
+      width: 100%;
+      max-width: 150px; /* Set a max-width for larger screens */
+      height: auto;
+      border-radius: 10px;
+    }
+    .send_bill_image img{
+      display: none;
+      width: 100%;
+      max-width: 150px; /* Set a max-width for larger screens */
+      height: auto;
+      border-radius: 10px;
+    }
+
+    #info_button_right {
+      /* Example custom styling; adjust as needed */
+      display: inline-block;
+      width: fit-content;
+      margin-top: 5px;
+      padding: 5px 5px;
+      font-size: 0.6rem;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .home_logged_title{
+      margin: 20px 0px;
+    }
+
+}

@@ -8,28 +8,56 @@
             <a href="<%= new_bill_path %>" class="invoice-link">Go Make your first invoice</a>
           <% else %>
             <h1 class="home_logged_title">Welcome back <%= current_user.fullname %> !</h1>
-            <a href="<%= new_bill_path %>" class="invoice-link">Go Make some invoices</a>
+            <a href="<%= new_bill_path %>" class="invoice-link">Go Make your first invoice</a>
           <% end %>
         </div>
       </section>
-           <section class="signed_in logged_explanation_homepage">
-        <div class="logged_explanation_homepage_title">
+      <section class="signed_in logged_explanation_homepage">
+        <div class="logged_homepage_subtitle">
           <h3>Get started with justinvoice</h3>
         </div>
-        <div class="logged_explanation_homepage_content">
-          <p>Fill out all your personal info</p>
-          <%= image_tag "acoount_info.png", size: "600x600"%>
-          <p>Create your bill</p>
-          <p>Send it to your client</p>
+        <div class="content_container">
+          <div class="logged_explanation_homepage_content">
+            <div class="personal_info">
+              <div class="personal_info_text">
+                <h3><i class="fa-solid fa-list-check"></i> Personal Info</h3>
+                <p>Make sure to fill out all your personal info before your first invoice </p>
+              </div>
+              <div class="account_info_image">
+                <%= image_tag("acount_info.png")%>
+              </div>
+              <%= link_to 'Go Edit Profile', edit_user_path(current_user), class: 'btn btn-primary', id: 'info_button_right' %>
+            </div>
+            <div class="personal_info">
+              <div class="personal_info_text">
+                  <h3><i class="fa-regular fa-file-lines"></i> Create Invoice</h3>
+                  <p>Create your Invoice selecting the client you are sending it to and the services provided </p>
+                </div>
+                <div class="create_bill_image">
+                  <%= image_tag("create_bill.png")%>
+                </div>
+                <%= link_to 'Go Create An Invoice', new_bill_path, class: 'btn btn-primary', id: 'info_button_right' %>
+            </div>
+            <div class="personal_info">
+              <div class="personal_info_text">
+                <h3> <i class="fa-regular fa-envelope"></i> Send Email</h3>
+                <p>Send your generated invoice pdf to the client</p>
+              </div>
+              <div class="send_bill_image">
+                <%= image_tag("send_bill.png")%>
+              </div>
+              <%= link_to 'Go To Invoices', bills_path, class: 'btn btn-primary', id: 'info_button_right' %>
+            </div>
+          </div>
         </div>
       </section>
-
+      <!--
       <section class="signed_in logged_overview_homepage">
-        <div class="logged_overview_homepage_title">
+        <div class="logged_homepage_subtitle">
           <h3>Overview</h3>
         </div>
         <div class="logged_overview_homepage_content">
-          <div class="row justify-content-center mt-5">
+          <div class="row justify-content-center mt-3">
             <div class="col-2 text-center bill-info">
               <h4>Number of bills</h4>
               <%= @bills_count %>
@@ -50,6 +78,7 @@
         </div>
       </section>
     </div>
+    -->
 
 
   <% else %>

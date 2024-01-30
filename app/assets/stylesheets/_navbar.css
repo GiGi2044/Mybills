@@ -1,3 +1,5 @@
+/* general styles for the navbar */
+
 .navbar {
   background-color: #fff;
   border-bottom: 2px solid #e6e6e6;
@@ -17,12 +19,26 @@
   margin: 0 60px;
 }
 
+
+/* specific styles for text */
+
 .a {
   color: #374785;
   text-decoration: none;
   list-style: none;
   padding: 15px;
   margin: 0 10px;
+  text-decoration: none;
+  font-size: larger;  /* Adjusts the size of the text */
+  font-weight: bold;  /* Makes the text bold */
+}
+
+.signed_in_a {
+  color: #374785;
+  text-decoration: none;
+  list-style: none;
+  padding: 15px;
+  margin: 0px 10px;
   text-decoration: none;
   font-size: larger;  /* Adjusts the size of the text */
   font-weight: bold;  /* Makes the text bold */
@@ -42,6 +58,8 @@
   color: #659DBD;
 }
 
+
+
 .nav-title {
   display: flex;
   justify-content: space-between;
@@ -59,7 +77,6 @@
   text-decoration: none;
 }
 
-
 .logo-link {
   text-decoration: none;
   list-style: none;
@@ -71,10 +88,8 @@
   color: #7c9db2;
 
 }
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+
+/* specific styles for the dropdown */
 
 .dropdown-button {
   cursor: pointer;
@@ -92,7 +107,7 @@
 }
 
 /* Links inside the dropdown */
-.dropdown-content .a {
+.dropdown-content .signed_in_a {
   color: black;
   padding: 12px 12px;
   text-decoration: none;
@@ -100,7 +115,7 @@
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content .a:hover {
+.dropdown-content .signed_in_a:hover {
   background-color: #f1f1f1;
 }
 
@@ -111,4 +126,228 @@
 
 #nav_button{
   width: 140px;
+}
+
+.dropdown-button a{
+  padding: 0;
+}
+
+.dropdown{
+  height: 100%;
+  width: auto;
+}
+
+
+@media only screen and (min-width: 1200px) {
+  /* Example: Increase padding and font sizes for larger screens */
+  .nav-container {
+      margin: 0 80px;
+  }
+  .logo-link img {
+    width: 100px; /* Original size for large screens */
+  }
+  .a, .b {
+    margin: 0 20px; /* Larger margin for very wide screens */
+    padding: 20px 30px; /* Larger padding */
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /* Adjust styles for medium-sized desktop screens */
+  .nav-container {
+      margin: 0 60px;
+  }
+  .nav_links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 70%;
+  }
+  .logo-link img {
+    width: 100px; /* Suitable for medium screens */
+  }
+  .a, .b {
+    display: inline-block; /* Align links horizontally for larger screens */
+    width: auto; /* Revert to auto width */
+    margin: 0 10px; /* Horizontal margin for inline elements */
+    padding: 15px 20px; /* Slightly larger padding */
+    font-size: larger; /* Increase font size */
+  }
+  .signed_in_a {
+    display: block; /* Stack the links for smaller screens */
+    text-align: center; /* Center the text */
+  }
+
+  .signed_in_b {
+    display: block; /* Stack the links for smaller screens */
+    text-align: center; /* Center the text */
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .nav-container {
+      margin: 0 40px;
+  }
+  .nav_links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 70%;
+  }
+  .logo-link img {
+    width: 100px; /* Larger for tablets and small desktops */
+  }
+  .a, .b {
+    padding: 15px 25px; /* Further increase padding */
+    font-size: larger; /* Increase font size if needed */
+  }
+  .signed_in_a {
+    display: block; /* Stack the links for smaller screens */
+    text-align: center; /* Center the text */
+  }
+
+  .signed_in_b {
+    display: block; /* Stack the links for smaller screens */
+    text-align: center; /* Center the text */
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .nav-container {
+      margin: 0 20px;
+  }
+
+  .nav-title {
+    text-align: left;
+    padding: 10px 20px;
+  }
+
+  .logo-link img {
+    width: 90px; /* Slightly larger for small tablets */
+  }
+
+  .nav_links {
+    display: flex;
+    align-items: center;
+    width: 70%;
+  }
+
+  .nav_links .a, .nav_links .b {
+    margin-bottom: 0;
+    width: auto; /* Auto width for horizontal layout */
+    text-align: left;
+  }
+  .a, .b {
+    display: inline-block; /* Align links horizontally for larger screens */
+    width: auto; /* Revert to auto width */
+    margin: 0 10px; /* Horizontal margin for inline elements */
+    padding: 15px 20px; /* Slightly larger padding */
+    font-size: larger; /* Increase font size */
+  }
+  .signed_in_a {
+    display: block; /* Stack the links for smaller screens */
+    width: 50%; /* Full width for easier touch access */
+    margin: 10px 5px; /* Adjust margin for vertical layout */
+    padding: 5px;
+    text-align: center; /* Center the text */
+    font-size: 1rem;
+  }
+
+  .signed_in_b {
+    display: block; /* Stack the links for smaller screens */
+    width: 60%; /* Full width for easier touch access */
+    margin: 10px 10px; /* Adjust margin for vertical layout */
+    padding: 5px;
+    text-align: center; /* Center the text */
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .nav-container {
+      margin: 0 20px;
+      display: flex;
+  }
+  .nav-title {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .logo-link img, .dropdown img {
+    width: 60px; /* Smaller size for mobile */
+    height: auto;
+    margin: 0;
+  }
+
+  .nav_links {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+
+  .nav_links .a, .nav_links .b {
+    margin-bottom: 10px;
+    width: 70%; /* Full width for easier touch access */
+    text-align: center;
+  }
+
+  .nav_links .signed_in_a, .nav_links .signed_in_b {
+    text-align: center;
+  }
+  .a, .b {
+    display: block; /* Stack the links for smaller screens */
+    width: 70%; /* Full width for easier touch access */
+    margin: 10px 0; /* Adjust margin for vertical layout */
+    padding: 5px;
+    text-align: center; /* Center the text */
+    font-size: medium; /* Adjust font size for mobile readability */
+  }
+
+  .signed_in_a {
+    display: block; /* Stack the links for smaller screens */
+    width: 40%; /* Full width for easier touch access */
+    margin: 10px 5px; /* Adjust margin for vertical layout */
+    padding: 5px;
+    text-align: center; /* Center the text */
+    font-size: 0.7rem;
+  }
+
+  .signed_in_b {
+    display: block; /* Stack the links for smaller screens */
+    width: 50%; /* Full width for easier touch access */
+    margin: 10px 10px; /* Adjust margin for vertical layout */
+    padding: 5px;
+    text-align: center; /* Center the text */
+    font-size: 0.8rem;
+  }
+
+
+  #nav_button{
+    width: 80%;
+  }
+
+  .dropdown-content {
+    display:none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 40%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+    right: 0;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .dropdown-content .signed_in_a {
+    color: black;
+    padding: 0 20px;
+    width: 90%;
+    text-decoration: none;
+    display: block;
+    font-size: 0.7rem;
+  }
 }

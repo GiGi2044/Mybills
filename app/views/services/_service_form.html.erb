@@ -1,5 +1,7 @@
 <div class="custom-form">
-  <%= simple_form_for(@service || Service.new, html: { class: 'new_service', id: 'new_service' }) do |f| %>
+  <%= simple_form_for(@service || Service.new, remote: true, html: { class: 'new_service', id: 'new_service' }) do |f| %>
+    <%= f.hidden_field :bill_id, value: params[:bill_id] %>
+    <div>
     <%= f.input :description %>
     <div class="row">
       <div class="col-md-6">

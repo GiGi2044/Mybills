@@ -5,17 +5,17 @@
           <%= link_to root_path(), class: "logo-link" do %>
             <%= image_tag "logo.png", size: "100x70" %>
           <% end %>
-          <a href="<%= bills_path %>" class="a">Invoice List</a>
-          <a href="<%= clients_path %>" class="a">Clients List</a>
-          <a href="<%= services_path %>" class="a">Services List</a>
-          <%= link_to "New Invoice", new_bill_path, class: "btn btn-primary p-2", id: "nav_button" %>
+          <a href="<%= bills_path %>" class="signed_in_a">Invoice List</a>
+          <a href="<%= clients_path %>" class="signed_in_a">Clients List</a>
+          <a href="<%= services_path %>" class="signed_in_a">Services List</a>
+          <%= link_to "New Invoice", new_bill_path, class: "signed_in_b btn btn-primary p-2", id: "nav_button" %>
         </div>
         <div class="nav_links">
           <div class="dropdown">
-            <span class="dropdown-button a"><%= current_user.email %></span>
+            <%= image_tag "person_icon.png", size: "100x100"%>
             <div class="dropdown-content">
-              <a href="<%= edit_user_path(current_user) %>" class="a">Edit Profile</a>
-              <%= link_to "log out", destroy_user_session_path, class: "a", method: :delete, data: { turbo_method: :delete } %>
+              <a href="<%= edit_user_path(current_user) %>" class="signed_in_a">Edit Profile</a>
+              <%= link_to "log out", destroy_user_session_path, class: "signed_in_a", method: :delete, data: { turbo_method: :delete } %>
             </div>
           </div>
         </div>

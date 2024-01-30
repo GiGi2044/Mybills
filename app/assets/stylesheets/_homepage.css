@@ -157,23 +157,3 @@
   justify-content: center;
   margin-top: 5%;
 }
-
-
-/* logged in homepage */
-
-.bill-info {
-    border: 1px solid #ccc;
-    padding: 20px 0px;
-    margin: 20px 20px;
-}
-
-.title-and-link {
-  display: flex;
-  align-items: end; /* Align items vertically */
-  gap: 20px;
-  margin-bottom: 30px;/* Adjust gap as needed */
-}
-
-.home_logged_title {
-  margin-bottom: 0; /* Remove margin if any to align properly with the link */
-}

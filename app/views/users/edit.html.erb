@@ -5,23 +5,29 @@
       <h3 class="form-subtitle">Personal details </h3>
       <%= f.input :email %>
       <%= f.input :fullname, label: 'Full name', placeholder: 'First and Last name' %>
-      <%= f.input :street%>
+      <%= f.input :business_name %>
       <div class="padded-top">
-        <h3 class="form-subtitle">Bank details </h3>
-        <%= f.input :bank_name, label: 'Bank'%>
-        <%= f.input :iban, label: 'IBAN' %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="invisible-spacer"></div>
       <%= f.input :phone_number%>
-      <%= f.input :city, label: 'City / Zip code / Country' %>
-      <%= f.input :business_name %>
+      <%= f.input :city, label: 'Address', placeholder: 'City, Zip code, Country' %>
+      <%= f.input :street%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="form-subtitle">Bank details </h3>
+        <%= f.input :bank_name, label: 'Bank'%>
+        <%= f.input :iban, label: 'IBAN' %>
       <div class="padded-top">
-        <div class="invisible-spacer"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="invisible-spacer"></div>
         <%= f.input :account_number%>
         <%= f.input :bic, label: 'BIC' %>
-      </div>
     </div>
   </div>
   <%= f.button :submit, class: 'btn btn-primary' %>

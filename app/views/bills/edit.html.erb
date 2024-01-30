@@ -1,12 +1,29 @@
 <div class="container">
   <div class="custom-form">
+    <h1 class="form_title"> Edit Bill </h1>
+
+    <div class="toggle-controller" data-controller="toggle">
+    <button data-action="click->toggle#fire2" class="btn btn-outline-primary mt-3"> New Service </button>
+      <div class="custom-form d-none" data-toggle-target="toggleServiceForm">
+        <%= simple_form_for(@service || Service.new, remote: true, html: { class: 'new_service', id: 'new_service' }) do |f| %>
+          <%= f.hidden_field :bill_id, value: params[:bill_id] %>
+          <%= f.input :description %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :days_worked %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :rate %>
+            </div>
+          </div>
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+
+
     <%= simple_form_for(@bill) do |f| %>
-      <h2 class="bill_form_subtitles"> Client </h2>
-      <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }) %>
-      <h2 class="bill_form_subtitles"> Invoice Info </h2>
-      <%= f.input :bill_date, label: 'Invoice date' %>
-      <%= f.input :description %>
-      <h2 class="bill_form_subtitles"> Service(s) </h2>
+    <h2 class="bill_form_subtitles"> Service(s) </h2>
       <% if @services.present? %>
         <%= f.input :service_ids, label: 'Hold Shift to select multiple', as: :select,
         collection: @services, value_method: :id, label_method: :description,
@@ -14,6 +31,53 @@
       <% else %>
         <p>No services available.</p>
       <% end %>
+    <details>
+      <summary class="bill_form_subtitles"> User Info </summary>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="form-subtitle">Personal details </h3>
+          <%= f.input :user_email %>
+          <%= f.input :user_fullname, label: 'Full name', placeholder: 'First and Last name' %>
+          <%= f.input :user_street%>
+          <div class="padded-top">
+            <h3 class="form-subtitle">Bank details </h3>
+            <%= f.input :user_bank_name, label: 'Bank'%>
+            <%= f.input :user_iban, label: 'IBAN' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="invisible-spacer"></div>
+            <%= f.input :user_phone_number%>
+            <%= f.input :user_city, label: 'City / Zip code / Country' %>
+            <%= f.input :user_business_name %>
+            <div class="padded-top">
+              <div class="invisible-spacer"></div>
+              <%= f.input :user_account_number%>
+              <%= f.input :user_bic, label: 'BIC' %>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary class="bill_form_subtitles"> Client Info </summary>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :client_name %>
+            <%= f.input :contact_name %>
+            <%= f.input :client_address, label: 'steet' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :client_email %>
+            <%= f.input :client_phone %>
+            <%= f.input :client_city, label: 'City / Zip code / Country'  %>
+          </div>
+        </div>
+      </details>
+
+      <h2 class="bill_form_subtitles"> Invoice Info </h2>
+      <%= f.input :bill_date, label: 'Invoice date' %>
+      <%= f.input :description %>
+
       <%= f.button :submit, class: 'btn btn-primary p-3' %>
     <% end %>
   </div>

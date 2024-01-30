@@ -4,7 +4,7 @@
     <p class="card_description">Fill out your profile to start creating and sending invoices straight away. Any progress you make will be saved, so you can always finish later.</p>
     <div class="action_buttons">
       <h3 class="edit_profile_button">
-        <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary large-button" %>
+        <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary", id:"large-button" %>
       </h3>
       <p class="skip_step_link">
         <%= link_to "skip for now", root_path, id:"skip_step_link" %>
@@ -14,14 +14,14 @@
     <div class="info_section">
       <div class="info_item">
         <div class="info_text">
-          <h3><i class="fa-solid fa-book"></i> What information will you need?</h3>
-          <p>You'll be asked to provide standard business details, such as contact information and bank details</p>
+          <h3 class="welcome_explanation_title"><i class="fa-solid fa-book"></i> What information will you need?</h3>
+          <p class="welcome_explanation_text">You'll be asked to provide standard business details, such as contact information and bank details</p>
         </div>
       </div>
       <div class="info_item">
         <div class="info_text">
-          <h3><i class="fa-solid fa-clock"></i> How long does it take?</h3>
-          <p>Complete your profile in 2-3 minutes, so you can make your first invoice.</p>
+          <h3 class="welcome_explanation_title"><i class="fa-solid fa-clock"></i> How long does it take?</h3>
+          <p class="welcome_explanation_text">Complete your profile in 2-3 minutes, so you can make your first invoice.</p>
         </div>
       </div>
     </div>

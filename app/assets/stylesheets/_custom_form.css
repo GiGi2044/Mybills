@@ -31,102 +31,101 @@
   margin-bottom: 10px;
 }
 
-
-.card_container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  margin: 20px 0px;
-  padding: 20px 40px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-}
-
-.card_title {
-  font-size: 2em;
-  font-weight: bold;
-  margin: 0;
-  padding: 10px 0;
-}
-
-.card_description {
-  font-size: 1.2em;
-  margin: 0;
-  padding: 20px 0;
-  color: #666;
-}
-
-.action_buttons {
-  display: flex;
-  align-items: center;
-  padding: 20px 0;
-  gap: 20px;
-}
-
-.edit_profile_button {
-  margin: 0;
-}
-
-.large-button {
-  padding: 12px 24px; /* Larger padding */
-  font-size: 20px; /* Larger font size */
-  border-radius: 8px; /* Larger border-radius for more rounded corners */
-}
-
-.skip_step_link {
-  margin: 0;
-}
-
-#skip_step_link {
-  color: #659DBD;
-  text-decoration: none;
-}
-
-.divider {
-  border: none;
-  height: 1px;
-  background-color: #8a8a8a;
-  margin: 20px 0;
-}
-
-.info_section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-  align-items: flex-start;
-}
-
-.info_item {
-  flex: 1;
-  min-width: calc(50% - 10px);
-  display: flex;
-  flex-direction: column;
-}
-
-.info_text h3 {
-  margin: 0 0 10px 0;
-  font-size: 24px;
-
-  min-height: 3em;
-}
-
-.info_text p {
-  color: #666;
-  margin: 0;
-}
-
-.min-width-select {
-  min-width: 150px; /* Adjust as needed */
-}
-
-.custom-select-width {
-  max-width: 20%; /* Adjust as needed */
-}
-
 .bill_form_subtitles {
   margin: 20px 0px;
   padding: 0;
+}
+
+.btn-outline-primary {
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .invisible-spacer {
+    height: 32.33px; /* Adjust this to match the height of the h3 element */
+    visibility: hidden;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .invisible-spacer {
+    height: 30.96px; /* Adjust this to match the height of the h3 element */
+    visibility: hidden;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .invisible-spacer {
+    height: 24.95px; /* Adjust this to match the height of the h3 element */
+    visibility: hidden;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .custom-form {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  .col-md-6 {
+    width: 45%;
+  }
+
+  .row .col-md-6 {
+    width: 50%;
+  }
+
+  .form-label{
+    font-size: 12px;
+  }
+
+  .form_title {
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0px;
+  }
+
+  .padded-top {
+    padding-top: 10px;
+  }
+
+  .form-subtitle {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .invisible-spacer {
+    height: 24.95px; /* Adjust this to match the height of the h3 element */
+    visibility: hidden;
+    margin-bottom: 10px;
+  }
+
+  .bill_form_subtitles {
+    margin: 20px 0px;
+    padding: 0;
+  }
+
+  .input-group{
+    width: 90%;
+  }
+
+  .toggle-controller {
+    flex-direction: column;
+  }
+  .btn-outline-primary {
+    margin-top: 0px;
+  }
 }
