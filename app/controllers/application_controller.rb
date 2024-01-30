@@ -31,4 +31,11 @@ class ApplicationController < ActionController::Base
   def all_signed_out?
     !user_signed_in?
   end
+
+  def timeout
+    return super if current_user
+
+    flash[:alert] = "Your session has timed out. Please log in again."
+    redirect_to root_path
+  end
 end
