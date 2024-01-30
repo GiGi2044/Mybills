@@ -23,9 +23,9 @@ class ClientsController < ApplicationController
     if @client.save
       # Check where the request came from
       if request.referer.include?(new_bill_path)
-        redirect_back(fallback_location: new_bill_path, notice: 'Client was successfully created.')
+        redirect_back(fallback_location: new_bill_path, notice: 'Client was successfully created')
       else
-        redirect_to clients_path, notice: 'Client was successfully created.'
+        redirect_to clients_path, notice: 'Client was successfully created'
       end
     else
       render :new
@@ -49,9 +49,9 @@ class ClientsController < ApplicationController
       original_client.update!(deleted_at: Time.current) # Soft delete the original
     end
     if request.referer.include?(new_bill_path)
-      redirect_back(fallback_location: new_bill_path, notice: 'Client was successfully updated.')
+      redirect_back(fallback_location: new_bill_path, notice: 'Client was successfully updated')
     else
-      redirect_to clients_path, notice: 'Client was successfully updated.'
+      redirect_to clients_path, notice: 'Client was successfully updated'
     end
   rescue ActiveRecord::RecordInvalid => e
     @services = current_user.services
@@ -61,7 +61,7 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     @client.update(deleted_at: Time.current) # Soft delete
-    redirect_to clients_path, notice: 'Client was successfully destroyed.'
+    redirect_to clients_path, notice: 'Client was successfully destroyed'
   end
 
   private

@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   def timeout
     return super if current_user
 
-    flash[:alert] = "Your session has timed out. Please log in again."
+    flash[:alert] = "Your session has timed out. Please log in again"
     redirect_to new_user_session_path
   end
 

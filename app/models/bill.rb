@@ -11,8 +11,20 @@ class Bill < ApplicationRecord
   validates :client_id, presence: true
   validates :bill_date, presence: true
 
-  validates :user_bill_number, presence: true, uniqueness: { scope: :user_id }
+
+
   validates :customer_bill_number, presence: true, uniqueness: { scope: :client_id }
+
+  before_validation :set_bill_numbers, on: :create
+
+  def set_bill_numbers
+    if client.present?
+      self.customer_bill_number = client.bills.where(user_id: self.user_id).maximum(:customer_bill_number).to_i + 1
+    end
+  end
+
+
+
 
   def grand_total
     services.sum(&:total_amount)

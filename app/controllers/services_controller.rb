@@ -23,11 +23,11 @@ class ServicesController < ApplicationController
       # Redirect based on the referer
       case request.referer
       when /bills\/new/ # Matches the new_bill_path
-        redirect_to new_bill_path, notice: 'Service was successfully created.'
+        redirect_to new_bill_path, notice: 'Service was successfully created'
       when /bills\/\d+\/edit/ # Matches the edit_bill_path with an ID
-        redirect_to edit_bill_path(id: URI(request.referer).path.split("/").last), notice: 'Service was successfully created.'
+        redirect_to edit_bill_path(id: URI(request.referer).path.split("/").last), notice: 'Service was successfully created'
       else
-        redirect_to services_path, notice: 'Service was successfully created.'
+        redirect_to services_path, notice: 'Service was successfully created'
       end
     else
       render :new
@@ -51,7 +51,7 @@ class ServicesController < ApplicationController
       original_service.update!(deleted_at: Time.current) # Soft delete the original
     end
 
-    redirect_to services_path, notice: 'Service was successfully updated.'
+    redirect_to services_path, notice: 'Service was successfully updated'
   rescue ActiveRecord::RecordInvalid => e
     @services = current_user.services
     render :edit
@@ -60,7 +60,7 @@ class ServicesController < ApplicationController
   def destroy
     @service = Service.find(params[:id])
     @service.update(deleted_at: Time.current) # Soft delete
-    redirect_to services_path, notice: 'Service was successfully deleted.'
+    redirect_to services_path, notice: 'Service was successfully deleted'
   end
 
   private

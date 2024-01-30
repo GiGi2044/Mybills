@@ -263,14 +263,14 @@
   }
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (min-width: 411px) and (max-width: 575px) {
   .nav-container {
       margin: 0 20px;
       display: flex;
   }
   .nav-title {
     text-align: center;
-    padding: 10px 0;
+    padding: 5px 0;
   }
 
   .logo-link img, .dropdown img {
@@ -350,4 +350,93 @@
     display: block;
     font-size: 0.7rem;
   }
+}
+@media only screen and (min-width: 370px) and (max-width: 410px) {
+
+  .nav-container {
+    margin: 0 20px;
+    display: flex;
+}
+.nav-title {
+  text-align: center;
+  padding: 0px 0;
+}
+
+.logo-link img, .dropdown img {
+  width: 50px; /* Smaller size for mobile */
+  height: auto;
+  margin: 0;
+}
+
+.nav_links {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.nav_links .a, .nav_links .b {
+  margin-bottom: 5px;
+  width: 70%; /* Full width for easier touch access */
+  text-align: center;
+}
+
+.nav_links .signed_in_a, .nav_links .signed_in_b {
+  text-align: center;
+}
+.a, .b {
+  display: block; /* Stack the links for smaller screens */
+  width: 70%; /* Full width for easier touch access */
+  margin: 10px 0; /* Adjust margin for vertical layout */
+  padding: 5px;
+  text-align: center; /* Center the text */
+  font-size: medium; /* Adjust font size for mobile readability */
+}
+
+.signed_in_a {
+  display: block; /* Stack the links for smaller screens */
+  width: 40%; /* Full width for easier touch access */
+  margin: 10px 5px; /* Adjust margin for vertical layout */
+  padding: 5px;
+  text-align: center; /* Center the text */
+  font-size: 0.6rem;
+}
+
+.signed_in_b {
+  display: block; /* Stack the links for smaller screens */
+  width: 50%; /* Full width for easier touch access */
+  margin: 10px 10px; /* Adjust margin for vertical layout */
+  padding: 5px;
+  text-align: center; /* Center the text */
+  font-size: 0.7rem;
+}
+
+
+#nav_button{
+  width: 70%;
+}
+
+.dropdown-content {
+  display:none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 40%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 3;
+  right: 0;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown-content .signed_in_a {
+  color: black;
+  padding: 0 20px;
+  width: 90%;
+  text-decoration: none;
+  display: block;
+  font-size: 0.7rem;
+}
 }

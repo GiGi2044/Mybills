@@ -45,15 +45,9 @@ class BillsController < ApplicationController
     @bill.client_phone = selected_client.client_phone
     @bill.client_email = selected_client.client_email
 
-    last_bill_number = current_user.bills.maximum(:user_bill_number) || 0
-    @bill.user_bill_number = last_bill_number + 1
-
-    last_customer_bill_number = current_user.bills.where(client_id: bill_params[:client_id]).maximum(:customer_bill_number) || 0
-    @bill.customer_bill_number = last_customer_bill_number + 1
-
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to bills_path, notice: 'Bill was successfully created.' }
+        format.html { redirect_to bills_path, notice: 'Bill was successfully created' }
         format.json { render :show, status: :created, location: @bill }
       else
         puts @bill.errors.full_messages
@@ -78,21 +72,21 @@ class BillsController < ApplicationController
 
 
     @bill.update(bill_params)
-    redirect_to bills_path, notice: 'Bill was successfully updated.'
+    redirect_to bills_path, notice: 'Bill was successfully updated'
   end
 
   def destroy
     @bill = Bill.find(params[:id])
     @bill.destroy
-    redirect_to bill_path, notice: 'Bill was successfully destroyed.'
+    redirect_to bill_path, notice: 'Bill was successfully destroyed'
   end
 
   def update_status
     @bill = Bill.find(params[:id])
     if @bill.update(status: params[:bill][:status])
-      redirect_to bills_path, notice: 'Status updated successfully.'
+      redirect_to bills_path, notice: 'Status updated successfully'
     else
-      flash[:alert] = 'Failed to update status.'
+      flash[:alert] = 'Failed to update status'
       render :index
     end
   end

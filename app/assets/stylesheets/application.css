@@ -21,6 +21,36 @@
   display: flex;
   flex-direction: column;
 }
+.full_flash {
+  width: 100%;
+}
+
+.flash-message {
+  width: 25%;
+  position: fixed; /* Fixed positioning relative to the viewport */
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  color: #fff;
+  background-color: rgb(209, 209, 209);
+  text-align: center;
+  z-index: 1000; /* Ensure it appears above other content */
+  padding: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.flash-opt-out{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  font-size: 0.8em;
+  cursor: pointer;
+}
 
 .container {
   max-width: 90%; /* Adjusted from 90vw to percentage to account for padding/margin */
