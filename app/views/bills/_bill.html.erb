@@ -20,7 +20,7 @@
             class: 'btn btn-danger btn-sm' %>
             <%= link_to fa_icon("pencil-alt"), edit_bill_path(bill), class: 'btn btn-primary btn-sm' %>
           </td>
-          <td><%= bill.client.client_name %></td>
+          <td><%= bill.client_name %></td>
           <td><%= bill.bill_date.strftime("%d-%m-%y") %></td>
           <td><%= bill.description %></td>
           <td><%= bill.grand_total %></td>
