@@ -1,9 +1,9 @@
-.custom-table {
+.custom-table, .service-custom-table, .client-custom-table{
   table-layout: fixed; /* Fixed table layout for consistent column sizing */
   width: 100%; /* Optional: Ensure table occupies the container's full width */
 }
 
-.custom-table th, .custom-table td {
+.custom-table th, .custom-table td, .service-custom-table th, .service-custom-table td, .client-custom-table th, .client-custom-table td{
   padding: 8px; /* Consistent padding for all cells */
   text-align: left; /* Align text to the left; modify as needed */
   vertical-align: top; /* Align content to the top of the cell */
@@ -12,13 +12,20 @@
   white-space: nowrap; /* Prevent text from wrapping to the next line */
 }
 
-.custom-table th {
+.custom-table th, .service-custom-table th, .client-custom-table th{
   background-color: #f2f2f2; /* Optional: Background color for header */
 }
 
 /* Optional: Define specific widths for each column if needed */
-.custom-table colgroup col {
+.custom-table colgroup col , .service-custom-table colgroup col, .client-custom-table colgroup col{
   width: 15%; /* Example width; adjust as needed */
+}
+.button-abbreviated-text{
+  display: none;
+}
+
+.link-abbreviated-text {
+  display: none;
 }
 
 
@@ -39,47 +46,55 @@
 }
 
 @media only screen and (max-width: 575px) {
+  .client-custom-table td:nth-of-type(1),
+  .client-custom-table th:nth-of-type(1),
+  .client-custom-table td:nth-of-type(4),
+  .client-custom-table th:nth-of-type(4),
+  .client-custom-table td:nth-of-type(5),
+  .client-custom-table th:nth-of-type(5),
+  .client-custom-table td:nth-of-type(6),
+  .client-custom-table th:nth-of-type(6){
+    display: none; /* Hiding Actions and Invoice Date columns for example */
+  }
   /* Hide the non-essential columns */
-  .custom-table td:nth-of-type(2),
-  .custom-table th:nth-of-type(2),
+  .service-custom-table td:nth-of-type(1),
+  .service-custom-table th:nth-of-type(1),
+  .service-custom-table td:nth-of-type(4),
+  .service-custom-table th:nth-of-type(4),
+  .service-custom-table td:nth-of-type(5),
+  .service-custom-table th:nth-of-type(5) {
+    display: none; /* Hiding Actions and Invoice Date columns for example */
+  }
+  .custom-table td:nth-of-type(1),
+  .custom-table th:nth-of-type(1),
   .custom-table td:nth-of-type(4),
-  .custom-table th:nth-of-type(4) {
+  .custom-table th:nth-of-type(4),
+  .custom-table td:nth-of-type(6),
+  .custom-table th:nth-of-type(6) {
     display: none; /* Hiding Actions and Invoice Date columns for example */
   }
 
-  /* Stack the remaining td + th elements */
-
-  /* Make each row take up 100% width */
-  .custom-table tr {
-    width: 100%;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Optional: Adds a shadow for each "card" */
-  }
-
-  /* Position the table data */
-  .custom-table td {
-    /* Ensure that content is visible */
-    overflow: visible;
-    justify-content: space-between; /* Spread the content out */
-    align-items: center;
-    padding-left: 50%; /* Provide space for labels */
-    border: none;
-    position: relative;
-  }
-
-  /* Add labels before each cell in each tr */
-  .custom-table td:before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    width: 50%; /* Set the width of the label */
-    padding-right: 10px; /* Space between label and content */
-    box-sizing: border-box;
-  }
-
   /* Adjust the position of the PDF and Send Email buttons */
-  .custom-table .btn {
+  .custom-table .btn{
     padding: 0.2rem 0.4rem; /* Reduce padding */
-    font-size: 0.875rem; /* Reduce font size */
+    font-size: 0.8rem; /* Reduce font size */
+  }
+  .custom-table .btn-success{
+    margin-top: 13px;
+  }
+  .button-full-text {
+    display: none;
+  }
+  .button-abbreviated-text {
+    display: inline;
+  }
+  .link-full-text {
+    display: none;
+  }
+  .link-abbreviated-text {
+    display: inline;
+  }
+  .service-custom-table .btn, .client-custom-table .btn{
+    width:fit-content;
   }
 }

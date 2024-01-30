@@ -31,8 +31,14 @@
             <% end %>
           </td>
           <td>
-            <%= link_to "View pdf", bill_pdf_path(bill) %>
-            <%= button_to 'Send Email', send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success btn-sm' %>
+            <%= link_to bill_pdf_path(bill), class: 'view-pdf-link' do %>
+              <span class="link-full-text">View PDF</span>
+              <span class="link-abbreviated-text">View</span>
+            <% end %>
+            <%= button_to send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success btn-sm' do %>
+              <span class="button-full-text">Send Email</span>
+              <span class="button-abbreviated-text">Send</span>
+            <% end %>
           </td>
           </tr>
     </tbody>
