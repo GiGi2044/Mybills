@@ -135,5 +135,12 @@
     .custom-table th{
       font-size: 0.8rem;
     }
-
+    #edit_bill_user_title{
+      font-size: 1rem;
+    }
+    .invisible-spacer {
+      height: 19.2px; /* Adjust this to match the height of the h3 element */
+      visibility: hidden;
+      margin-bottom: 10px;
+    }
   }
