@@ -6,6 +6,15 @@ class Client < ApplicationRecord
   validates :client_email, presence: true
   validates :client_city, presence: true
 
+  validates :client_number, presence: true, uniqueness: { scope: :id}
+
+  before_validation :set_client_number, on: :create
+
+  def set_client_number
+    max_number = Client.where(user_id: self.user_id).maximum(:client_number) || 0
+    self.client_number = max_number + 1
+  end
+
   include PgSearch::Model
 pg_search_scope :search_by_client_name,
   against: [ :client_name ],

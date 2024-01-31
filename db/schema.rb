@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_26_083809) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_31_001923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_26_083809) do
     t.string "contact_name"
     t.string "client_city"
     t.datetime "deleted_at"
+    t.integer "client_number"
+    t.integer "total_bills_created", default: 0
     t.index ["deleted_at"], name: "index_clients_on_deleted_at"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
@@ -117,6 +119,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_26_083809) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.datetime "deleted_at"
+    t.integer "service_number"
     t.index ["deleted_at"], name: "index_services_on_deleted_at"
     t.index ["user_id"], name: "index_services_on_user_id"
   end

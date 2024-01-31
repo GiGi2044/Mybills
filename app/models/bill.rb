@@ -19,12 +19,20 @@ class Bill < ApplicationRecord
 
   def set_bill_numbers
     if client.present?
-      self.customer_bill_number = client.bills.where(user_id: self.user_id).maximum(:customer_bill_number).to_i + 1
+      # Fetch the latest bill number for this client
+      last_bill_number = client.bills.maximum(:customer_bill_number) || 0
+
+      # Compare with total_bills_created and take the higher number
+      next_bill_number = [last_bill_number, client.total_bills_created].max + 1
+
+      # Update total_bills_created if necessary
+      client.total_bills_created = next_bill_number if client.total_bills_created < next_bill_number
+      client.save
+
+      # Set the customer_bill_number
+      self.customer_bill_number = next_bill_number
     end
   end
-
-
-
 
   def grand_total
     services.sum(&:total_amount)
