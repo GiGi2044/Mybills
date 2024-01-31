@@ -45,7 +45,8 @@
 
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (min-width: 411px) and (max-width: 575px) {
+}
   .client-custom-table td:nth-of-type(1),
   .client-custom-table th:nth-of-type(1),
   .client-custom-table td:nth-of-type(4),
@@ -80,7 +81,7 @@
     font-size: 0.8rem; /* Reduce font size */
   }
   .custom-table .btn-success{
-    margin-top: 13px;
+    margin-top: 8px;
   }
   .button-full-text {
     display: none;
@@ -97,4 +98,33 @@
   .service-custom-table .btn, .client-custom-table .btn{
     width:fit-content;
   }
-}
+  .custom-table th{
+    font-size: 1rem;
+  }
+  @media only screen and (min-width: 370px) and (max-width: 410px) {
+    .custom-table .btn{
+      padding: 0.15rem 0.3rem; /* Reduce padding */
+      font-size: 0.7rem; /* Reduce font size */
+    }
+    .custom-table .btn-success{
+      margin-top: 5px;
+    }
+    .button-full-text {
+      display: none;
+    }
+    .button-abbreviated-text {
+      display: inline;
+    }
+    .link-full-text {
+      display: none;
+    }
+    .link-abbreviated-text {
+      display: inline;
+    }
+    .service-custom-table .btn, .client-custom-table .btn{
+      width:fit-content;
+    }
+    .custom-table th{
+      font-size: 0.8rem;
+    }
+  }
