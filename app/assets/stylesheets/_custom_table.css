@@ -28,6 +28,14 @@
   display: none;
 }
 
+#refresh_status_button {
+  color: #fff;
+  background-color: #374785;
+  border-color: #374785;
+  size: 0.8rem;
+  margin-top: 5px;
+}
+
 
 @media only screen and (min-width: 1200px) {
 
@@ -127,4 +135,5 @@
     .custom-table th{
       font-size: 0.8rem;
     }
+
   }
