@@ -99,7 +99,7 @@
     width:fit-content;
   }
   .custom-table th{
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   @media only screen and (min-width: 370px) and (max-width: 410px) {
     .custom-table .btn{
