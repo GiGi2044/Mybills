@@ -52,6 +52,7 @@
   cursor: pointer;
 }
 
+
 .container {
   max-width: 90%; /* Adjusted from 90vw to percentage to account for padding/margin */
   margin: 20px auto; /* Centered the container */
@@ -85,6 +86,15 @@
 .page_titles{
   margin: 20px 0px;
   padding: 0;
+}
+
+.error-field select, .error-field input {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
 }
 
 @media only screen and (min-width: 1200px) {

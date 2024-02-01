@@ -1,0 +1,9 @@
+<% @bills.each do |bill| %>
+  <div class="custom-form">
+    <%= simple_form_for(bill) do |f| %>
+      <%= f.input :client_email %>
+      <%= f.input :cc %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+<% end %>

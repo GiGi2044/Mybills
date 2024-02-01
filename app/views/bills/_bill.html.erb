@@ -33,15 +33,21 @@
             <% end %>
           </td>
           <td>
-            <%= link_to bill_pdf_path(bill), class: 'view-pdf-link' do %>
-              <span class="link-full-text">View PDF</span>
-              <span class="link-abbreviated-text">View</span>
-            <% end %>
-            <%= button_to send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success btn-sm' do %>
+          <%= link_to bill_pdf_path(bill), class: 'view-pdf-link' do %>
+            <span class="link-full-text">View PDF</span>
+            <span class="link-abbreviated-text">View</span>
+          <% end %>
+          <div class="d-flex" style="gap: 10px;">
+            <button type="button" class="btn btn-primary btn-sm inline mt-2"
+              data-bs-toggle="modal" data-bs-target="#emailModal_<%= bill.id %>">
+              Email details
+            </button>
+            <%= button_to send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success' do %>
               <span class="button-full-text">Send Email</span>
               <span class="button-abbreviated-text">Send</span>
             <% end %>
-          </td>
+          </div>
+        </td>
           </tr>
     </tbody>
   </table>

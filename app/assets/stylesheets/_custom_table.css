@@ -35,6 +35,10 @@
   size: 0.8rem;
   margin-top: 5px;
 }
+.modal-dialog-centered {
+  top: 30%; /* Example: Move modal down by 30% of the viewport height */
+  transform: translateY(-30%); /* Adjust this to change how it centers based on the new top value */
+}
 
 
 @media only screen and (min-width: 1200px) {
@@ -89,19 +93,9 @@
     font-size: 0.8rem; /* Reduce font size */
   }
   .custom-table .btn-success{
+    padding: 5px;
     margin-top: 8px;
-  }
-  .button-full-text {
-    display: none;
-  }
-  .button-abbreviated-text {
-    display: inline;
-  }
-  .link-full-text {
-    display: none;
-  }
-  .link-abbreviated-text {
-    display: inline;
+    display: fit-content;
   }
   .service-custom-table .btn, .client-custom-table .btn{
     width:fit-content;
@@ -115,19 +109,9 @@
       font-size: 0.7rem; /* Reduce font size */
     }
     .custom-table .btn-success{
+      padding: 5px;
       margin-top: 5px;
-    }
-    .button-full-text {
-      display: none;
-    }
-    .button-abbreviated-text {
-      display: inline;
-    }
-    .link-full-text {
-      display: none;
-    }
-    .link-abbreviated-text {
-      display: inline;
+      display: fit-content;
     }
     .service-custom-table .btn, .client-custom-table .btn{
       width:fit-content;

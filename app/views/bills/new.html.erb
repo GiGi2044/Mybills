@@ -40,7 +40,12 @@
     <div class="custom-form">
     <%= simple_form_for(@bill) do |f| %>
       <h2 class="bill_form_subtitles"> Client </h2>
-        <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }, data: {insert_in_list_target: 'items'}) %>
+      <div id="client-select-wrapper" class="<%= 'error-field' if @bill.errors[:client_id].present? %>">
+        <%= f.collection_select(:client_id, @clients, :id, :client_name, { prompt: 'Select existing client' }, { id: "client_id_select", class: 'custom-select', data: { action: "change->clearError" } }) %>
+          <% if @bill.errors[:client_id].present? %>
+            <span class="error-message" id="client-error-message"><%= @bill.errors[:client_id].first %></span>
+          <% end %>
+      </div>
       <br>
       <h2 class="bill_form_subtitles"> Service(s) </h2>
       <% if @services.present? %>
@@ -54,7 +59,7 @@
       <%= f.input :bill_date, label: 'Invoice date' %>
       <%= f.input :description %>
       <br>
-      <%= f.button :submit, class: 'btn btn-primary p-3' %>
+      <%= f.button :submit, 'Create Invoice', class: 'btn btn-primary p-3' %>
     <% end %>
   </div>
 
@@ -66,6 +71,10 @@
       if (!confirm('Are you sure you want to discard all changes?')) {
         event.preventDefault();
       }
+      });
+
+      document.getElementById('client_id_select').addEventListener('change', function(event) {
+        document.getElementById('client-error-message').style.display = 'none';
       });
     </script>
   </div>

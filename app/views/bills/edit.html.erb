@@ -1,6 +1,6 @@
 <div class="container">
   <div class="custom-form">
-    <h1 class="form_title"> Edit Bill </h1>
+    <h1 class="form_title"> Edit Invoice </h1>
 
     <div class="toggle-controller" data-controller="toggle">
     <button data-action="click->toggle#fire2" class="btn btn-outline-primary mt-3"> New Service </button>
@@ -78,7 +78,7 @@
       <%= f.input :bill_date, label: 'Invoice date' %>
       <%= f.input :description %>
 
-      <%= f.button :submit, class: 'btn btn-primary p-3' %>
+      <%= f.button :submit, 'Update Invoice', class: 'btn btn-primary p-3' %>
     <% end %>
   </div>
 

@@ -37,17 +37,32 @@ class BillsController < ApplicationController
     @bill.user_account_number = current_user.account_number
     @bill.user_phone_number = current_user.phone_number
 
-    selected_client = Client.find(bill_params[:client_id])
-    @bill.client_name = selected_client.client_name
-    @bill.client_address = selected_client.client_address
-    @bill.client_city = selected_client.client_city
-    @bill.contact_name = selected_client.contact_name
-    @bill.client_phone = selected_client.client_phone
-    @bill.client_email = selected_client.client_email
+    selected_client = Client.find_by(id: bill_params[:client_id])
+
+    if selected_client
+      # If a client is found, assign the client's details to the bill
+      @bill.client_name = selected_client.client_name
+      @bill.client_address = selected_client.client_address
+      @bill.client_city = selected_client.client_city
+      @bill.contact_name = selected_client.contact_name
+      @bill.client_phone = selected_client.client_phone
+      @bill.client_email = selected_client.client_email
+    else
+      # If no client is found, add a custom error to @bill and stop processing
+      @bill.errors.add(:client_id, 'Please select a valid client')
+
+      # Prepare the other instance variables needed for the 'new' template
+      @clients = current_user.clients.active
+      @services = current_user.services.active
+
+      # Render the 'new' template again with the error
+      render :new, status: :unprocessable_entity
+      return # This ensures the action stops here and does not attempt to save @bill or proceed further
+    end
 
     respond_to do |format|
       if @bill.save
-        format.html { redirect_to bills_path, notice: 'Bill was successfully created' }
+        format.html { redirect_to bills_path, notice: 'Invoice was successfully created' }
         format.json { render :show, status: :created, location: @bill }
       else
         puts @bill.errors.full_messages
@@ -72,13 +87,13 @@ class BillsController < ApplicationController
 
 
     @bill.update(bill_params)
-    redirect_to bills_path, notice: 'Bill was successfully updated'
+    redirect_to bills_path, notice: 'Invoice was successfully updated'
   end
 
   def destroy
     @bill = Bill.find(params[:id])
     @bill.destroy
-    redirect_to bill_path, notice: 'Bill was successfully destroyed'
+    redirect_to bill_path, notice: 'Invoice was successfully destroyed'
   end
 
   def update_status
@@ -340,7 +355,7 @@ class BillsController < ApplicationController
 
 
   def bill_params
-    params.require(:bill).permit(:user_email, :user_fullname, :user_street, :user_bank_name, :user_iban,
+    params.require(:bill).permit(:subject, :cc, :user_email, :user_fullname, :user_street, :user_bank_name, :user_iban,
     :user_phone_number, :user_city, :user_business_name, :user_account_number,
     :user_bic, :client_name, :client_address, :client_city, :contact_name, :user_id,
     :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [],

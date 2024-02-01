@@ -8,7 +8,7 @@ class Bill < ApplicationRecord
   has_many :bill_services, dependent: :destroy
   has_many :services, through: :bill_services
 
-  validates :client_id, presence: true
+  validates :client_id, presence: { message: 'Please select a client' }
   validates :bill_date, presence: true
 
 

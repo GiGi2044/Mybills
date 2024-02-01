@@ -1,14 +1,18 @@
 class UserMailer < ApplicationMailer
   def send_bill_email(bill, client, user, pdf_document)
-    @bill = bill
-    @client = client
-    @user = user
-    # Attach the PDF document
-    attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf_document.render }
-
-    # Set up email details
-    mail(from: "invoice@justinvoice.it", reply_to: user, to: bill.client.client_email, subject: 'Your Bill')
-  end
+  @bill = bill
+  @client = client
+  @user = user
+  attachments['bill.pdf'] = { mime_type: 'application/pdf', content: pdf_document.render }
+  mail_params = {
+    from: "invoice@justinvoice.it",
+    reply_to: user.email,
+    to: bill.client.client_email,
+    cc: bill.cc,
+    subject: bill.subject.presence || 'Your Bill'
+  }
+  mail(mail_params)
+end
 
   private
 

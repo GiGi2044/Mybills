@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_31_001923) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_01_143745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,6 +82,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_001923) do
     t.string "client_email"
     t.string "client_city"
     t.string "contact_name"
+    t.string "cc"
+    t.string "subject"
     t.index ["client_id"], name: "index_bills_on_client_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
   end

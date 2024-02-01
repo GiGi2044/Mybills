@@ -10,3 +10,27 @@
   <% end %>
   <%= link_to "New Invoice", new_bill_path, class: "btn btn-primary p-2", id: "button_style" %>
 </div>
+
+
+<% @bills.each do |bill| %>
+  <div class="modal fade" id="emailModal_<%= bill.id %>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog p-5" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Email Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+          <div class="custom-form m-3">
+            <%= simple_form_for(bill) do |f| %>
+              <%= f.input :subject%>
+              <%= f.input :client_email %>
+              <%= f.input :cc, label: 'Cc (Separate with " , ")'%>
+              <div class="modal-footer">
+                <%= f.button :submit, 'Save Changes', class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>
