@@ -1,0 +1,75 @@
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .modal-dialog {
+    max-width: 700px; /* Slightly smaller modal for medium screens */
+  }
+  .modal-form {
+    padding: 15px;
+  }
+}
+
+/* Small screens (between 768px and 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .modal-dialog {
+    max-width: 600px; /* Adjust modal width for small screens */
+  }
+  .modal-form {
+    padding: 10px;
+  }
+}
+
+/* Extra small screens (between 576px and 767px) */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .modal-dialog {
+    max-width: 500px; /* More compact modal for extra small screens */
+  }
+  .modal-form {
+    padding: 5px;
+  }
+}
+
+/* Very small screens (<=575px) */
+@media only screen and (max-width: 575px) {
+  .modal-dialog {
+    max-width: 100%; /* Full width modal for very small screens */
+    margin: 10px;
+  }
+  .modal-content {
+    padding: 5px; /* Reduce padding to save space */
+  }
+  .modal-form {
+    max-width: 90%;
+    padding: 5px;
+  }
+  #modal_button{
+    padding: 5px;
+    font-size: 90%;
+  }
+  .modal-footer{
+    display: flex;
+    justify-content: end;
+    padding: 10px 0px 0px 0px;
+  }
+}
+
+@media only screen and (min-width: 370px) and (max-width: 410px) {
+  .modal-dialog {
+    max-width: 100%; /* Full width modal for very small screens */
+    margin: 10px;
+  }
+  .modal-content {
+    padding: 5px; /* Reduce padding to save space */
+  }
+  .modal-form {
+    max-width: 90%;
+    padding: 5px;
+  }
+  .modal-footer{
+    display: flex;
+    justify-content: end;
+    padding: 10px 0px 0px 0px;
+  }
+  #modal_button{
+    padding: 5px;
+    font-size: 80%;
+  }
+}

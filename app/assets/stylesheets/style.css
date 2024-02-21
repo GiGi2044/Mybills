@@ -1,11 +1,3 @@
-@import "navbar.css";
-@import "custom_table.css";
-@import "homepage.css";
-@import "signinup.css";
-@import "custom_form.css";
-@import "footer.css";
-
-
 .body {
   font-family: "Open Sans", sans-serif;
   margin: 200px;

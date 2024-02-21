@@ -20,13 +20,13 @@
           <h5 class="modal-title" id="exampleModalLabel">Email Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-          <div class="custom-form m-3">
+          <div class="modal-form m-3">
             <%= simple_form_for(bill) do |f| %>
               <%= f.input :subject%>
               <%= f.input :client_email %>
               <%= f.input :cc, label: 'Cc (Separate with " , ")'%>
               <div class="modal-footer">
-                <%= f.button :submit, 'Save Changes', class: 'btn btn-primary' %>
+                <%= f.button :submit, 'Save Changes', class: 'btn btn-primary', id: 'modal_button'%>
               </div>
             <% end %>
           </div>

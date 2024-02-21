@@ -40,6 +40,17 @@
   transform: translateY(-30%); /* Adjust this to change how it centers based on the new top value */
 }
 
+#info_cc_button{
+  width: 20%;
+  height: 2rem;
+}
+
+#send_email_button{
+  width: 200%;
+  height: 2rem;
+}
+
+
 
 @media only screen and (min-width: 1200px) {
 
@@ -103,6 +114,15 @@
   .custom-table th{
     font-size: 0.8rem;
   }
+  @media only screen and (min-width: 411px) and (max-width: 575px) {
+    #info_cc_button{
+      width: 50%;
+    }
+
+    #send_email_button{
+      width: 100%;
+    }
+  }
   @media only screen and (min-width: 370px) and (max-width: 410px) {
     .custom-table .btn{
       padding: 0.15rem 0.3rem; /* Reduce padding */
@@ -110,7 +130,6 @@
     }
     .custom-table .btn-success{
       padding: 5px;
-      margin-top: 5px;
       display: fit-content;
     }
     .service-custom-table .btn, .client-custom-table .btn{
@@ -126,5 +145,12 @@
       height: 19.2px; /* Adjust this to match the height of the h3 element */
       visibility: hidden;
       margin-bottom: 10px;
+    }
+    #info_cc_button{
+      width: 50%;
+    }
+
+    #send_email_button{
+      width: 100%;
     }
   }

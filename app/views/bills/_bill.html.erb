@@ -37,13 +37,13 @@
             <span class="link-full-text">View PDF</span>
             <span class="link-abbreviated-text">View</span>
           <% end %>
-          <div class="d-flex" style="gap: 10px;">
-            <button type="button" class="btn btn-primary btn-sm inline mt-2"
+          <div class="email_buttons d-flex" style="gap: 5px;">
+            <button type="button" class="btn btn-primary btn-sm inline mt-2" id="info_cc_button"
               data-bs-toggle="modal" data-bs-target="#emailModal_<%= bill.id %>">
-              Email details
+              <i class="fa-solid fa-info"></i>
             </button>
-            <%= button_to send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success' do %>
-              <span class="button-full-text">Send Email</span>
+            <%= button_to send_email_bill_path(bill), method: :post, form: { remote: true, authenticity_token: true }, class: 'btn btn-success', id: "send_email_button" do %>
+              <span class="button-full-text"><i class="fa-regular fa-envelope"></i></span>
               <span class="button-abbreviated-text">Send</span>
             <% end %>
           </div>
