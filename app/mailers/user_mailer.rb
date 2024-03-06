@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   mail_params = {
     from: "invoice@justinvoice.it",
     reply_to: user.email,
-    to: bill.client.client_email,
+    to: bill.client_email,
     cc: bill.cc,
     subject: bill.subject.presence || 'Your Bill'
   }

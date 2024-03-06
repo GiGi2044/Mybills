@@ -357,7 +357,7 @@ class BillsController < ApplicationController
   def bill_params
     params.require(:bill).permit(:subject, :cc, :user_email, :user_fullname, :user_street, :user_bank_name, :user_iban,
     :user_phone_number, :user_city, :user_business_name, :user_account_number,
-    :user_bic, :client_name, :client_address, :client_city, :contact_name, :user_id,
+    :user_bic, :client_name, :client_address, :client_email, :client_phone, :client_city, :contact_name, :user_id,
     :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [],
     )
   end
