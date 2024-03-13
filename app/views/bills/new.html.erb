@@ -58,6 +58,7 @@
       <h2 class="bill_form_subtitles"> Invoice Info </h2>
       <%= f.input :bill_date, label: 'Invoice date' %>
       <%= f.input :description %>
+      <%= f.input :currency, collection: ["CHF", "USD", "EUR", "GBP"], prompt: "Select Currency" %>
       <br>
       <%= f.button :submit, 'Create Invoice', class: 'btn btn-primary p-3' %>
     <% end %>

@@ -155,6 +155,7 @@ class BillsController < ApplicationController
 
     invoice_number = bill.customer_bill_number
     invoice_date = bill.bill_date
+    invoice_currency = bill.currency
 
     bank_details1_x = 50
     bank_details2_x_title = 255
@@ -334,7 +335,7 @@ class BillsController < ApplicationController
       ["Subtotal", bill_amount],
       ["Tax rate", "0.000%"],
       ["Tax", "-"],
-      ["Total", bill_amount]
+      ["Total", "#{invoice_currency} #{bill_amount}"]
     ]
 
     pdf.table(invoice_services_totals_data, :position => invoice_header_x, :width => 215) do
@@ -355,7 +356,7 @@ class BillsController < ApplicationController
 
 
   def bill_params
-    params.require(:bill).permit(:subject, :cc, :user_email, :user_fullname, :user_street, :user_bank_name, :user_iban,
+    params.require(:bill).permit(:currency, :subject, :cc, :user_email, :user_fullname, :user_street, :user_bank_name, :user_iban,
     :user_phone_number, :user_city, :user_business_name, :user_account_number,
     :user_bic, :client_name, :client_address, :client_email, :client_phone, :client_city, :contact_name, :user_id,
     :client_id, :bill_date, :amount, :description, :days_worked, :rate, :status, service_ids: [],

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_01_143745) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_175735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_143745) do
     t.datetime "updated_at", null: false
     t.float "rate"
     t.float "days_worked"
+    t.string "currency"
     t.index ["bill_id"], name: "index_bill_services_on_bill_id"
     t.index ["service_id"], name: "index_bill_services_on_service_id"
   end
@@ -84,6 +85,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_143745) do
     t.string "contact_name"
     t.string "cc"
     t.string "subject"
+    t.string "currency"
     t.index ["client_id"], name: "index_bills_on_client_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
@@ -122,6 +124,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_143745) do
     t.bigint "user_id"
     t.datetime "deleted_at"
     t.integer "service_number"
+    t.string "currency"
     t.index ["deleted_at"], name: "index_services_on_deleted_at"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
