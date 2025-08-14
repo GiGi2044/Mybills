@@ -74,16 +74,15 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    domain: 'justinvoice.it', # Change to your domain
-    user_name: 'apikey', # This is the string literal 'apikey', NOT your actual API key
-    password: ENV['SENDGRID_API_KEY'], # Store your API key in an environment variable
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              "smtp-relay.brevo.com",
+  port:                 587,
+  user_name:            ENV.fetch("BREVO_SMTP_LOGIN"), # Brevo SMTP login (email shown in Brevo's SMTP tab)
+  password:             ENV.fetch("BREVO_SMTP_KEY"),   # Brevo SMTP key (not your account password)
+  authentication:       :login,
+  enable_starttls_auto: true
+}
 
   config.action_mailer.default_url_options = {:host =>'https://justinvoice.it'}
 end
